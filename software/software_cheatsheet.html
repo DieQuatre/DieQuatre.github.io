@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yazılım Analizi ve Tasarımı Cheatsheet</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <style>
+        /* === YENİ EKLENEN DARK MODE STİLLERİ === */
+        
+        /* --- Geri Dön Butonu --- */
+        .nav-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: left;
+            padding: 20px 20px 0 20px; /* Butonun konumu için */
+        }
+        .geri-butonu {
+            display: inline-block;
+            margin-bottom: 15px;
+            padding: 8px 15px;
+            background-color: #6a0dad; /* Mor buton */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .geri-butonu:hover {
+            background-color: #510a8c; /* Koyu mor */
+        }
+
+        /* --- Dark Mode Gövde ve Konteyner --- */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #1e1e1e; /* Koyu arka plan */
+            color: #f0f0f0;       /* Açık renk ana yazı */
+            margin: 0;
+            padding: 20px;
+            padding-top: 0; /* Navigasyon halledecek */
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #2a2a2a; /* Koyu Gri Kutu */
+            border: 1px solid #444;    /* Sınır çizgisi */
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: none; /* Gölgeyi kaldır */
+        }
+
+        /* --- Dark Mode Başlıklar --- */
+        h1, h2, h3, h4 {
+            color: #343a40;
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+            border-bottom: 2px solid #444; /* Koyu ayraç */
+            padding-bottom: 5px;
+        }
+        h1 {
+            text-align: center;
+            color: #ffffff; /* Beyaz Ana Başlık */
+            border-bottom: 3px solid #3498db; /* Mavi çizgi */
+        }
+        h2 {
+            color: #20e1ff; /* Bu renk (açık mavi) koyu temada güzel durur */
+        }
+        h3 {
+            color: #00ce0a; /* Bu renk (yeşil) de güzel durur */
+        }
+        h4 {
+            color: #ff8f87; /* Bu renk (turuncu) da güzel durur */
+            border-bottom: none;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+
+        /* --- Dark Mode Kod, Tablo ve Özel Kutular --- */
+        code {
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+            background-color: #3c3c3c; /* Koyu kod arka planı */
+            color: #f0f0f0;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: none;
+        }
+        th, td {
+            border: 1px solid #555; /* Koyu tablo çizgileri */
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #3c3c3c; /* Koyu tablo başlığı */
+            font-weight: 600;
+        }
+        tbody tr:nth-child(odd) {
+            background-color: #2f2f2f; /* Hafif çizgili görünüm */
+        }
+        .formula {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 1.1em;
+            color: #f0f0f0; /* Açık yazı */
+            background: #252525; /* Koyu formül arka planı */
+            padding: 10px;
+            border: 1px solid #444;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .example-calc {
+            background-color: #4a411c; /* Koyu sarı arka plan */
+            border-left: 5px solid #ffc107; /* Sarı vurgu çizgisi (kalsın) */
+            padding: 10px 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            color: #fff; /* Okunabilirlik için beyaz yazı */
+        }
+        hr { /* Yatay çizgiyi koyu yap */
+            border: 0;
+            height: 1px;
+            background: #444;
+            margin: 40px 0;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="nav-container">
+        <a href="software_vize.html" class="geri-butonu">📝 Vize Menüsüne Geri Dön</a>
+        <a href="..\index.html" class="geri-butonu">🏠 Ana Sayfaya Geri Dön</a>
+    </div>
+    
+    <div class="container">
+        <h1>Yazılım Analizi ve Tasarımı Cheatsheet</h1>
+
+        <h2>Bölüm 1 & 2: Temel Kavramlar, SDLC ve Süreç Modelleri</h2>
+
+        <h3>1. Temel Tanımlar</h3>
+        <ul>
+            <li><strong>Sistem Analizi (Analysis):</strong> Sistemin <strong>NE</strong> yapacağını belirleme sürecidir (Gereksinimler).</li>
+            <li><strong>Sistem Tasarımı (Design):</strong> Sistemin bunu <strong>NASIL</strong> yapacağını planlama sürecidir.</li>
+            <li><strong>Kalite Güvencesi (Quality Assurance):</strong>
+                <ul>
+                    <li><strong>Verification (Doğrulama):</strong> "Ürünü doğru mu yapıyoruz?" (Spesifikasyonlara ve tasarıma uygunluk).</li>
+                    <li><strong>Validation (Geçerleme):</strong> "Doğru ürünü mü yapıyoruz?" (Kullanıcı gereksinimlerini karşılama).</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>2. SDLC (Yazılım Geliştirme Yaşam Döngüsü)</h3>
+        <ul>
+            <li><strong>Aşamalar:</strong> Planlama &rarr; Analiz &rarr; Tasarım &rarr; Geliştirme/Uygulama &rarr; Test &rarr; Dağıtım &rarr; Bakım.</li>
+            <li><strong>Temel Çıktılar (Outputs):</strong>
+                <ul>
+                    <li><strong>Planlama Aşaması:</strong> <code class="code">SPMP</code> (Software Project Management Plan - Yazılım Proje Yönetim Planı).</li>
+                    <li><strong>Analiz Aşaması:</strong> <code class="code">SRS</code> (Software Requirements Specification - Yazılım Gereksinim Spesifikasyonu).</li>
+                    <li><strong>Tasarım Aşaması:</strong> <code class="code">SDD</code> (Software Design Document - Yazılım Tasarım Belgesi).</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>3. Süreç Modelleri (Process Models)</h3>
+        <ul>
+            <li><strong>Waterfall (Şelale):</strong>
+                <ul>
+                    <li>Sıralı bir modeldir; bir aşama bitmeden diğeri başlamaz.</li>
+                    <li>Gereksinimlerin en başta net ve sabit olması gerekir.</li>
+                    <li>Hatalar geç (test aşamasında) bulunur.</li>
+                </ul>
+            </li>
+            <li><strong>Iterative (Yinelemeli):</strong>
+                <ul>
+                    <li>Sistem, art arda gelen yinelemelerle (küçük parçalar halinde) tamamlanır.</li>
+                    <li>Her yineleme kendi içinde (mini-şelale gibi) analiz, tasarım, kodlama ve test içerir.</li>
+                </ul>
+            </li>
+            <li><strong>Agile (Çevik):</strong>
+                <ul>
+                    <li>Değişime hızlı yanıt vermeye odaklanır.</li>
+                    <li>Küçük, kendi kendine yeten ekipler kullanır.</li>
+                    <li>Gereksinimler için "User Story" (Kullanıcı Hikayeleri) kullanır.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>4. Agile Manifesto Değerleri</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Düşük Öncelikli (Üzerinde)</th>
+                    <th>Yüksek Öncelikli (Değerli)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Süreçler ve Araçlar</td>
+                    <td><strong>Bireyler ve Etkileşimler</strong></td>
+                </tr>
+                <tr>
+                    <td>Kapsamlı Dokümantasyon</td>
+                    <td><strong>Çalışan Yazılım</strong></td>
+                </tr>
+                <tr>
+                    <td>Sözleşme Müzakeresi</td>
+                    <td><strong>Müşteri İşbirliği</strong></td>
+                </tr>
+                <tr>
+                    <td>Bir Plana Bağlı Kalmak</td>
+                    <td><strong>Değişime Yanıt Vermek</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>5. Çevik Yöntemler: Scrum vs. XP</h3>
+        <ul>
+            <li><strong>Scrum:</strong>
+                <ul>
+                    <li><strong>Sprint:</strong> 30 günlük (veya daha kısa) geliştirme döngüleri.</li>
+                    <li><strong>Backlog:</strong> Yapılacak tüm işlerin (kullanıcı hikayeleri) listesi.</li>
+                    <li><strong>Scrum Master:</strong> Ekibin engellerini kaldıran, süreci yöneten kişi.</li>
+                    <li><strong>Daily Scrum:</strong> Günlük 15 dakikalık ayaküstü toplantı.</li>
+                </ul>
+            </li>
+            <li><strong>Extreme Programming (XP):</strong>
+                <ul>
+                    <li><strong>Test-Driven Development (TDD):</strong> Önce test yazılır, sonra kodu yazılır.</li>
+                    <li><strong>Pair Programming (İkili Programlama):</strong> İki geliştirici tek bilgisayarda çalışır (biri yazar, diğeri inceler).</li>
+                    <li><strong>Continuous Integration (Sürekli Entegrasyon):</strong> Kodlar günde birçok kez ana depoya birleştirilir.</li>
+                    <li><strong>Sustainable Pace (Sürdürülebilir Hız):</strong> Haftada 40 saat çalışma; fazla mesaiye karşıdır.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <hr>
+
+        <h2>Bölüm 3: Proje Yönetimi ve Tahminleme (FORMÜLLER)</h2>
+
+        <h3>1. Ekip Boyutu ve İletişim</h3>
+        <ul>
+            <li><strong>Brooks' Law:</strong> "Geciken bir yazılım projesine adam eklemek, projeyi daha da geciktirir."</li>
+            <li><strong>İletişim Kanalı Sayısı Formülü:</strong> $N$ kişilik bir ekipte:
+                <div class="formula-box">
+                    $$ \frac{N \times (N-1)}{2} $$
+                </div>
+            </li>
+        </ul>
+
+        <h3>2. FPA (Function Point Analysis) Formülleri</h3>
+        <ul>
+            <li><strong>Amaç:</strong> Yazılımın boyutunu işlevselliğine göre (dilden bağımsız) ölçmek.</li>
+            <li><strong>Adım 1: UFP (Unadjusted Function Point) Hesabı:</strong>
+                <ul>
+                    <li>5 bileşen (EI, EO, EQ, ILF, EIF) sayılır, karmaşıklığa (Low, Avg, High) göre ağırlıklandırılır.</li>
+                    $$ UFP = \text{Tüm bileşenlerin (sayı} \times \text{ağırlık) toplamı} $$
+                </ul>
+            </li>
+            <li><strong>Adım 2: VAF (Value Adjustment Factor) Hesabı:</strong>
+                <ul>
+                    <li>14 adet Genel Sistem Karakteristiğine (GSC) 0-5 arası puan verilir.</li>
+                    $$ VAF = \text{Verilen tüm puanların toplamı} $$
+                </ul>
+            </li>
+            <li><strong>Adım 3: AFP (Adjusted Function Point) - Nihai Formül:</strong>
+                <div class="formula-box">
+                    $$ AFP = UFP \times (0.65 + 0.01 \times VAF) $$
+                </div>
+            </li>
+        </ul>
+
+        <h3>3. COCOMO I Formülleri (LOC'a göre tahmin)</h3>
+        <ul>
+            <li><strong>Amaç:</strong> <code class="code">KLOC</code> (Bin Satır Kod) cinsinden boyuta göre Efor ve Süre hesaplama.</li>
+            <div class="formula-box">
+                $$ Effort \text{ (Efor - Kişi/Ay)} = a \times (KLOC)^b $$
+                $$ Duration \text{ (Süre - Ay)} = c \times (Effort)^d $$
+            </div>
+            <li><strong>Katsayılar (a, b, c, d) Proje Tipine Göre Değişir:</strong>
+                <ul>
+                    <li><strong>Organic:</strong> (Küçük, deneyimli ekip) &rarr; a=2.4, b=1.05, c=2.5, d=0.38</li>
+                    <li><strong>Semi-detached:</strong> (Orta boy, karışık ekip) &rarr; a=3.0, b=1.12, c=2.5, d=0.35 </li>
+                    <li><strong>Embedded:</strong> (Gömülü, kısıtlı donanım) &rarr; a=3.6, b=1.20, c=2.5, d=0.32</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>4. Engineering Rules Formülleri (FP'ye göre tahmin)</h3>
+        <div class="formula-box">
+            $$ Duration \text{ (Süre - Ay)} = (AFP)^A $$
+            <span style="font-size: 0.9em;">(A katsayısı proje karmaşıklığına göre 0.32 - 0.45 arası değişir)</span><br><br>
+            $$ Staff \text{ (Kişi Sayısı)} = \frac{AFP}{150} $$
+            $$ Effort \text{ (Efor - Kişi/Ay)} = Staff \times Duration $$
+        </div>
+
+        <h3>5. Kritik Yol Analizi (Critical Path Analysis - CPA)</h3>
+        <ul>
+            <li><strong>Amaç:</strong> Projenin minimum bitiş süresini ve gecikmeye toleransı olmayan görevleri bulmak.</li>
+            <li><strong>T_E (Earliest Completion - En Erken Bitiş):</strong>
+                <ul>
+                    <li>İleri doğru hesaplanır (Baştan sona).</li>
+                    <li>$$T_E \text{ (mevcut)} = T_E \text{ (önceki)} + \text{Süre (mevcut)}$$</li>
+                    <li>Birleşme noktalarında (birden fazla öncül varsa) <strong>MAKSİMUM</strong> olan T_E değeri alınır.</li>
+                </ul>
+            </li>
+            <li><strong>T_L (Latest Completion - En Geç Bitiş):</strong>
+                <ul>
+                    <li>Geri doğru hesaplanır (Sondan başa).</li>
+                    <li>$$ T_L \text{ (mevcut)} = T_L \text{ (sonraki)} - \text{Süre (sonraki)} $$</li>
+                    <li>Ayrılma noktalarında (birden fazla sonra gelen varsa) <strong>MİNİMUM</strong> olan T_L değeri alınır.</li>
+                </ul>
+            </li>
+            <li><strong>ST (Slack Time - Bolluk Süresi):</strong>
+                <div class="formula-box">
+                    $$ ST = T_L - T_E $$
+                </div>
+            </li>
+            <li><strong>Kritik Yol (Critical Path):</strong>
+                <ul>
+                    <li>Slack Time (ST) değeri <strong>sıfır (0)</strong> olan görevlerin oluşturduğu yoldur. Bu görevler asla gecikmemelidir.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>Bölüm 4: Gereksinim Analizi</h2>
+
+        <h3>1. Gereksinim Türleri</h3>
+        <ul>
+            <li><strong>Functional (İşlevsel):</strong> Sistemin <strong>ne yapacağını</strong> tanımlar; bir davranışı veya servisi belirtir.
+                <ul>
+                    <li><em>Örn:</em> "Kullanıcı sisteme giriş yapabilmelidir."</li>
+                    <li><em>Örn:</em> "Sistem, ödeme alındığında bir onay e-postası göndermelidir."</li>
+                </ul>
+            </li>
+            <li><strong>Non-Functional (İşlevsel Olmayan):</strong> Sistemin <strong>nasıl olacağını</strong> (kalitesini) tanımlar; kısıtlamaları ve özellikleri belirtir.
+                <ul>
+                    <li><em>Örn (Performans):</em> "Ana sayfa 3 saniyeden az sürede yüklenmelidir."</li>
+                    <li><em>Örn (Güvenlik):</em> "Şifre en az 8 karakter, 1 büyük harf ve 1 rakam içermelidir."</li>
+                    <li><em>Örn (Kullanılabilirlik):</em> "Kullanıcıların ödeme sayfasındaki hata oranı %10'u geçmemelidir."</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>2. User Story (Kullanıcı Hikayesi)</h3>
+        <ul>
+            <li><strong>Format:</strong> "Bir <strong>&lt;Kullanıcı Rolü&gt;</strong> olarak, <strong>&lt;bir hedef&gt;</strong> istiyorum, çünkü <strong>&lt;bir sebep&gt;</strong>."</li>
+            <li><strong><code class="code">INVEST</code> Akrostişi:</strong> İyi bir User Story şu özelliklerde olmalıdır:
+                <ul>
+                    <li><strong>I</strong>ndependent (Bağımsız)</li>
+                    <li><strong>N</strong>egotiable (Müzakere Edilebilir)</li>
+                    <li><strong>V</strong>aluable (Değerli)</li>
+                    <li><strong>E</strong>stimable (Tahmin Edilebilir)</li>
+                    <li><strong>S</strong>mall (Küçük - bir sprint'e sığmalı)</li>
+                    <li><strong>T</strong>estable (Test Edilebilir - Kabul Kriterleri olmalı)</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>3. Use Case (Kullanım Durumu)</h3>
+        <ul>
+            <li><strong>Actor:</strong> Sistemle etkileşime giren, sistemin <em>dışındaki</em> bir varlıktır (insan, başka bir sistem, zaman olabilir).</li>
+            <li><strong>Use Case:</strong> Aktörün bir hedefi başarmak için sistemle etkileşime girdiği adımlar dizisidir (Fiil ile adlandırılır, örn: "Para Çek").</li>
+            <li><strong>İlişkiler (Relationships):</strong>
+                <ul>
+                    <li><code class="code">«include»</code> (İçerme): Zorunlu, paylaşılan fonksiyon. Temel use case, <em>her zaman</em> «include» edilen use case'i çağırır (Örn: "Para Çek" &rarr; "Kartı Doğrula"). Ok, çağrılan (child) use case'i gösterir.</li>
+                    <li><code class="code">«extend»</code> (Genişletme): Opsiyonel, koşula bağlı fonksiyon. (Örn: "Para Yatır" &larr; "Bonus Hesapla" [eğer tutar > 10.000 TL ise]). Ok, temel (base) use case'i gösterir.</li>
+                    <li><code class="code">Generalization</code> (Genelleme): Miras alma (parent-child). (Örn: "Müşteri" &larr; "Kurumsal Müşteri"). Ok, ebeveyni (parent) gösterir.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <hr>
+
+    </div>
+
+</body>
+</html>

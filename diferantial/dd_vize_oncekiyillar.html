@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diferansiyel Sınav Rehberi</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 20px;
+        }
+        .header h1 {
+            color: #4a148c; /* Mor bir başlık */
+        }
+        .nav {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .nav a {
+            display: inline-block;
+            padding: 10px 15px;
+            margin: 5px;
+            background-color: #7e57c2; /* Mor buton */
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .nav a:hover {
+            background-color: #512da8;
+        }
+        .page {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #ccc;
+        }
+        .page-title {
+            color: #4a148c;
+            border-bottom: 2px solid #7e57c2;
+            padding-bottom: 10px;
+        }
+        .goal, .warning, .tip {
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left-width: 5px;
+            border-left-style: solid;
+        }
+        .goal {
+            background-color: #e3f2fd;
+            border-color: #2196f3;
+        }
+        .warning {
+            background-color: #ffebee;
+            border-color: #f44336;
+        }
+        .tip {
+            background-color: #e8f5e9;
+            border-color: #4caf50;
+        }
+        .formula {
+            background-color: #eee;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 1.1em;
+            overflow-x: auto;
+        }
+        ul.steps {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        ul.steps li {
+            position: relative;
+            padding: 10px 0 10px 40px;
+            margin-bottom: 10px;
+            background: #fafafa;
+            border-radius: 5px;
+        }
+        ul.steps li:before {
+            content: counter(step);
+            counter-increment: step;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px;
+            height: 30px;
+            background: #7e57c2;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            font-weight: bold;
+            line-height: 30px;
+        }
+        ul.steps {
+            counter-reset: step;
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <a href="..\index.html" class="geri-butonu">🏠 Ana Sayfaya Geri Dön</a>
+
+    <div class="container">
+        <div class="header">
+            <h1>Diferansiyel Denklemler Sınav Rehberi</h1>
+            <p>"Sıfırdan" Anlatım Modu</p>
+        </div>
+
+        <div class="nav">
+            <a href="#q1">Soru 1: Isınma</a>
+            <a href="#q2">Soru 2: Çekirdek</a>
+            <a href="#q3">Soru 3: Yöntem</a>
+            <a href="#q4">Soru 4: Joker</a>
+        </div>
+
+        <div id="q1" class="page">
+            <h2 class="page-title">Soru 1: "Isınma" Sorusu (Ayrılabilir veya Homojen)</h2>
+            <p>Bu, en temel soru tipidir. Genellikle diğer zor soruların içinde de bu tekniği kullanman gerekir.</p>
+            
+            <h3>A) Ayrılabilir (Separable) Denklemler</h3>
+            <div class="goal">
+                <strong>Amaç:</strong> Basit. Tüm 'y' ve 'dy' terimlerini eşitliğin bir tarafına, tüm 'x' ve 'dx' terimlerini diğer tarafına toplamaktır.
+            </div>
+
+            <ul class="steps">
+                <li>
+                    <strong>Adım 1: Teşhis</strong><br>
+                    Denkleme bak. $y' = \frac{dy}{dx}$ demektir. Denklemi $\frac{dy}{dx} = g(x) \cdot h(y)$ şeklinde (yani bir x'li terim ÇARPI bir y'li terim) yazabiliyor musun? Veya $M(x)dx = N(y)dy$ formatına geliyor mu?
+                </li>
+                <li>
+                    <strong>Adım 2: Ayırma (The "Separation")</strong><br>
+                    İçler dışlar çarpımı ve bölme yaparak, denklemi şu hale getir:<br>
+                    <span class="formula">$f(y) dy = g(x) dx$</span>
+                    (Tüm y'ler $dy$ ile solda, tüm x'ler $dx$ ile sağda).
+                </li>
+                <li>
+                    <strong>Adım 3: İntegral Alma</strong><br>
+                    Şimdi her iki tarafın da integralini al:<br>
+                    <span class="formula">$\int f(y) dy = \int g(x) dx$</span>
+                </li>
+                <li>
+                    <strong>Adım 4: Çözüm ve "+C"</strong><br>
+                    İntegralleri al. Sol taraf y'li bir şey, sağ taraf x'li bir şey olacak. Sadece bir tarafa (genellikle x'li tarafa) bir tane "+C" (integral sabiti) eklemen yeterlidir. Cevap $y=...$ şeklinde net çıkmayabilir, kapalı (implicit) kalabilir.
+                </li>
+            </ul>
+
+            <hr style="margin: 30px 0;">
+
+            <h3>B) Homojen (Homogeneous) Denklemler</h3>
+            <div class="goal">
+                <strong>Amaç:</strong> Bu denklem, "Ayrılabilir" bir denklemin kılık değiştirmiş halidir. Amacımız, özel bir "anahtar" kullanarak onu Ayrılabilir forma dönüştürmektir.
+            </div>
+
+            <ul class="steps">
+                <li>
+                    <strong>Adım 1: Teşhis</strong><br>
+                    Denkleme bak. $\frac{dy}{dx} = f(x, y)$ şeklinde yaz. Sağdaki $f(x, y)$ fonksiyonundaki tüm terimleri $y/x$ (veya $x/y$) cinsinden yazabiliyor musun?
+                    <br>Örnek: $y' = \frac{x^2 + y^2}{xy} \rightarrow y' = \frac{x}{y} + \frac{y}{x}$. Evet, bu homojen.
+                    <br>Örnek 2: $y' = 1 + (y/x)$. Evet, bu da homojen.
+                </li>
+                <li>
+                    <strong>Adım 2: Dönüşüm (Sihirli Anahtar)</strong><br>
+                    Kullanacağımız anahtar şudur: $u = y/x$.
+                    Bu, $y = ux$ demektir. Şimdi bunun x'e göre türevini (çarpım kuralı!) almamız lazım:
+                    <span class="formula">$y' = u'x + u$</span>
+                    (Hocanızın notlarında bu $u'x+u$ veya $\frac{du}{dx}x + u$ olarak geçer)
+                </li>
+                <li>
+                    <strong>Adım 3: Yerine Koyma</strong><br>
+                    Orijinal denklemde $y/x$ gördüğün her yere $u$ yaz. $y'$ gördüğün yere ise $u'x + u$ yaz.
+                </li>
+                <li>
+                    <strong>Adım 4: Sadeleştirme (Sihir)</strong><br>
+                    Yerine koyduktan sonra denklem $u'x + u = (\text{u'lu terimler})$ şeklinde olacak. Eşitliğin iki tarafındaki $u$ terimleri genellikle birbirini götürür. Elinde $u'$ ve $x$ içeren bir denklem kalır.
+                </li>
+                <li>
+                    <strong>Adım 5: Çözüm (Artık Ayrılabilir!)</strong><br>
+                    Kalan $u'x = g(u)$ şeklindeki denklemi "Ayrılabilir Denklem" olarak çöz. Yani $u$'ları $du$ yanına, $x$'leri $dx$ yanına topla ve integral al.
+                </li>
+                <li>
+                    <strong>Adım 6: Geri Dönüş</strong><br>
+                    Çözümü $u$ cinsinden bulduktan sonra, $u$ gördüğün yere tekrar $y/x$ yazarak asıl çözümü bulmuş olursun.
+                </li>
+            </ul>
+        </div>
+
+        <div id="q2" class="page">
+            <h2 class="page-title">Soru 2: "Çekirdek Konu" (Lineer veya Bernoulli)</h2>
+            
+            <h3>A) Birinci Mertebe Lineer Denklemler</h3>
+            <div class="goal">
+                <strong>Amaç:</strong> Çok spesifik bir formattaki denklemleri çözmek: $y' + p(x)y = g(x)$.
+            </div>
+            <div class="tip">
+                <strong>Teşhis:</strong> Denklemde $y^2$, $ln(y)$, $sin(y)$ gibi garip y'li terimler YOKTUR. Sadece $y'$ ve $y$ vardır.
+            </div>
+
+            <ul class="steps">
+                <li>
+                    <strong>Adım 1: Formata Getir (En Önemlisi)</strong><br>
+                    Denklem sana $t^2 y' + 2ty = \sin(t)$ gibi dağınık verilebilir. İlk işin, $y'$ terimini YALNIZ bırakmaktır. Yani her tarafı $t^2$'ye bölersin:
+                    $y' + (\frac{2}{t})y = \frac{\sin(t)}{t^2}$.
+                </li>
+                <li>
+                    <strong>Adım 2: Parçaları Teşhis Et</strong><br>
+                    Şimdi $y' + p(x)y = g(x)$ formatındasın.<br>
+                    - $p(x)$ nedir? (Yukarıdaki örnekte $\frac{2}{t}$)<br>
+                    - $g(x)$ nedir? (Yukarıdaki örnekte $\frac{\sin(t)}{t^2}$)
+                </li>
+                <li>
+                    <strong>Adım 3: İntegral Çarpanı (Anahtar: $\mu$)</strong><br>
+                    Çözüm için "integral çarpanı" denen bir anahtara ihtiyacımız var. Formülü şudur:<br>
+                    <span class="formula">$\mu(x) = e^{\int p(x) dx}$</span>
+                    (İntegral alırken $+C$ koymana gerek yok, en basit halini al).
+                </li>
+                <li>
+                    <strong>Adım 4: Çözüm Kuralı</strong><br>
+                    Anahtarı ($\mu$) bulduktan sonra, çözümün kuralı *her zaman* şudur:<br>
+                    <span class="formula">$(\mu(x) \cdot y)' = \mu(x) \cdot g(x)$</span>
+                    Bu sihirli bir kısayoldur. Sol taraf her zaman $(\mu \cdot y)$'nin türevi olur.
+                </li>
+                <li>
+                    <strong>Adım 5: İntegral Al ve Bitir</strong><br>
+                    Kuralı her iki tarafın integralini alarak uygula:<br>
+                    $\mu(x) \cdot y = \int \mu(x) \cdot g(x) dx$<br>
+                    En son $y$'yi yalnız bırakmak için her tarafı $\mu(x)$'e böl.
+                </li>
+            </ul>
+
+            <hr style="margin: 30px 0;">
+
+            <h3>B) Bernoulli Denklemleri</h3>
+            <div class="goal">
+                <strong>Amaç:</strong> Bu, "Lineer" denklemin kılık değiştirmiş halidir. Tek bir farkı vardır: Eşitliğin sağında $y^n$ gibi bir terim bulunur.
+            </div>
+            <div class="tip">
+                <strong>Teşhis:</strong> $y' + p(x)y = g(x)y^n$ formatındadır. (Lineer denkleme çok benzer ama sağda $y^n$ var.)
+            </div>
+
+            <ul class="steps">
+                <li>
+                    <strong>Adım 1: Teşhis</strong><br>
+                    Formatı tanı ve $n$ değerini bul (sağdaki $y$'nin kuvveti).
+                </li>
+                <li>
+                    <strong>Adım 2: Dönüşüm (Sihirli Anahtar)</strong><br>
+                    Kullanacağımız anahtar şudur: $u = y^{1-n}$.
+                </li>
+                <li>
+                    <strong>Adım 3: Denklemi Hazırla</strong><br>
+                    Orijinal denklemin *her tarafını* $y^n$'e böl.<br>
+                    $y^{-n}y' + p(x)y^{1-n} = g(x)$
+                </li>
+                <li>
+                    <strong>Adım 4: Dönüşümü Uygula</strong><br>
+                    Şimdi bak: $y^{1-n}$ yerine $u$ yazabilirsin.
+                    Peki $y^{-n}y'$ yerine ne yazacağız? $u = y^{1-n}$ ise, $u' = (1-n)y^{-n}y'$ demektir.
+                    Yani $y^{-n}y' = \frac{u'}{1-n}$ demektir.
+                </li>
+                <li>
+                    <strong>Adım 5: Yerine Koy ve Çöz</strong><br>
+                    Bunları $y^n$'e böldüğümüz denkleme koyalım:
+                    <span class="formula">$\frac{u'}{1-n} + p(x)u = g(x)$</span>
+                    Bu denklem, artık $u$'ya göre **Lineer** bir denklemdir! (Biraz düzenlemen gerekebilir, $u'$'yü yalnız bırak).
+                </li>
+                <li>
+                    <strong>Adım 6: Geri Dönüş</strong><br>
+                    Bu lineer denklemi "Lineer Denklem" adımlarını (Adım A) kullanarak $u$ için çöz. Sonra bulduğun $u$ yerine $y^{1-n}$ yazarak $y$'yi bul.
+                </li>
+            </ul>
+        </div>
+
+        <div id="q3" class="page">
+            <h2 class="page-title">Soru 3: "Yöntem" Sorusu (Exact veya İntegral Çarpanı)</h2>
+            <div class="goal">
+                <strong>Amaç:</strong> $M(x,y)dx + N(x,y)dy = 0$ formundaki denklemleri çözmek.
+            </div>
+            <div class="tip">
+                <strong>Analoji:</strong> Gizli bir $F(x,y)$ fonksiyonu (bir harita gibi) olduğunu hayal et. $M$ bu haritanın x-yönündeki eğimi ($F_x$), $N$ ise y-yönündeki eğimi ($F_y$). Bizim amacımız bu gizli $F(x,y)$ haritasını bulmak. Çözüm $F(x,y) = C$ olacak.
+            </div>
+            
+            <h3>A) Exact (Tam) Denklemler</h3>
+            <ul class="steps">
+                <li>
+                    <strong>Adım 1: Teşhis</strong><br>
+                    Denklem $M(x,y)dx + N(x,y)dy = 0$ formunda olmalı. $M$, $dx$'in yanındaki her şeydir. $N$, $dy$'nin yanındaki her şeydir.
+                </li>
+                <li>
+                    <strong>Adım 2: "Exact" mi? (Test)</strong><br>
+                    Bu en önemli test: $M_y = N_x$ mi?<br>
+                    - $M_y$: $M$'nin $y$'ye göre türevi (bu sırada $x$'i sabit bir sayı gibi düşün).
+                    - $N_x$: $N$'nin $x$'e göre türevi (bu sırada $y$'yi sabit bir sayı gibi düşün).
+                </li>
+                <li>
+                    <strong>Adım 3: Test GEÇERSE (Exact ise)</strong><br>
+                    $F$ haritasını bulmaya başlıyoruz. Birini seç (mesela M'yi):
+                    <span class="formula">$F(x,y) = \int M(x,y) dx$</span>
+                    Bu integrali alırken, $y$'yi sabit sayı gibi düşün. İntegral sabiti olarak "+C" değil, "+h(y)" (y'ye bağlı bir fonksiyon) yazmalısın.
+                </li>
+                <li>
+                    <strong>Adım 4: $h(y)$'yi Bulmak</strong><br>
+                    $F(x,y)$ için bulduğun ifadenin şimdi $y$'ye göre türevini al ($F_y$).
+                    Bu bulduğun $F_y$ ifadesini, orijinal $N(x,y)$'ye eşitle.
+                    Bu eşitlikte x'li terimler birbirini götürecek ve elinde $h'(y) = (\text{sadece y'li terimler})$ kalacak.
+                </li>
+                <li>
+                    <strong>Adım 5: Bitiriş</strong><br>
+                    $h'(y)$'nin integralini alarak $h(y)$'yi bul. Bulduğun $h(y)$'yi Adım 3'teki $F(x,y)$'nin içine koy.
+                    Cevabın: $F(x,y) = C$.
+                </li>
+            </ul>
+
+            <hr style="margin: 30px 0;">
+
+            <h3>B) Exact Değilse: İntegral Çarpanı</h3>
+            <div class="warning">
+                <strong>Durum:</strong> Adım 2'deki testi yaptın ve $M_y \neq N_x$ çıktı. Denklem "exact" değil.
+            </div>
+            <div class="goal">
+                <strong>Amaç:</strong> Denklemi sihirli bir $\mu$ fonksiyonu ile çarparak onu "Exact" hale getirmek.
+            </div>
+
+            <ul class="steps">
+                <li>
+                    <strong>Adım 1: Teşhis</strong><br>
+                    $M_y \neq N_x$ olduğunu doğruladın.
+                </li>
+                <li>
+                    <strong>Adım 2: Formül 1'i Dene ($\mu(x)$'i bulabilir miyiz?)</strong><br>
+                    Şu formülü hesapla: <span class="formula">$\frac{M_y - N_x}{N}$</span>.
+                    Eğer bu işlemin sonucu SADECE $x$'e bağlı bir fonksiyon (veya bir sabit sayı) çıkarsa, şanslısın!
+                    İntegral çarpanın: $\mu(x) = e^{\int \frac{M_y - N_x}{N} dx}$.
+                </li>
+                <li>
+                    <strong>Adım 3: Formül 2'yi Dene ($\mu(y)$'yi bulabilir miyiz?)</strong><br>
+                    Eğer Adım 2 işe yaramazsa (sonuçta $y$ terimi kaldıysa), şunu dene:
+                    <span class="formula">$\frac{N_x - M_y}{M}$</span>.
+                    Eğer bu işlemin sonucu SADECE $y$'ye bağlı bir fonksiyon (veya bir sabit sayı) çıkarsa, şanslısın!
+                    İntegral çarpanın: $\mu(y) = e^{\int \frac{N_x - M_y}{M} dy}$.
+                </li>
+                <li>
+                    <strong>Adım 4: Çarp ve Çöz</strong><br>
+                    $\mu(x)$ veya $\mu(y)$'yi bulduktan sonra, orijinal denklemin $M$, $N$ ve sağ tarafını (genelde 0) bu $\mu$ ile çarp.
+                    <span class="formula">$(\mu \cdot M)dx + (\mu \cdot N)dy = 0$</span>
+                    Bu YENİ denklem artık 100% "Exact"tir. Şimdi bu yeni denklemi yukarıdaki "A) Exact Denklemler" adımlarını kullanarak çöz.
+                </li>
+            </ul>
+        </div>
+
+        <div id="q4" class="page">
+            <h2 class="page-title">Soru 4: "Joker" Soru (Riccati veya Parçalı Fonksiyon)</h2>
+            <p>Bu, sınavın ayırt edici sorusu olabilir. Genellikle daha fazla adım içerir.</p>
+
+            <h3>A) Riccati Denklemleri</h3>
+            <div class="goal">
+                <strong>Amaç:</strong> $y' = a(x)y^2 + b(x)y + c(x)$ şeklindeki (içinde $y^2$ olan) denklemleri çözmek.
+            </div>
+            <div class="warning">
+                <strong>Teşhis:</strong> Bu soruyu tek başınıza çözemezsiniz. Soruda mutlaka "given that $y_1(x) = ...$ is a solution" (yani $y_1$ gibi bir özel çözüm size verilir) ibaresi olmak zorundadır.
+            </div>
+
+            <ul class="steps">
+                <li>
+                    <strong>Adım 1: Teşhis</strong><br>
+                    Denklemin $y^2$, $y$ ve $x$'li terimler içerdiğini ve $y_1$ çözümünün verildiğini gör.
+                </li>
+                <li>
+                    <strong>Adım 2: Dönüşüm (Sihirli Anahtar)</strong><br>
+                    Kullanacağımız anahtar şudur: $y = y_1 + \frac{1}{v}$.
+                    Ayrıca $y$'nin türevine de ihtiyacımız var: $y' = y_1' - \frac{v'}{v^2}$.
+                    (Verilen $y_1$'in türevini $y_1'$ olarak hesaplamalısın).
+                </li>
+                <li>
+                    <strong>Adım 3: Yerine Koyma (En Zor Adım)</strong><br>
+                    Orijinal denklemdeki $y$ ve $y'$ yerine bu yeni ifadeleri yaz. Bu, çok karmaşık bir ifade yaratacaktır.
+                </li>
+                <li>
+                    <strong>Adım 4: Sadeleştirme (Sihir)</strong><br>
+                    Korkma! $y_1$ zaten bir çözüm olduğu için, $y_1$ ile ilgili tüm terimler birbirini götürecektir. Eline $v'$ ve $v$ içeren çok daha basit bir denklem geçecek.
+                </li>
+                <li>
+                    <strong>Adım 5: Çözüm</strong><br>
+                    Kalan bu yeni $v$'li denklem, her zaman **Lineer** bir denklem olacaktır!
+                    Bu denklemi "Soru 2 - A) Lineer Denklemler" başlığındaki adımlarla $v$ için çöz.
+                </li>
+                <li>
+                    <strong>Adım 6: Geri Dönüş</strong><br>
+                    $v$'yi bulduktan sonra, $y = y_1 + \frac{1}{v}$ formülüne geri dönerek $y$ çözümünü bul.
+                </li>
+            </ul>
+
+            <hr style="margin: 30px 0;">
+
+            <h3>B) Parçalı Fonksiyonlu Lineer Denklem</h3>
+            <div class="goal">
+                <strong>Amaç:</strong> $y' + p(t)y = g(t)$ şeklinde bir lineer denklemi çözmek, ancak $p(t)$ veya $g(t)$ parçalı bir fonksiyondur.
+            </div>
+            <div class="tip">
+                <strong>Teşhis:</strong> Soru $g(t) = \begin{cases} 1 & \text{if } 0 \le t < 1 \\ e^{2t} & \text{if } t \ge 1 \end{cases}$ gibi parçalı bir tanım içerir.
+            </div>
+
+            <ul class="steps">
+                <li>
+                    <strong>Adım 1: Bölge 1'i Çöz (örn: $0 \le t < 1$)</strong><br>
+                    Denklemi SADECE ilk aralık için çöz. $y' - 2y = 1$ gibi.
+                    Bu, "Lineer Denklem"dir. Çöz ve $y_1(t) = ... + C_1$ şeklinde bir çözüm bul.
+                </li>
+                <li>
+                    <strong>Adım 2: $C_1$'i Bul</strong><br>
+                    Soruda $y(0) = -1/2$ gibi bir başlangıç koşulu verilir. $t=0$ bu aralıkta olduğu için, $y_1(t)$ çözümünü kullanarak $C_1$'i bul.
+                </li>
+                <li>
+                    <strong>Adım 3: Bölge 2'yi Çöz (örn: $t \ge 1$)</strong><br>
+                    Denklemi SADECE ikinci aralık için çöz. $y' - 2y = e^{2t}$ gibi.
+                    Bu da "Lineer Denklem"dir. Çöz ve $y_2(t) = ... + C_2$ şeklinde bir çözüm bul. (Sakın $C_1$ ile karıştırma!)
+                </li>
+                <li>
+                    <strong>Adım 4: $C_2$'yi Bul (Süreklilik Şartı)</strong><br>
+                    $C_2$'yi bulmak için başlangıç koşulunu kullanamazsın (o $t=0$'daydı).
+                    Kural şudur: Çözüm "sürekli" olmalı, yani iki parça sınır noktasında (örn: $t=1$) birbirine "dokunmalı".
+                    <span class="formula">$\lim_{t \to 1^-} y_1(t) = \lim_{t \to 1^+} y_2(t)$</span>
+                    Yani: (Bulduğun $y_1$ çözümünde $t=1$ yaz) = (Bulduğun $y_2$ çözümünde $t=1$ yaz).
+                    Bu eşitlik, $C_2$'yi bulmanı sağlayacaktır.
+                </li>
+                <li>
+                    <strong>Adım 5: Bitiriş</strong><br>
+                    Cevabını $y(t) = \begin{cases} ... & \text{if } 0 \le t < 1 \\ ... & \text{if } t \ge 1 \end{cases}$ şeklinde, bulduğun $C_1$ ve $C_2$'yi yerine yazarak göster.
+                </li>
+            </ul>
+        </div>
+
+
+        <footer>
+            Sınavda sakin kal, önce denklemin tipini teşhis et, sonra adımları uygula. Başarılar!
+        </footer>
+    </div>
+
+</body>
+</html>
