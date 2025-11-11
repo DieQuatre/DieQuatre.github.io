@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COE305 Machine Learning Vize Konuları</title>
+    <style>
+        /* === YENİ EKLENEN DARK MODE STİLLERİ === */
+        
+        /* --- Geri Dön Butonu --- */
+        .nav-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: left;
+            padding: 20px 20px 0 20px; /* Butonun konumu için */
+        }
+        .geri-butonu {
+            display: inline-block;
+            margin-bottom: 15px;
+            padding: 8px 15px;
+            background-color: #6a0dad; /* Mor buton */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .geri-butonu:hover {
+            background-color: #510a8c; /* Koyu mor */
+        }
+
+        /* --- Dark Mode Gövde ve Konteyner --- */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #1e1e1e; /* Koyu arka plan */
+            color: #f0f0f0;       /* Açık renk ana yazı */
+            margin: 0;
+            padding: 20px;
+            padding-top: 0; /* Navigasyon halledecek */
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #2a2a2a; /* Koyu Gri Kutu */
+            border: 1px solid #444;    /* Sınır çizgisi */
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: none; /* Gölgeyi kaldır */
+        }
+
+        /* --- Dark Mode Başlıklar --- */
+        h1, h2, h3, h4 {
+            color: #343a40;
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+            border-bottom: 2px solid #444; /* Koyu ayraç */
+            padding-bottom: 5px;
+        }
+        h1 {
+            text-align: center;
+            color: #ffffff; /* Beyaz Ana Başlık */
+            border-bottom: 3px solid #3498db; /* Mavi çizgi */
+        }
+        h2 {
+            color: #20e1ff; /* Bu renk (açık mavi) koyu temada güzel durur */
+        }
+        h3 {
+            color: #00ce0a; /* Bu renk (yeşil) de güzel durur */
+        }
+        h4 {
+            color: #fd7e14; /* Bu renk (turuncu) da güzel durur */
+            border-bottom: none;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+
+        /* --- Dark Mode Kod, Tablo ve Özel Kutular --- */
+        code {
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+            background-color: #3c3c3c; /* Koyu kod arka planı */
+            color: #f0f0f0;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: none;
+        }
+        th, td {
+            border: 1px solid #555; /* Koyu tablo çizgileri */
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #3c3c3c; /* Koyu tablo başlığı */
+            font-weight: 600;
+        }
+        tbody tr:nth-child(odd) {
+            background-color: #2f2f2f; /* Hafif çizgili görünüm */
+        }
+        .formula {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 1.1em;
+            color: #f0f0f0; /* Açık yazı */
+            background: #252525; /* Koyu formül arka planı */
+            padding: 10px;
+            border: 1px solid #444;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .example-calc {
+            background-color: #4a411c; /* Koyu sarı arka plan */
+            border-left: 5px solid #ffc107; /* Sarı vurgu çizgisi (kalsın) */
+            padding: 10px 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            color: #fff; /* Okunabilirlik için beyaz yazı */
+        }
+        hr { /* Yatay çizgiyi koyu yap */
+            border: 0;
+            height: 1px;
+            background: #444;
+            margin: 40px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="nav-container">
+        <a href="machine_learning.html" class="geri-butonu">📝 Vize Menüsüne Geri Dön</a>
+        <a href="index.html" class="geri-butonu">🏠 Ana Sayfaya Geri Dön</a>
+    </div>
+
+    <div class="container">
+        <h1>Machine Learning Vize Konuları</h1>
+
+        <h2>1. 🚀 Fundamentals of Machine Learning (Week 1)</h2>
+        <p>This section covers the basic concepts and types of machine learning, which are fundamental for the exam.</p>
+
+        <h3>What is Machine Learning?</h3>
+        <ul>
+            <li>A computer program learns from <strong>experience (E)</strong> with respect to some <strong>task (T)</strong> and <strong>performance measure (P)</strong>, if its performance at T, measured by P, improves with E.</li>
+            <li><strong>Example (Spam Filter):</strong>
+                <ul>
+                    <li><strong>T (Task):</strong> Identify spam emails.</li>
+                    <li><strong>E (Experience):</strong> A database of emails labeled as spam or not spam by users.</li>
+                    <li><strong>P (Performance):</strong> The percentage of spam emails correctly filtered.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>Types of Machine Learning</h3>
+        <ul>
+            <li><strong>Supervised Learning:</strong> The training data includes desired outputs or "labels". The goal is to learn a mapping function from input variables (X) to output variables (y).</li>
+            <li><strong>Unsupervised Learning:</strong> The training data does not include desired outputs; it is "unlabeled".</li>
+            <li><strong>Reinforcement Learning:</strong> An "agent" learns by interacting with an environment, receiving "rewards" or penalties for its "actions".</li>
+        </ul>
+
+        <h3>Supervised Learning Tasks</h3>
+        <ul>
+            <li><strong>Classification:</strong> The output variable is a category (a discrete value), such as "Spam or Not" or "Cat or Dog".</li>
+            <li><strong>Regression:</strong> The output variable is a continuous (real) value, such as "house price" or "salary prediction".</li>
+        </ul>
+
+        <h3>Unsupervised Learning Tasks</h3>
+        <ul>
+            <li><strong>Clustering:</strong> Discovering inherent groupings in the data, like grouping customers by behavior.</li>
+            <li><strong>Association:</strong> An association rule learning problem is where you want to discover rules that describe large portions of your data, such as people that buy X also tend to buy Y..</li>
+            <li><strong>Dimensionality Reduction:</strong> Simplifying complex data while keeping the most important patterns.</li>
+        </ul>
+
+        <h3>Key Python Libraries & Methods (From Sample QP)</h3>
+        <ul>
+            <li><strong>Pandas:</strong> The library you would choose for data manipulation, cleaning, and exploration.</li>
+            <li><strong>Scikit-learn (<code>.fit()</code>):</strong> The method used to <strong>train</strong> a machine learning model (like Linear Regression) on the data.</li>
+        </ul>
+
+        <hr>
+
+        <h2>2. 📈 Linear Regression (Week 2)</h2>
+        <p>This topic is heavily featured in the sample questions (Q1.II, Q1.III, Q1.V, Q5.III).</p>
+
+        <h3>Goal</h3>
+        <p>To model a linear relationship between a dependent variable (y) and one or more independent variables (x). It is used for predicting continuous values.</p>
+
+        <h3>Types of Linear Regression</h3>
+        <ul>
+            <li><strong>Simple Linear Regression:</strong> Used when the dependent variable (Y) depends on only a <strong>single independent variable</strong> (X).
+                <div class="formula">Equation: Y = &beta;<sub>0</sub> + &beta;<sub>1</sub>X</div>
+            </li>
+            <li><strong>Multiple Linear Regression:</strong> Used when the dependent variable (Y) depends on <strong>multiple independent variables</strong> (x<sub>1</sub>, x<sub>2</sub>, ...).
+                <div class="example-calc"><em>(Exam Focus):</em> To predict "Amount spent" (Y) using both "Age" (x<sub>1</sub>) and "Monthly Salary" (x<sub>2</sub>), you would use <strong>Multiple Linear Regression</strong>.</div>
+            </li>
+        </ul>
+
+        <h3>Training the Model</h3>
+        <ul>
+            <li><strong>Goal:</strong> Find the "best-fit line" that minimizes the error between predicted values and actual values.</li>
+            <li><strong>Cost Function (MSE):</strong> The <strong>Mean Squared Error (MSE)</strong> is used to measure this error.
+                <div class="formula">MSE = &Sigma;(y<sub>i</sub> - &ycirc;<sub>i</sub>)<sup>2</sup> / n</div>
+            </li>
+            <li><strong>Gradient Descent:</strong> An optimization algorithm used to minimize the MSE cost function and find the best values for the coefficients (&beta;<sub>0</sub>, &beta;<sub>1</sub>, etc.).</li>
+        </ul>
+
+        <h3>Key Assumptions (Important for Q1.V)</h3>
+        <ol>
+            <li><strong>Linear Relationship:</strong> The relationship between X and Y should be linear.</li>
+            <li><strong>Normality of Residuals:</strong> The residuals (errors) should be normally distributed.</li>
+            <li><strong>Homoscedasticity:</strong> The residuals must have a constant variance at every level of x.
+                <ul>
+                    <li><em>Violation (Heteroscedasticity):</em> If the residual plot shows a "cone" shape, it is a sign of heteroscedasticity.</li>
+                </ul>
+            </li>
+            <li><strong>No Multicollinearity:</strong> The independent variables should not be highly correlated with each other.</li>
+        </ol>
+
+        <h3>Evaluation (Important for Q5.III)</h3>
+        <ul>
+            <li>If <strong>RMSE (Root Mean Squared Error) = 0</strong>, it indicates the model has <strong>perfect predictions with no errors</strong>.</li>
+            <li>In this perfect-fit scenario, the <strong>R<sup>2</sup> (coefficient of determination) value would be 1</strong>.</li>
+        </ul>
+
+        <hr>
+
+        <h2>3. 🎯 Classification Algorithms (Week 3)</h2>
+        <p>This section covers Logistic Regression and KNN, both of which are on the sample exam.</p>
+
+        <h3>Learner Types</h3>
+        <ul>
+            <li><strong>Eager Learners:</strong> Construct a classification model from the training data <em>before</em> receiving new data (e.g., Decision Trees).</li>
+            <li><strong>Lazy Learners:</strong> Simply store the training data. They do "work" only when a prediction is requested (e.g., KNN).</li>
+        </ul>
+
+        <h4>A. Logistic Regression</h4>
+        <ul>
+            <li><strong>Purpose:</strong> It is a <strong>classification algorithm</strong> (not regression). It is used to predict a binary outcome (e.g., 0 or 1, Pass or Fail).</li>
+            <li><strong>Sigmoid Function:</strong> Logistic Regression uses the Sigmoid function (or "logistic function") to map the output of its linear equation to a probability value <strong>between 0 and 1</strong>.
+                <div class="example-calc"><em>(Exam Focus):</em> The possible range of output probabilities from a logistic regression model is <strong>0 to 1</strong>.</div>
+            </li>
+        </ul>
+
+        <h4>B. K-Nearest Neighbors (KNN)</h4>
+        <ul>
+            <li><strong>Purpose:</strong> A simple, supervised algorithm that can be used for both classification and regression.</li>
+            <li><strong>Type:</strong> KNN is a <strong>non-parametric</strong> and <strong>lazy learning</strong> algorithm.
+                <div class="example-calc"><em>(Exam Focus):</em> Because it is a lazy learner (it just "memorizes" data), it has <strong>low training cost but high prediction cost</strong>.</div>
+            </li>
+            <li><strong>How it Works:</strong> It classifies a new data point by finding the <strong>K</strong> nearest neighbors and taking a "vote" based on their classes.</li>
+            <li><strong>The "K" Value (Important for Q2.V):</strong>
+                <ul>
+                    <li>'K' represents the number of neighbors to consider.</li>
+                    <li>If <strong>K is too low</strong> (e.g., K=1), the model becomes too specific, is sensitive to noise, and is likely to <strong>overfit</strong>.</li>
+                    <li>If <strong>K is too high</strong>, the model becomes too general and is likely to <strong>underfit</strong>.</li>
+                </ul>
+            </li>
+            <li><strong>Distance Metrics (Important for Q2.I):</strong>
+                <ul>
+                    <li><strong>Euclidean:</strong> The standard straight-line distance. <div class="formula">d = &radic;((x<sub>2</sub>-x<sub>1</sub>)<sup>2</sup> + (y<sub>2</sub>-y<sub>1</sub>)<sup>2</sup>)</div></li>
+                    <li><strong>Manhattan:</strong> <div class="formula">d = |x<sub>2</sub>-x<sub>1</sub>| + |y<sub>2</sub>-y<sub>1</sub>|</div></li>
+                </ul>
+                <div class="example-calc"><em>(Exam Calculation):</em> The Manhattan distance between A(3, 5) and B(6, 2) is |6-3| + |2-5| = 3 + 3 = <strong>6</strong>.</div>
+            </li>
+        </ul>
+
+        <h4>C. Parametric vs. Non-Parametric (Important for Q2.IV)</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>Parametric Algorithms</th>
+                    <th>Non-Parametric Algorithms</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Examples</strong></td>
+                    <td>Linear Regression, Logistic Regression</td>
+                    <td>KNN, Decision Trees</td>
+                </tr>
+                <tr>
+                    <td><strong>Assumptions</strong></td>
+                    <td>Make strong assumptions about the data's functional form (e.g., it's a line).</td>
+                    <td>Make few or no assumptions.</td>
+                </tr>
+                <tr>
+                    <td><strong>Data Needs</strong></td>
+                    <td>Can work well with less data.</td>
+                    <td>Often require more training data.</td>
+                </tr>
+                <tr>
+                    <td><strong>Speed</strong></td>
+                    <td>Fast to learn (train).</td>
+                    <td>Can be slower to train.</td>
+                </tr>
+                <tr>
+                    <td><strong>Flexibility</strong></td>
+                    <td>Constrained and less complex.</td>
+                    <td>More flexible and can handle high complexity.</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <h2>4. 📊 Model Evaluation Metrics (Week 3)</h2>
+        <p>This section covers the classification metrics needed for Q5.I.</p>
+        
+        <ul>
+            <li><strong>Confusion Matrix:</strong> A table that summarizes prediction results.
+                <ul>
+                    <li><strong>TP (True Positive):</strong> Actual: 1, Predicted: 1.</li>
+                    <li><strong>TN (True Negative):</strong> Actual: 0, Predicted: 0.</li>
+                    <li><strong>FP (False Positive):</strong> Actual: 0, Predicted: 1.</li>
+                    <li><strong>FN (False Negative):</strong> Actual: 1, Predicted: 0.</li>
+                </ul>
+            </li>
+            <li><strong>Accuracy:</strong> How often the classifier is correct.
+                <div class="formula">Accuracy = (TP + TN) / (TP + TN + FP + FN)</div>
+            </li>
+            <li><strong>Precision:</strong> Of all the times the model predicted positive, how many were actually positive?.
+                <div class="formula">Precision = TP / (TP + FP)</div>
+            </li>
+            <li><strong>Recall (or Sensitivity):</strong> Of all the actual positive cases, how many did the model predict correctly?.
+                <div class="formula">Recall = TP / (TP + FN)</div>
+                <div class="example-calc"><em>(Exam Calculation):</em> If TP = 50 and FN = 20,
+                    <br>Sensitivity (Recall) = 50 / (50 + 20) = 50 / 70 &approx; <strong>0.71</strong>.
+                </div>
+            </li>
+            <li><strong>F1 Score:</strong> The harmonic mean of Precision and Recall.
+                <div class="formula">F1 = 2 * (Precision * Recall) / (Precision + Recall)</div>
+            </li>
+        </ul>
+
+        <hr>
+
+        <h2>5. 🌳 Decision Trees (Week 5)</h2>
+        <p>This section is key for all of Question 3 in the sample paper.</p>
+        
+        <ul>
+            <li><strong>Purpose:</strong> A supervised learning technique that breaks down a dataset into smaller subsets to create a tree-like model of decisions.</li>
+            <li><strong>Splitting Criteria (ID3):</strong> The ID3 algorithm uses <strong>Entropy</strong> and <strong>Information Gain</strong> to build the tree.</li>
+            <li><strong>Entropy (Important for Q3.I, Q3.III):</strong>
+                <ul>
+                    <li>This is the measure of <strong>impurity</strong> or "düzensizlik" in a set of data.</li>
+                    <li><strong>Pure Node:</strong> If a node is "pure" (all data points belong to the same class), its entropy is <strong>0</strong>.
+                        <div class="example-calc"><em>(Exam Focus):</em> 20 instances of Class A and 0 of other classes is a pure node, so Entropy = <strong>0.0</strong>.</div>
+                    </li>
+                    <li><strong>Impure Node:</strong> Entropy is 1 if the classes are perfectly balanced (e.g., 50% Yes, 50% No).</li>
+                    <li><strong>Formula:</strong> <div class="formula">Entropy = &Sigma; -p<sub>i</sub> log<sub>2</sub> p<sub>i</sub></div></li>
+                    <div class="example-calc"><em>(Exam Calculation):</em> For a node with 8 positive and 4 negative samples (Total 12):
+                        <ul>
+                            <li>p<sub>pos</sub> = 8/12</li>
+                            <li>p<sub>neg</sub> = 4/12</li>
+                            <li>Entropy = -(8/12 log<sub>2</sub> 8/12) - (4/12 log<sub>2</sub> 4/12) &approx; <strong>0.918</strong>.</li>
+                        </ul>
+                    </div>
+                </ul>
+            </li>
+            <li><strong>Information Gain (IG):</strong>
+                <ul>
+                    <li>Measures the <strong>reduction in entropy</strong> after splitting a dataset on a feature.</li>
+                    <li>The algorithm <strong>chooses the attribute with the highest IG</strong> as the decision node.</li>
+                    <li><strong>Formula:</strong> <div class="formula">Gain(T,X) = Entropy(T) - Entropy(T,X)</div></li>
+                </ul>
+            </li>
+            <li><strong>Overfitting and Pruning (Important for Q3.II):</strong>
+                <ul>
+                    <li>A tree that is too large (too deep) risks <strong>overfitting</strong>.</li>
+                    <li><strong>Pruning</strong> is the process of deleting unnecessary nodes to reduce complexity and prevent overfitting.</li>
+                    <div class="example-calc"><em>(Exam Focus):</em> In scikit-learn, the <strong><code>max_depth</code></strong> parameter is used to control the depth of the tree to avoid overfitting.</div>
+                </ul>
+            </li>
+        </ul>
+
+        <hr>
+
+        <h2>6. ⚖️ Handling Imbalanced Data (Week 5)</h2>
+        <p>This covers the final question from the sample paper (Q5.IV).</p>
+
+        <ul>
+            <li><strong>The Problem:</strong> An imbalanced dataset is one where the distribution of classes is very unequal (e.g., 90% "Normal Gene" vs. 10% "Oncogene").</li>
+            <li><strong>Methods to Handle Imbalance:</strong>
+                <ul>
+                    <li><strong>Downsampling (Undersampling):</strong> Removing samples from the <strong>majority class</strong>. <em>Disadvantage:</em> Can discard potentially useful information.</li>
+                    <li><strong>Oversampling (Upsampling):</strong> Adding more copies of the <strong>minority class</strong>. <em>Disadvantage:</em> Can lead to overfitting by duplicating events.</li>
+                    <li><strong>SMOTE (Synthetic Minority Oversampling Technique):</strong> A more advanced form of oversampling that generates <strong>synthetic data</strong> for the minority class. It picks a minority point, finds its k-nearest neighbors, and creates a new synthetic point on the line joining them.</li>
+                    <li><strong>Tomek Links (Important for Q5.IV):</strong>
+                        <ul>
+                            <li>This is an <strong>undersampling</strong> technique.</li>
+                            <li>Tomek links are pairs of instances that are very close but belong to <strong>opposite classes</strong>.</li>
+                            <li>The algorithm works by <strong>removing the instance of the majority class</strong> from each pair.</li>
+                            <li>This increases the space between the two classes, making the classification boundary cleaner.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <hr>
+
+    </div>      
+
+</body>
+</html>

@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Systems Analysis and Design Summary</title>
+    <style>
+        /* === YENİ EKLENEN DARK MODE STİLLERİ === */
+        
+        /* --- Geri Dön Butonu --- */
+        .nav-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: left;
+            padding: 20px 20px 0 20px; /* Butonun konumu için */
+        }
+        .geri-butonu {
+            display: inline-block;
+            margin-bottom: 15px;
+            padding: 8px 15px;
+            background-color: #6a0dad; /* Mor buton */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .geri-butonu:hover {
+            background-color: #510a8c; /* Koyu mor */
+        }
+
+        /* --- Dark Mode Gövde ve Konteyner --- */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #1e1e1e; /* Koyu arka plan */
+            color: #f0f0f0;       /* Açık renk ana yazı */
+            margin: 0;
+            padding: 20px;
+            padding-top: 0; /* Navigasyon halledecek */
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #2a2a2a; /* Koyu Gri Kutu */
+            border: 1px solid #444;    /* Sınır çizgisi */
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: none; /* Gölgeyi kaldır */
+        }
+
+        /* --- Dark Mode Başlıklar --- */
+        h1, h2, h3, h4 {
+            color: #343a40;
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+            border-bottom: 2px solid #444; /* Koyu ayraç */
+            padding-bottom: 5px;
+        }
+        h1 {
+            text-align: center;
+            color: #ffffff; /* Beyaz Ana Başlık */
+            border-bottom: 3px solid #3498db; /* Mavi çizgi */
+        }
+        h2 {
+            color: #20e1ff; /* Bu renk (açık mavi) koyu temada güzel durur */
+        }
+        h3 {
+            color: #00ce0a; /* Bu renk (yeşil) de güzel durur */
+        }
+        h4 {
+            color: #ff8f87; /* Bu renk (turuncu) da güzel durur */
+            border-bottom: none;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+
+        /* --- Dark Mode Kod, Tablo ve Özel Kutular --- */
+        code {
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+            background-color: #3c3c3c; /* Koyu kod arka planı */
+            color: #f0f0f0;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: none;
+        }
+        th, td {
+            border: 1px solid #555; /* Koyu tablo çizgileri */
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #3c3c3c; /* Koyu tablo başlığı */
+            font-weight: 600;
+        }
+        tbody tr:nth-child(odd) {
+            background-color: #2f2f2f; /* Hafif çizgili görünüm */
+        }
+        .formula {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 1.1em;
+            color: #f0f0f0; /* Açık yazı */
+            background: #252525; /* Koyu formül arka planı */
+            padding: 10px;
+            border: 1px solid #444;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .example-calc {
+            background-color: #4a411c; /* Koyu sarı arka plan */
+            border-left: 5px solid #ffc107; /* Sarı vurgu çizgisi (kalsın) */
+            padding: 10px 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            color: #fff; /* Okunabilirlik için beyaz yazı */
+        }
+        hr { /* Yatay çizgiyi koyu yap */
+            border: 0;
+            height: 1px;
+            background: #444;
+            margin: 40px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-container">
+        <a href="software_vize.html" class="geri-butonu">📝 Vize Menüsüne Geri Dön</a>
+        <a href="index.html" class="geri-butonu">🏠 Ana Sayfaya Geri Dön</a>
+    </div>
+
+    <div class="container">
+        <h1>Software Systems Analysis and Design Summary</h1>
+
+        <h2>Chapter 1: Introduction To Systems Analysis And Design</h2>
+
+        <h3>🚀 Core Engineering Concepts</h3>
+
+        <h4>What is Engineering?</h4>
+        <ul>
+            <li>Engineering is the application of science and math to solve real-life problems.</li>
+            <li>It is the use of scientific principles to analyze, design, and build items such as machines, structures, vehicles, and buildings.</li>
+        </ul>
+
+        <h4>Who is an Engineer?</h4>
+        <ul>
+            <li>An engineer is a professional who invents, analyzes, designs, builds, and tests machines, complex systems, structures, and materials.</li>
+            <li>Their work fulfills functional objectives while considering limitations like practicality, regulation, safety, and cost.</li>
+        </ul>
+
+        <h4>What is Software Engineering (SE)?</h4>
+        <ul>
+            <li>SE is the systematic application of engineering approaches to the development of software.</li>
+            <li>The IEEE defines it as the application of a systematic, disciplined, quantifiable approach to the development, operation, and maintenance of software.</li>
+        </ul>
+
+        <h4>Who is a Software Engineer?</h4>
+        <ul>
+            <li>A person who applies software engineering principles to the analysis, design, development, testing, deployment, maintenance, and evaluation of computer software.</li>
+        </ul>
+
+        <h4>Main Components of SE</h4>
+        <ul>
+            <li><strong>People:</strong> The project stakeholders.</li>
+            <li><strong>Product:</strong> The software product and its associated documents.</li>
+            <li><strong>Project:</strong> The activities carried out to produce the product.</li>
+            <li><strong>Process:</strong> The framework within which the team carries out the project activities.</li>
+        </ul>
+
+        <hr>
+
+        <h3>💻 Systems Analysis and Design (SAD)</h3>
+
+        <h4>What is System?</h4>
+        <ul>
+            <li>A system is a collection of elements or components organized for a common purpose.</li>
+            <li>It is a group of interacting or interrelated entities that form a unified whole.</li>
+        </ul>
+
+        <h4>What is Information System (IS)?</h4>
+        <ul>
+            <li>An IS is a formal, organizational system designed to collect, process, store, and distribute information.</li>
+            <li>It is a system composed of people and computers that processes or interprets information.</li>
+        </ul>
+
+        <h4>Information System Components</h4>
+        <ul>
+            <li><strong>Hardware:</strong> The physical layer of the IS.</li>
+            <li><strong>Software:</strong> The set of instructions that control the hardware.</li>
+            <li><strong>Data:</strong> Raw material that an IS transforms into useful information.</li>
+            <li><strong>Process:</strong> A business function that users perform to achieve specific results.</li>
+            <li><strong>People:</strong> The inside or outside users who interact with an IS.</li>
+        </ul>
+
+        <h4>Systems Analysis and Design (SAD)</h4>
+        <ul>
+            <li>SAD is a step-by-step process for developing high-quality information systems.</li>
+            <li>Its primary objective is to improve organizational systems.</li>
+            <li>The purpose is to understand business needs, analyze the system, design the system, and deliver it to users.</li>
+            <li><strong>Systems Analysis:</strong> The process of collecting facts, identifying problems, and decomposing a system. It specifies <strong>what</strong> the system should do.</li>
+            <li><strong>Systems Design:</strong> The process of planning a new system by defining its components to satisfy requirements. It focuses on <strong>how</strong> to accomplish the system's objective.</li>
+        </ul>
+
+        <h4>Four P's of Systems Analysis and Design</h4>
+        <ul>
+            <li><strong>People:</strong> Project stakeholders; they are the most important resource in a project.</li>
+            <li><strong>Product:</strong> The software product along with documents like code, test documents, and customer documents.</li>
+            <li><strong>Project:</strong> A sequence of activities (like determining requirements, implementing, testing) with one goal, a specific time, and a budget.</li>
+            <li><strong>Process:</strong> The framework for the project, expressed as a <strong>software process model</strong> (e.g., Waterfall, Agile).</li>
+        </ul>
+
+        <h4>Measures of Project Success</h4>
+        <ul>
+            <li>The system meets user needs.</li>
+            <li>The system is delivered on time.</li>
+            <li>The system is delivered within budget.</li>
+        </ul>
+
+        <hr>
+
+        <h3>👥 Stakeholders and Roles</h3>
+
+        <h4>Stakeholders</h4>
+        <ul>
+            <li>A stakeholder is any person who has an interest in an existing or proposed information system.</li>
+            <li><strong>Stakeholder Roles:</strong>
+                <ul>
+                    <li>System owner</li>
+                    <li>Project manager</li>
+                    <li>Systems analyst</li>
+                    <li>System designer</li>
+                    <li>System builder</li>
+                    <li>Software tester</li>
+                    <li>System user</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h4>Stakeholder Roles Explained</h4>
+        <ul>
+            <li><strong>System Owner:</strong> Responsible for funding the project. They pay for the system and set its vision and priorities.</li>
+            <li><strong>Project Manager:</strong> Responsible for planning, monitoring, and controlling the project regarding schedule, budget, deliverables, and quality.</li>
+            <li><strong>Systems Analyst:</strong> Studies the problems, opportunities, and needs of an organization to determine how people, data, processes, and IT can best accomplish improvements.</li>
+            <li><strong>System Designer:</strong> A technical specialist who translates business requirements into a technical solution. They design databases, inputs, outputs, screens, etc.</li>
+            <li><strong>System Builder:</strong> A technical specialist who constructs the IS based on the design specifications. They handle programming logic and implementation.</li>
+            <li><strong>Software Tester:</strong> An individual who tests the software for bugs, errors, or defects. They execute all levels of testing (unit, integration, regression, system).</li>
+            <li><strong>System User:</strong> A "customer" who will use the IS on a regular basis. They are concerned with the inputs and outputs of the system.</li>
+        </ul>
+
+        <hr>
+
+        <h3>🔄 Software Development Life Cycle (SDLC)</h3>
+
+        <h4>SDLC Definition</h4>
+        <ul>
+            <li>The Software Development Life Cycle (SDLC) is a process of creating or altering information systems, and the models used to develop them.</li>
+        </ul>
+
+        <h4>SDLC Phases</h4>
+        <ul>
+            <li><strong>Planning:</strong> To plan, monitor, and control the software project.</li>
+            <li><strong>Analysis:</strong> (Requirements analysis) To define <strong>what</strong> to build.</li>
+            <li><strong>Design:</strong> (Software design) To describe <strong>how</strong> to build the software.</li>
+            <li><strong>Implementation:</strong> To program, test, and install the software.</li>
+            <li><strong>Maintenance:</strong> To resolve problems and adapt the software to new requirements.</li>
+        </ul>
+
+        <h4>Modeling – UML Diagrams</h4>
+        <ul>
+            <li>Models are used throughout the SDLC. Key UML (Unified Modeling Language) diagrams include:
+                <ul>
+                    <li>Use Case Diagram</li>
+                    <li>Class Diagram</li>
+                    <li>Activity Diagram</li>
+                    <li>Sequence Diagram</li>
+                    <li>State Machine Diagram</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h4>Software Quality</h4>
+        <ul>
+            <li>Quality is the degree to which a software product meets its specified requirements, and those requirements meet customer needs.</li>
+            <li>A lower defect rate (deviation from requirements) results in higher quality.</li>
+            <li><strong>Quality Metrics:</strong>
+                <ul>
+                    <li><strong>Defect density:</strong> Total number of defects relative to the software size.</li>
+                    <li><strong>Mean time to failure (MTTF):</strong> Amount of elapsed time between system crashes.</li>
+                </ul>
+            </li>
+            <li><strong>Quality Goals:</strong>
+                <ul>
+                    <li>Remove as many defects as possible before delivery.</li>
+                    <li>Remove defects as early as possible (it's cheaper to fix them early).</li>
+                </ul>
+            </li>
+            <li><strong>Quality Assurance (Verification vs. Validation):</strong>
+                <ul>
+                    <li><strong>Verification:</strong> "Are we building the product right?". This checks if the product is built according to specifications (e.g., inspections, reviews).</li>
+                    <li><strong>Validation:</strong> "Are we building the right product?". This checks if the completed product satisfies user requirements (e.g., software testing).</li>
+                    <li>The process is: First verification, then validation.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <hr>
+        <hr>
+
+        <h2>Chapter 2: SDLC Phases and Software Process Models</h2>
+
+        <h3>🔄 SDLC Phases in Detail</h3>
+
+        <h4>SDLC – Planning Phase</h4>
+        <ul>
+            <li><strong>Goal:</strong> To formulate a plan to produce the target software.</li>
+            <li><strong>Output:</strong> The <strong>Software Project Management Plan (SPMP)</strong>.</li>
+            <li><strong>Activities:</strong>
+                <ul>
+                    <li>A problem statement is assigned, including problems, opportunities, and constraints.</li>
+                    <li><strong>Constraints</strong> are restrictions, such as Schedule ("operational by April 15"), Cost ("cannot cost more than $350,000"), or Technology ("must be web-enabled").</li>
+                    <li>Define the software vision, target customers, and project scope.</li>
+                </ul>
+            </li>
+            <li><strong>SPMP Content:</strong> Vision and scope, high-level requirements, feasibility analysis, resources, and schedule/cost estimations.</li>
+        </ul>
+
+        <h4>SDLC – Requirements Analysis Phase</h4>
+        <ul>
+            <li><strong>Goal:</strong> To identify the user and business requirements for the application.</li>
+            <li><strong>Output:</strong> The <strong>Software Requirements Specification (SRS)</strong> document.</li>
+            <li><strong>Activities:</strong>
+                <ul>
+                    <li>Identify and analyze problems (e.g., using an Ishikawa diagram).</li>
+                    <li>Specify <strong>actors</strong> (anyone/anything that interacts with the system).</li>
+                    <li>Collect data using techniques like sampling, research, observation, questionnaires, interviews, and brainstorming.</li>
+                    <li>Generate requirements (Business, Stakeholder, Solution).</li>
+                    <li>Prepare <strong>use case scenarios</strong> (textual descriptions of events) and <strong>user stories</strong> (feature descriptions from the user's perspective).</li>
+                    <li>Draw a <strong>use case diagram</strong>.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h4>SDLC - Software Design Phase</h4>
+        <ul>
+            <li><strong>Goal:</strong> To define <strong>how</strong> the software will be constructed to satisfy requirements.</li>
+            <li><strong>Output:</strong> The <strong>Software Design Document (SDD)</strong>.</li>
+            <li><strong>Levels of Design:</strong>
+                <ul>
+                    <li><strong>Software Architecture Design:</strong> Specifies how the software is broken into subsystems/modules and their interfaces. It translates requirements into pictures (UML diagrams).</li>
+                    <li><strong>Detailed Design:</strong> Specifies the algorithms and data structures.</li>
+                </ul>
+            </li>
+            <li><strong>Activities:</strong> Draw UML diagrams, E-R diagrams, data flow diagrams, and construct decision tables.</li>
+        </ul>
+
+        <h4>SDLC – Development Phase</h4>
+        <ul>
+            <li><strong>Goal:</strong> To build a system that fulfills the requirements and implement necessary interfaces.</li>
+            <li><strong>Output:</strong> The program code, ready to be tested.</li>
+            <li><strong>Activities:</strong>
+                <ul>
+                    <li><strong>Programming:</strong> Translating the software design into a programming language.</li>
+                    <li><strong>Integration:</strong> Assembling the different software parts.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h4>SDLC – Testing Phase</h4>
+        <ul>
+            <li><strong>Goal:</strong> To test the system to ensure it fulfills requirements and specifications.</li>
+            <li><strong>Output:</strong> A tested system that is ready for installation.</li>
+            <li><strong>Activities (Testing Levels):</strong>
+                <ul>
+                    <li><strong>Unit Testing:</strong> Individual modules are tested.</li>
+                    <li><strong>Integration Testing:</strong> Modules are integrated and tested to ensure they interface properly.</li>
+                    <li><strong>Regression Testing:</strong> Confirms that a recent code change has not adversely affected existing features.</li>
+                    <li><strong>System Testing:</strong> The entire system is tested against user requirements.</li>
+                    <li><strong>User Testing:</strong>
+                        <ul>
+                            <li><strong>Beta Testing:</strong> Conducted by real users in a real-world environment to uncover problems.</li>
+                            <li><strong>Acceptance Testing:</strong> Conducted by the project owner to verify that the solution works for the user and meets release criteria.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <h4>SDLC – Deployment Phase</h4>
+        <ul>
+            <li><strong>Goal:</strong> To make the system operational in a production environment.</li>
+            <li><strong>Output:</strong> The delivered system, release description documents, and trained users.</li>
+            <li><strong>Activities:</strong>
+                <ul>
+                    <li>The product is "put into production" or "goes live".</li>
+                    <li>Communicate the deployment to users.</li>
+                    <li>Execute the training plan and perform data entry/conversion.</li>
+                    <li>Install the system.</li>
+                    <li>Conduct a post-deployment review to document experiences and recommend enhancements.</li>
+                    <li>Revise all documentation to reflect the current state of the system.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h4>SDLC – Maintenance Phase</h4>
+        <ul>
+            <li><strong>Goal:</strong> To support the released software during its life cycle.</li>
+            <li><strong>Activities:</strong> This phase involves modifications made *after* the release, including:
+                <ul>
+                    <li>Repair of software defects.</li>
+                    <li>Customer requests for enhancements.</li>
+                    <li>Improving attributes like performance or reliability.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <hr>
+
+        <h3>🌊 Software Process Models</h3>
+
+        <h4>Software Process Models (Definition)</h4>
+        <ul>
+            <li>A set of activities, methods, practices, and tools that stakeholders use to develop and improve software.</li>
+            <li>It prescribes the order and frequency of SDLC phases.</li>
+            <li>Models include Waterfall, Iterative, Prototyping, Spiral, and Agile.</li>
+        </ul>
+
+        <h4>The Waterfall Process Model</h4>
+        <ul>
+            <li>Executes in a sequential manner; a phase is not started until the previous one has completed.</li>
+            <li>In practice, feedback loops are defined between adjacent phases.</li>
+            <li><strong>Advantages:</strong> Simple, easy to use and manage. Works well for smaller projects where requirements are very well understood.</li>
+            <li><strong>Disadvantages:</strong> Requirements must be known up front. Major problems are not discovered until late in the process (testing). It lacks parallelism and makes inefficient use of resources.</li>
+        </ul>
+
+        <h4>The Iterative Development Model</h4>
+        <ul>
+            <li>The solution to the Waterfall model's scaling problem.</li>
+            <li>The system is completed in successive <strong>iterations</strong>.</li>
+            <li>Each iteration includes some analysis, design, development, and testing.</li>
+            <li>It is a repeated execution of the waterfall process, resulting in a refinement of the product each time.</li>
+        </ul>
+
+        <h4>Agile Development Model</h4>
+        <ul>
+            <li>A highly iterative process designed to speed up development and effectively respond to change.</li>
+            <li><strong>Agile Employs:</strong>
+                <ul>
+                    <li>Small teams and periodic customer requirements meetings.</li>
+                    <li>A code-centric approach (documentation is on an as-needed basis).</li>
+                    <li><strong>User stories</strong> as the basis for requirements.</li>
+                    <li><strong>Refactoring:</strong> Restructuring existing code without changing its external behavior.</li>
+                    <li><strong>Pair Programming:</strong> Two programmers work together at one workstation (one "driver" writes code, one "observer" reviews).</li>
+                    <li>Continual unit testing and acceptance tests.</li>
+                </ul>
+            </li>
+            <li><strong>Basis (Agile Manifesto):</strong>
+                <ul>
+                    <li><strong>Individuals and interactions</strong> over processes and tools.</li>
+                    <li><strong>Working software</strong> over comprehensive documentation.</li>
+                    <li><strong>Customer collaboration</strong> over contract negotiation.</li>
+                    <li><strong>Responding to change</strong> over following a plan.</li>
+                </ul>
+            </li>
+            <li><strong>Advantages:</strong> Always has demonstrable results (working software). Customers provide better requirements because they see the evolving project.</li>
+            <li><strong>Disadvantages:</strong> Can be problematical for very small or very large projects. Documentation output is questionable.</li>
+            <li><strong>Methodologies:</strong> Extreme Programming (XP) and Scrum.</li>
+        </ul>
+
+        <h4>Extreme Programming (XP)</h4>
+        <ul>
+            <li>An agile methodology that aims for iterative and frequent small releases.</li>
+            <li><strong>Cycles:</strong>
+                <ul>
+                    <li><strong>Quarterly Cycle:</strong> Synonymous with a release.</li>
+                    <li><strong>Weekly Cycle:</strong> Synonymous with an iteration. The goal is to have running, tested features by the end of the week.</li>
+                </ul>
+            </li>
+            <li><strong>XP Values:</strong>
+                <ul>
+                    <li><strong>Communication:</strong> Face-to-face daily.</li>
+                    <li><strong>Simplicity:</strong> "What is the simplest thing that will work?".</li>
+                    <li><strong>Feedback:</strong> Deliver working software early and listen to feedback.</li>
+                    <li><strong>Respect:</strong> Everyone is a valued team member.</li>
+                    <li><strong>Courage:</strong> Tell the truth about progress and estimates; adapt to changes.</li>
+                </ul>
+            </li>
+            <li><strong>XP Practices:</strong>
+                <ul>
+                    <li><strong>The Planning Game:</strong> Release Planning and Iteration Planning.</li>
+                    <li><strong>Small Releases:</strong> Producing a working product at the end of each iteration.</li>
+                    <li><strong>Test-driven Development (TDD):</strong> Write a failing automated test -> develop code to make the test pass -> run test -> repeat.</li>
+                    <li><strong>Pair Programming:</strong> Two people work in tandem.</li>
+                    <li><strong>Collective Ownership:</strong> Any developer can change any section of the code.</li>
+                    <li><strong>Continuous Integration:</strong> All code is merged into a common repository many times a day.</li>
+                    <li><strong>Whole Team:</strong> Customers are included throughout the entire process.</li>
+                    <li><strong>Sustainable Pace:</strong> 40-hour week; nobody should be required to work excess hours.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h4>Scrum</h4>
+        <ul>
+            <li>An agile methodology where the project is broken into teams (or <strong>scrums</strong>) of 6-9 members.</li>
+            <li><strong>Roles:</strong>
+                <ul>
+                    <li><strong>Scrum Master:</strong> Conducts the daily scrum meetings (which should last no more than 15 minutes), measures progress, and makes decisions.</li>
+                </ul>
+            </li>
+            <li><strong>Artifacts & Events:</strong>
+                <ul>
+                    <li><strong>Backlog:</strong> A list of customer wants and needs (user stories) created at the beginning of the project.</li>
+                    <li><strong>Sprints:</strong> The project proceeds in 30-day cycles.</li>
+                    <li><strong>Sprint Demonstration:</strong> At the end of a sprint, a demonstration is given to the customer to show what has been accomplished.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <hr>
+        <hr>
+
+        <h2>Chapter 3: Software Project Management</h2>
+
+        <h3>📊 Project Management Fundamentals</h3>
+
+        <h4>What is a Project?</h4>
+        <ul>
+            <li>A sequence of unique, complex, and connected activities having one goal, which must be completed by a specific time, within budget, and according to specification.</li>
+            <li><strong>Project Manager:</strong> The person responsible for supervising a project from initiation to conclusion.</li>
+        </ul>
+
+        <h4>Software Project Management</h4>
+        <ul>
+            <li>The process of planning, organizing, and monitoring the development of a software project.</li>
+            <li>It addresses activities like:
+                <ul>
+                    <li>Project organization (team structure)</li>
+                    <li>Risk management</li>
+                    <li>Estimation (duration, effort, resources)</li>
+                    <li>Scheduling (work plan)</li>
+                    <li>Documentation and monitoring</li>
+                </ul>
+            </li>
+        </ul>
+
+        <hr>
+
+        <h3>🏛️ Organization Structure</h3>
+        <ul>
+            <li>Three main types: Project-Oriented, Function-Oriented, and Matrix.</li>
+        </ul>
+
+        <h4>Project-Oriented Organization</h4>
+        <ul>
+            <li>Personnel are organized around the company's projects.</li>
+            <li>Employees are dedicated to a single project.</li>
+            <li><strong>Pros:</strong> Increases performance and predictability of schedules.</li>
+            <li><strong>Cons:</strong> Engineers become isolated, and the amount of reuse is reduced.</li>
+        </ul>
+
+        <h4>Function-Oriented Organization</h4>
+        <ul>
+            <li>The company is organized into groups based on their functions (e.g., Development, QA, Marketing).</li>
+            <li>Functional managers act as project managers and are responsible for multiple projects.</li>
+            <li><strong>Pros:</strong> Provides clear decision-making channels.</li>
+            <li><strong>Cons:</strong> Shifting personnel from one project to another causes delays.</li>
+        </ul>
+
+        <h4>Matrix Organization</h4>
+        <ul>
+            <li>A hybrid (cross) between project- and function-oriented organizations.</li>
+            <li>Employees belong to a functional group but are "loaned" to projects based on their expertise.</li>
+            <li><strong>Pros:</strong> Main advantage is the efficient use of resources.</li>
+        </ul>
+
+        <hr>
+
+        <h3>👥 Team Size</h3>
+        <ul>
+            <li>Large teams can divide work easily but suffer from time-consuming and error-prone communication.</li>
+            <li><strong>The Mythical Man-Month (Fred Brooks):</strong> "Adding people to a failing project invariably makes matters worse". The disadvantage of increased communication channels can outweigh the advantage of dividing labor.</li>
+            <li><strong>Communication Channels:</strong> The formula is $N(N-1)/2$.
+                <ul>
+                    <li>3 people = 3 channels</li>
+                    <li>5 people = 10 channels</li>
+                    <li>8 people = 28 channels</li>
+                </ul>
+            </li>
+            <li><strong>Optimal Size:</strong> Generally 3-9 people. A scrum team should be between three and nine people.</li>
+        </ul>
+
+        <hr>
+
+        <h3>📈 Estimations</h3>
+
+        <h4>Estimation Overview</h4>
+        <ul>
+            <li>The process of estimating budget and schedule starts in the planning phase.</li>
+            <li><strong>Schedule Estimation Components:</strong> People, Project size, Project complexity.</li>
+            <li><strong>Budget Estimation (Project Costs):</strong>
+                <ul>
+                    <li><strong>Development Costs:</strong> One-time costs (e.g., professionals, training, equipment).</li>
+                    <li><strong>Operating Costs:</strong> Costs that recur throughout the system's lifetime, which can be <strong>Fixed</strong> (regular intervals) or <strong>Variable</strong> (in proportion to usage).</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h4>Size Estimation</h4>
+        <ul>
+            <li><strong>Lines of Code (LOC) Approach:</strong> A physical measurement of the software's length.
+                <ul>
+                    <li><em>Unit:</em> LOC or KLOC (Thousand LOC).</li>
+                    <li><em>Disadvantage:</em> Dependent on the programming language used.</li>
+                    <li><em>Problem:</em> Not useful at the very beginning of a project; relies on historical data from similar past projects.</li>
+                </ul>
+            </li>
+            <li><strong>Function Point (FP) Analysis (FPA):</strong> A structural measurement of the *functionality* in a system, based on specifications.
+                <ul>
+                    <li><em>Advantage:</em> It is <strong>independent</strong> of the software technology used.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h4>Function Point Analysis (FPA) Steps</h4>
+        <ul>
+            <li><strong>Step 1-6: Identify Functional Units</strong>
+                <ul>
+                    <li><strong>Transactional Functions:</strong>
+                        <ul>
+                            <li><strong>External Inputs (EI):</strong> Data crosses the boundary from outside to inside.</li>
+                            <li><strong>External Outputs (EO):</strong> Derived data passes from inside to outside.</li>
+                            <li><strong>External Inquiries (EQ):</strong> Retrieves data from databases.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Data Functions:</strong>
+                        <ul>
+                            <li><strong>Internal Logical Files (ILF):</strong> A group of logically related data *within* the application boundary.</li>
+                            <li><strong>External Interface Files (EIF):</strong> Data used for reference only; it is an ILF for *another* application.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><strong>Step 7-11: Specify Functional Complexity (Low, Average, High)</strong>
+                <ul>
+                    <li>Complexity for each unit (EI, EO, EQ) is based on <strong>FTRs (File Type Referenced)</strong> and <strong>DETs (Data Element Type)</strong>.</li>
+                    <li>Complexity for data (ILF, EIF) is based on <strong>RETs (Record Element Type)</strong> and <strong>DETs (Data Element Type)</strong>.</li>
+                </ul>
+            </li>
+            <li><strong>Step 12: Calculate Unadjusted Function Point (UFP)</strong>
+                <ul>
+                    <li>Multiply the count of each functional unit by its complexity rating (weights are provided in a table) and sum the results.</li>
+                </ul>
+            </li>
+            <li><strong>Step 13: Calculate Value Adjustment Factor (VAF)</strong>
+                <ul>
+                    <li>Assign a weight (0-5) to each of the 14 <strong>General System Characteristics (GSCs)</strong>, such as data communications, performance, and reusability.</li>
+                    <li>Sum these weights to get the total VAF.</li>
+                </ul>
+            </li>
+            <li><strong>Step 14: Calculate Adjusted Function Point (AFP)</strong>
+                <ul>
+                    <li>Use the formula: $AFP = UFP \times (0.65 + 0.01 \times VAF)$.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h4>Conversion Between FP and LOC</h4>
+        <ul>
+            <li>Uses <strong>gearing factors</strong> (average LOC per FP) calculated from successfully completed projects.</li>
+            <li><em>Example:</em> 1 FP = 53 LOC in Java.</li>
+        </ul>
+
+        <h4>Complexity Estimation</h4>
+        <ul>
+            <li><strong>Based on Application Type:</strong>
+                <ul>
+                    <li>Standalone: Low complexity.</li>
+                    <li>Client/Server, Web, Mobile: Average complexity.</li>
+                    <li>Embedded systems: High complexity.</li>
+                </ul>
+            </li>
+            <li><strong>Based on Size (AFP):</strong>
+                <ul>
+                    <li>&lt; 500 FPs = Simple Project.</li>
+                    <li>500 FPs &lt;= size &lt; 1000 FPs = Average Project.</li>
+                    <li>&gt;= 1000 FPs = Complex Project.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h4>Effort and Duration Estimation</h4>
+        <ul>
+            <li><strong>Duration (D):</strong> The time it takes to complete a task, measured in <strong>months</strong>.</li>
+            <li><strong>Effort (E):</strong> The amount of work units required, measured in <strong>person-months</strong>.</li>
+            <li><strong>Techniques (from LOC):</strong> COCOMO I and COCOMO II.</li>
+            <li><strong>Techniques (from FP):</strong> Engineering Rules.</li>
+        </ul>
+
+        <h4>COCOMO – Type I (Constructive Cost Model)</h4>
+        <ul>
+            <li>The labor required increases faster than the application's size.</li>
+            <li><strong>Formulas:</strong>
+                <ul>
+                    <li>$Effort = a \times (KLOC)^b$</li>
+                    <li>$Duration = c \times (Effort)^d$</li>
+                </ul>
+            </li>
+            <li><strong>Project Classes (Coefficients a, b, c, d change):</strong>
+                <ul>
+                    <li><strong>Organic:</strong> Smaller projects, known environment (e.g., standalone apps). (a=2.4, b=1.05).</li>
+                    <li><strong>Semi-detached:</strong> Medium size projects (e.g., web-enabled). (a=3.0, b=1.12).</li>
+                    <li><strong>Embedded:</strong> Integral to hardware/software systems (e.g., antilock brakes). (a=3.6, b=1.20).</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h4>Engineering Rules (from FP)</h4>
+        <ul>
+            <li><strong>Formulas:</strong>
+                <ul>
+                    <li>$Duration = (FP)^A$ (A = 0.32 for Simple, 0.40 for Average, 0.45 for Complex).</li>
+                    <li>$Staff = FP / 150$.</li>
+                    <li>$Effort = Staff \times Duration$.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <hr>
+
+        <h3>📋 Scheduling and Expectations</h3>
+
+        <h4>Expectations Management</h4>
+        <ul>
+            <li>Uses an <strong>expectations management matrix</strong> to manage stakeholder expectations.</li>
+            <li>Priorities are assigned to <strong>Cost</strong>, <strong>Schedule</strong>, and <strong>Scope/Quality</strong>.</li>
+            <li>The matrix identifies which of these is most important ("Max or Min"), second most ("Constrain"), and least important ("Accept").</li>
+            <li>Rule: There can be only one 'X' in each row and each column.</li>
+        </ul>
+
+        <h4>Scheduling Tools</h4>
+        <ul>
+            <li><strong>Work Breakdown Structure (WBS):</strong> A graphical tool showing the hierarchical decomposition of a project into phases, activities, and tasks. A task must be accomplishable within 40 working hours.</li>
+            <li><strong>PERT Chart (Program Evaluation Review Technique):</strong> A graphical network model that shows the project timeline and the interdependencies between tasks.</li>
+            <li><strong>GANTT Chart:</strong> A bar chart that shows the tasks against a calendar. It clearly shows overlapping tasks and visualizes the percentage completion of tasks.</li>
+            <li><strong>Critical Path Analysis</strong>.</li>
+        </ul>
+
+        <h4>Critical Path Analysis</h4>
+        <ul>
+            <li>Identifies tasks that <strong>must</strong> be completed on time for the whole project to be completed on time. These are <strong>critical tasks</strong>.</li>
+            <li>It also identifies which tasks can be delayed (<strong>noncritical tasks</strong>).</li>
+            <li>It determines the <strong>minimum length of time</strong> needed to complete a project.</li>
+            <li><strong>Slack Time:</strong> The amount of delay a task can tolerate without causing a delay in the entire project.
+                <ul>
+                    <li>A <strong>critical task</strong> has <strong>zero slack time</strong>.</li>
+                    <li>A <strong>noncritical task</strong> has <strong>nonzero slack time</strong>.</li>
+                </ul>
+            </li>
+            <li><strong>Critical Path Analysis Steps:</strong>
+                <ol>
+                    <li>Specify task interdependencies.</li>
+                    <li>Estimate the duration (D) of each task.</li>
+                    <li>Draw a network diagram (PERT chart).</li>
+                    <li><strong>Forward Processing:</strong> Calculate the <strong>Earliest Completion Time ($T_E$)</strong> for each task. $T_E$ is the *longest* time needed to complete the task. $T_E(\text{current}) = T_E(\text{previous}) + D(\text{current})$. (If a task has multiple predecessors, you use the <strong>MAX</strong> $T_E$ of those predecessors).</li>
+                    <li><strong>Backward Processing:</strong> Calculate the <strong>Latest Completion Time ($T_L$)</strong> for each task. $T_L$ is the *shortest* time needed to complete the task. $T_L(\text{current}) = T_L(\text{previous}) - D(\text{previous})$. (If a task has multiple successors, you use the <strong>MIN</strong> $T_L$ of those successors).</li>
+                    <li><strong>Calculate Slack Time (ST):</strong> $ST = T_L - T_E$.</li>
+                    <li>The tasks with zero slack time ($ST=0$) are on the critical path. The $T_E$ of the final task is the project's total duration.</li>
+                </ol>
+            </li>
+        </ul>
+
+        <hr>
+        <hr>
+
+        <h2>Chapter 4: Requirements Analysis</h2>
+
+        <h3>📝 Requirements Fundamentals</h3>
+
+        <h4>What is a Requirement?</h4>
+        <ul>
+            <li>A requirement is something the information system must do or a property that it must have. It specifies what the customer wants.</li>
+        </ul>
+
+        <h4>What is Requirements Analysis?</h4>
+        <ul>
+            <li>The process of understanding what is wanted and needed in an application.</li>
+            <li>Requirements are expressed in writing to create a contract between the developer and customer.</li>
+        </ul>
+
+        <h4>Requirements Analysis Phase</h4>
+        <ul>
+            <li>This phase defines the business and user requirements.</li>
+            <li><strong>Goal:</strong> To identify the user and business requirements.</li>
+            <li><strong>Output:</strong> <strong>Software Requirements Specification (SRS)</strong> document.</li>
+            <li><strong>Key Activities:</strong>
+                <ul>
+                    <li>Problem Discovery (e.g., Fishbone diagram).</li>
+                    <li>Requirements Discovery (Fact-finding techniques).</li>
+                    <li>Use Case Modeling.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h4>Classification of Requirements</h4>
+        <ul>
+            <li><strong>Business requirements:</strong> High-level statements of goals, objectives, and needs.</li>
+            <li><strong>Stakeholder requirements:</strong> What end users expect from the solution.</li>
+            <li><strong>Solution requirements:</strong> Describe the product characteristics that meet the other requirements. These are split into two types:
+                <ul>
+                    <li><strong>Functional requirements</strong></li>
+                    <li><strong>Nonfunctional requirements</strong></li>
+                </ul>
+            </li>
+        </ul>
+
+        <h4>Functional Requirements</h4>
+        <ul>
+            <li>Specifies activities and services an application must provide. It describes ways a product must <strong>behave</strong>.</li>
+            <li><em>Example:</em> "The student shall display his/her weekly schedule". "The mailing service shall send a welcome email when a site visitor creates an account".</li>
+        </ul>
+
+        <h4>Nonfunctional Requirements</h4>
+        <ul>
+            <li>Describes the general software characteristics (features, constraints) that define a satisfactory system.</li>
+            <li><strong>Categories:</strong> Quality attributes, Constraints, External interfaces, User interfaces, Error handling.</li>
+            <li><strong>Examples of Quality Attributes:</strong>
+                <ul>
+                    <li><strong>Reliability:</strong> "The... Application shall experience no more than two level-one faults per month".</li>
+                    <li><strong>Availability:</strong> "The web dashboard must be available... 98 percent of the time".</li>
+                    <li><strong>Maintainability:</strong> "The average time... to repair a severity-2 defect shall be no greater than 8 person-hours".</li>
+                    <li><strong>Performance:</strong> "The landing page... must provide 6 seconds or less response time".</li>
+                    <li><strong>Security:</strong> "The user password... shall contain at least 8 characters...".</li>
+                    <li><strong>Portability:</strong> "The graphics subsystem... shall be designed so it can run in both Windows and Linux".</li>
+                    <li><strong>Compatibility:</strong> "The iOS application must support iPhone devices running on OS versions...".</li>
+                    <li><strong>Usability:</strong> "The error rate of users... must not exceed 10 percent".</li>
+                </ul>
+            </li>
+            <li><strong>Examples of Constraints & Interfaces:</strong>
+                <ul>
+                    <li><strong>Design/Software/Hardware Constraint:</strong> "shall calculate... GPA within two-digit precision", "shall be implemented in Java", "shall be run on a server with Intel Xeon...".</li>
+                    <li><strong>External Interface:</strong> "shall interface with a... bar code reader".</li>
+                    <li><strong>Error Handling:</strong> "shall restrict the access... after three unsuccessful login attempts".</li>
+                </ul>
+            </li>
+        </ul>
+
+        <hr>
+
+        <h3>🔍 Discovery Techniques</h3>
+
+        <h4>Problem Discovery: Fishbone Diagram</h4>
+        <ul>
+            <li>The <strong>Fishbone (or Ishikawa) diagram</strong> is a tool that explains the <strong>cause and effect relationship</strong> for a problem.</li>
+            <li>It provides a visual representation of all possible causes to find the <strong>root cause</strong>.</li>
+            <li><strong>How to Create:</strong>
+                <ol>
+                    <li>Make the "head" of the fish on the right; this is the <strong>Problem/Issue</strong>.</li>
+                    <li>Draw a "backbone" to the left.</li>
+                    <li>Draw branches for the <strong>Main Causes</strong> (4-8).</li>
+                    <li>Attach <strong>Causes</strong> and <strong>Sub-causes</strong> to the main causes, often identified via brainstorming.</li>
+                </ol>
+            </li>
+        </ul>
+
+        <h4>Requirements Discovery (Fact-Finding Techniques)</h4>
+        <ul>
+            <li>The process used to identify system requirements. Also called information gathering.</li>
+            <li><strong>Techniques include:</strong>
+                <ul>
+                    <li>Research</li>
+                    <li>Observation of the work environment</li>
+                    <li>Prototyping</li>
+                    <li>Sampling</li>
+                    <li>Applying questionnaires</li>
+                    <li>Conducting interviews</li>
+                    <li>Organizing brainstorming meetings (e.g., JRP sessions)</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h4>Fact-Finding Techniques Explained</h4>
+        <ul>
+            <li><strong>Research:</strong> Using trade journals, reference books, and websites of similar projects to see how others solved similar problems.</li>
+            <li><strong>Observation:</strong> The analyst participates in or watches a person performing activities.
+                <ul>
+                    <li><em>Pros:</em> Data is reliable; can see complex tasks.</li>
+                    <li><em>Cons:</em> People may perform differently when observed.</li>
+                </ul>
+            </li>
+            <li><strong>Prototyping:</strong> Building a small-scale, working model of the requirements to ask users for verification.
+                <ul>
+                    <li><em>Pros:</em> Helps determine feasibility; may minimize fact-finding time.</li>
+                    <li><em>Cons:</em> Users may develop unrealistic expectations.</li>
+                </ul>
+            </li>
+            <li><strong>Sampling:</strong> Collecting a representative sample of documents, forms, and records (e.g., org charts, flowcharts).
+                <ul>
+                    <li><em>Sampling Techniques:</em>
+                        <ul>
+                            <li><strong>Random:</strong> Each member has an equal chance of being selected.</li>
+                            <li><strong>Systematic:</strong> Individuals are selected at regular intervals (e.g., every 10th person).</li>
+                            <li><strong>Stratified:</strong> Population is divided into subgroups (strata), then random/systematic sampling is applied to each subgroup.</li>
+                        </ul>
+                    </li>
+                    <li><em>Sample Size Formula:</em> $SampleSize = 0.25 \times (\text{Certainty Factor} / \text{Acceptable Error})^2$. (e.g., 90% certainty factor = 1.645).</li>
+                </ul>
+            </li>
+            <li><strong>Applying Questionnaires:</strong> A series of questions to gather information.
+                <ul>
+                    <li><em>Formats:</em> <strong>Open Ended</strong> (free expression) or <strong>Closed Ended</strong> (predefined responses, e.g., Yes/No, Multiple Choice, Likert scale).</li>
+                    <li><em>Pros:</em> Inexpensive for large numbers, anonymous.</li>
+                    <li><em>Cons:</em> Low return rate, cannot explain misunderstood questions.</li>
+                </ul>
+            </li>
+            <li><strong>Conducting Interviews:</strong> Collecting information face-to-face.
+                <ul>
+                    <li><em>Types:</em> <strong>Unstructured</strong> (general goal) or <strong>Structured</strong> (specific set of questions).</li>
+                    <li><em>Pros:</em> Can probe for more feedback, adapt questions, observe nonverbal communication.</li>
+                    <li><em>Cons:</em> Time-consuming, success depends on analyst's skills.</li>
+                </ul>
+            </li>
+            <li><strong>Organizing Brainstorming Meetings (JRP):</strong>
+                <ul>
+                    <li><strong>Joint Requirements Planning (JRP)</strong> sessions are workshops for drawing out user requirements.</li>
+                    <li><em>Participants:</em> <strong>Facilitator</strong> (leads the session), <strong>Sponsor</strong> (top management), <strong>Users/Managers</strong> (provide knowledge), and <strong>IT Staff</strong> (listen and take notes).</li>
+                    <li><em>Benefits:</em> Actively involves users; reduces time required to develop systems.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <hr>
+
+        <h3>🎭 Use Case Modeling</h3>
+
+        <h4>Use Case Modeling (Definition)</h4>
+        <ul>
+            <li>The process of modeling a system's functions in terms of business events, who initiated them, and how the system responds.</li>
+            <li>It shows a view of the system from the <strong>user perspective</strong>.</li>
+            <li>Key elements are <strong>actors</strong> and <strong>use cases</strong>.</li>
+        </ul>
+
+        <h4>Actor</h4>
+        <ul>
+            <li>Anyone or anything that needs to interact with the system to exchange information. An actor is <strong>external</strong> to the system.</li>
+            <li>Can be a human, organization, another IS, external device, or time.</li>
+            <li><em>Naming:</em> Use a noun (e.g., "Customer").</li>
+            <li><strong>Types of Actors:</strong>
+                <ul>
+                    <li><strong>Primary Actor:</strong> Interacts with the system to achieve a specific goal; often triggers the use case. (e.g., a *Cashier* processing a sale).</li>
+                    <li><strong>Supporting (Secondary) Actor:</strong> An external actor that provides a service *to* the system. (e.g., a *Credit bureau* authorizing a charge).</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h4>Use Case</h4>
+        <ul>
+            <li>A sequence of steps for the purpose of completing a single business task. It is a single unit of meaningful work.</li>
+            <li><em>Naming:</em> Use a verb phrase (e.g., "Place Order" or "Display Weekly Schedule").</li>
+        </ul>
+
+        <h4>Use Case Scenario</h4>
+        <ul>
+            <li>A <strong>textual description</strong> of the business event and how actors interact with the system. This is also called a <strong>fully dressed use case</strong>.</li>
+            <li><strong>Sections in a Scenario:</strong>
+                <ul>
+                    <li>Use case name</li>
+                    <li>Use case description</li>
+                    <li>Primary and Supporting actor(s)</li>
+                    <li><strong>Triggers:</strong> The event that starts the use case.</li>
+                    <li><strong>Preconditions:</strong> What must be true before the use case begins.</li>
+                    <li><strong>Postconditions:</strong> What must be true after the use case successfully ends.</li>
+                    <li><strong>Normal Flow:</strong> The step-by-step "happy path" (successful completion).</li>
+                    <li><strong>Alternate Flows:</strong> Steps for exceptions or alternative paths.</li>
+                    <li><strong>Business Rules</strong>.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h4>Use Case Diagram</h4>
+        <ul>
+            <li>A UML diagram that graphically represents the interactions between the system and external users.</li>
+            <li><strong>Notation:</strong>
+                <ul>
+                    <li><strong>Actor:</strong> Stick figure.</li>
+                    <li><strong>Use Case:</strong> Ellipse.</li>
+                    <li><strong>System Boundary:</strong> A box enclosing the use cases.</li>
+                </ul>
+            </li>
+            <li><strong>Use Case Relationships:</strong>
+                <ul>
+                    <li><strong>Association:</strong> The interface between an actor and a use case, shown as a solid line.</li>
+                    <li><strong>Generalization:</strong> A parent-child relationship; the child use case inherits and enhances the parent. Shown as a solid line with a triangle arrowhead pointing to the <strong>parent</strong>.</li>
+                    <li><strong>Include (uses):</strong> Shows that one use case *always* calls the functionality of another (the child). Shown as a dotted arrow with "<<include>>" pointing to the <strong>child</strong> use case.</li>
+                    <li><strong>Extend:</strong> Adds *optional* functionality to a base use case, often triggered conditionally. The base use case must be meaningful on its own. Shown as a dotted arrow with "<<extend>>" pointing to the <strong>base</strong> (parent) use case.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <hr>
+
+        <h3>📖 User Story</h3>
+
+        <h4>User Story (Definition)</h4>
+        <ul>
+            <li>A documented description of a software feature seen from the <strong>end-user perspective</strong>.</li>
+            <li>Part of an <strong>agile approach</strong>.</li>
+            <li>Describes what the user wants the system to do.</li>
+            <li>User stories are organized in a <strong>backlog</strong>.</li>
+            <li><strong>Common Template:</strong> "As a <role> I can <capability>, so that <receive benefit>".</li>
+            <li><em>Example:</em> "As a passenger, I want to link the credit card to my profile so that I can pay for a ride faster, easier and without cash".</li>
+        </ul>
+
+        <h4>INVEST Criteria</h4>
+        <ul>
+            <li>A set of criteria for great user stories:
+                <ul>
+                    <li><strong>I</strong>ndependent: Can be developed in any sequence.</li>
+                    <li><strong>N</strong>egotiable: The team decides how to implement it.</li>
+                    <li><strong>V</strong>aluable: Delivers value to the end user.</li>
+                    <li><strong>E</strong>stimable: Easy to guess the time required.</li>
+                    <li><strong>S</strong>mall: Can be finished within a single sprint.</li>
+                    <li><strong>T</strong>estable: Has clear acceptance criteria.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h4>User Story Hierarchy</h4>
+        <ul>
+            <li><strong>Initiatives:</strong> Large collections of epics that drive toward a common goal.</li>
+            <li><strong>Epics:</strong> Large bodies of work that are broken down into smaller stories. Epics are usually delivered over a set of sprints.</li>
+            <li><strong>Stories (User Stories):</strong> Short requirements that can be finished within one sprint.</li>
+        </ul>
+
+        <h4>Acceptance Criteria</h4>
+        <ul>
+            <li>It is important to have acceptance criteria to help the project team know when a user story is considered "done".</li>
+            <li><em>Example:</em> For a "bid on product" story: "Ensure the bidder is able to: ✓ Login to the platform, ✓ Navigate to the auction page, ✓ Select product(s) to bid on".</li>
+        </ul>
+
+    </div>
+
+</body>
+</html>
