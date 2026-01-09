@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Systems - Final Notları (Türkçe)</title>
+    <style>
+        /* --- Dark Mode Gövde ve Konteyner --- */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #1e1e1e;
+            color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            padding-top: 0;
+        }
+
+        /* --- Geri Dön Butonu --- */
+        .nav-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: left;
+            padding: 20px 20px 0 20px;
+        }
+
+        .geri-butonu {
+            display: inline-block;
+            margin-bottom: 15px;
+            margin-right: 10px;
+            padding: 8px 15px;
+            background-color: #6a0dad;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .geri-butonu:hover {
+            background-color: #510a8c;
+        }
+
+        /* --- Ana İçerik Kutusu --- */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #2a2a2a;
+            border: 1px solid #444;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: none;
+        }
+
+        /* --- Başlıklar --- */
+        h1,
+        h2,
+        h3,
+        h4 {
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+            border-bottom: 2px solid #444;
+            padding-bottom: 5px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            border-bottom: 3px solid #3498db;
+        }
+
+        h2 {
+            color: #20e1ff;
+            /* Mavi */
+        }
+
+        h3 {
+            color: #00ce0a;
+            /* Yeşil */
+        }
+
+        h4 {
+            color: #fd7e14;
+            /* Turuncu */
+            border-bottom: none;
+        }
+
+        ul,
+        ol {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        /* --- Kod ve Özel Kutular --- */
+        code {
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+            background-color: #3c3c3c;
+            color: #f0f0f0;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        /* Highlight Box - Mavi */
+        .highlight-box {
+            background-color: #1a3a5c;
+            border-left: 5px solid #3498db;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* Exam Alert - Turuncu */
+        .exam-alert {
+            background-color: #4a3a1c;
+            border-left: 5px solid #f59e0b;
+            padding: 15px 20px;
+            margin: 20px 0;
+            font-weight: 500;
+            color: #fbbf24;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .exam-alert::before {
+            content: "⚠️ SINAV UYARISI: ";
+            font-weight: bold;
+        }
+
+        /* Concept List */
+        ul.concept-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul.concept-list li {
+            background: #333;
+            border: 1px solid #444;
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .good-concept {
+            border-left: 5px solid #10b981 !important;
+            background: #1a3a2c !important;
+        }
+
+        .bad-concept {
+            border-left: 5px solid #ef4444 !important;
+            background: #3a1a1a !important;
+        }
+
+        .medium-concept {
+            border-left: 5px solid #f59e0b !important;
+            background: #3a2a1a !important;
+        }
+
+        /* Tablo */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th,
+        td {
+            border: 1px solid #555;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #3c3c3c;
+            font-weight: 600;
+        }
+
+        tbody tr:nth-child(odd) {
+            background-color: #2f2f2f;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #444;
+            margin: 40px 0;
+        }
+
+        strong {
+            color: #ffffff;
+        }
+
+        em {
+            color: #a0a0a0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="nav-container">
+        <a href="software.html" class="geri-butonu">⬅️ Derse Geri Dön</a>
+        <a href="../index.html" class="geri-butonu">🏠 Ana Sayfaya Geri Dön</a>
+    </div>
+
+    <div class="container">
+        <h1>🎓 Software Analysis & Design - Final Notları</h1>
+        <p style="text-align: center; color: #888;">Kapsamlı Final Sınavı Çalışma Notları (Türkçe)</p>
+
+        <hr>
+
+        <h2>Bölüm 1: SDLC ve Temel Süreç</h2>
+        <p>Yazılımın bir fikir olarak doğup, kullanımdan kalkana kadar geçirdiği evrelerin tamamıdır. (Software
+            Development Life Cycle).</p>
+
+        <div class="highlight-box">
+            <strong>Sıralama (Ezberle):</strong><br>
+            1. <strong>Planning:</strong> Problem nedir? (Why)<br>
+            2. <strong>Analysis:</strong> Sistem NE yapmalı? (What) - <em>Requirements</em><br>
+            3. <strong>Design:</strong> Sistem NASIL çalışacak? (How) - <em>Blueprints</em><br>
+            4. <strong>Implementation:</strong> Kodlama.<br>
+            5. <strong>Testing:</strong> Hata ayıklama.<br>
+            6. <strong>Maintenance:</strong> Bakım ve güncelleme.
+        </div>
+
+        <div class="exam-alert">
+            Analiz ve Tasarım farkı sınavda çıkar! <br>
+            <strong>Analiz:</strong> Problem Alanı (Domain) ile ilgilenir. Müşteri odaklıdır.<br>
+            <strong>Tasarım:</strong> Çözüm Alanı (Solution) ile ilgilenir. Teknik odaklıdır.
+        </div>
+
+        <hr>
+
+        <h2>Bölüm 2: Fizibilite Analizi (Chapter 6)</h2>
+        <p>Proje teknik olarak mümkün olsa bile yapılmalı mı? Karar: <strong>"GO"</strong> veya <strong>"NO
+                GO"</strong>.</p>
+
+        <h3>6 Temel Fizibilite Testi</h3>
+        <ul class="concept-list">
+            <li><strong>1. Operational:</strong> Sistem kullanıcıların işini çözüyor mu? PIECES analizi burada
+                kullanılır.</li>
+            <li><strong>2. Cultural:</strong> Çalışanlar ve şirket kültürü sistemi benimseyecek mi?</li>
+            <li><strong>3. Technical:</strong> Donanım ve yazılımcı yeteneğimiz yeterli mi?</li>
+            <li><strong>4. Schedule:</strong> Deadline (teslim tarihi) gerçekçi mi?</li>
+            <li><strong>5. Legal:</strong> Telif hakları ve yasalara uygun mu?</li>
+            <li><strong>6. Economic:</strong> En önemlisi. Maliyet/Fayda analizi.</li>
+        </ul>
+
+        <h3>Ekonomik Hesaplamalar</h3>
+        <table>
+            <tr>
+                <th>Kavram</th>
+                <th>Anlamı</th>
+            </tr>
+            <tr>
+                <td><strong>ROI</strong></td>
+                <td>Return on Investment. Yatırımın getiri oranı. Yüksek olması iyidir.</td>
+            </tr>
+            <tr>
+                <td><strong>NPV</strong></td>
+                <td>Net Present Value. Gelecekteki paranın bugünkü değeri. (+) olmalı.</td>
+            </tr>
+            <tr>
+                <td><strong>Break-even Point</strong></td>
+                <td>Başa baş noktası. Yatırımın kendini amorti ettiği zaman.</td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <h2>Bölüm 3: Yazılım Tasarımı (Chapter 5)</h2>
+        <p>Dersin kalbi burasıdır. Amaç: <strong>High Cohesion</strong> ve <strong>Low Coupling</strong>.</p>
+
+        <h3>A. Cohesion (Modül İçi Bütünlük)</h3>
+        <p>Modülün "tek bir işe odaklanma" derecesidir. İyiden (Yeşil) kötüye (Kırmızı) sıralama:</p>
+
+        <ul class="concept-list">
+            <li class="good-concept">
+                <strong>1. Functional (En İyi):</strong> Modül tek bir işlem yapar. <br>
+                <em>Örn:</em> <code>CalculateNetPay()</code> - Sadece maaş hesaplar.
+            </li>
+            <li class="good-concept">
+                <strong>2. Sequential:</strong> Zincirleme işlem. Birinin çıktısı diğerinin girdisi.
+            </li>
+            <li class="medium-concept">
+                <strong>3. Communicational:</strong> Aynı veri üzerinde çalışan işlemler.
+            </li>
+            <li class="medium-concept">
+                <strong>4. Procedural:</strong> Belli bir sırayı takip eden ama veri paylaşmayan işlemler.
+            </li>
+            <li class="medium-concept">
+                <strong>5. Temporal:</strong> Aynı "zamanda" çalışması gerekenler. <br>
+                <em>Örn:</em> <code>Init()</code> fonksiyonu (açılış işlemleri).
+            </li>
+            <li class="bad-concept">
+                <strong>6. Logical:</strong> Mantıksal olarak benzer işlerin tıkıştırılması. <br>
+                <em>Örn:</em> Mouse, Klavye ve Disk girdilerini okuyan dev bir fonksiyon.
+            </li>
+            <li class="bad-concept">
+                <strong>7. Coincidental (En Kötü):</strong> Tamamen alakasız işlerin bir arada olması.
+            </li>
+        </ul>
+
+        <h3>B. Coupling (Bağımlılık)</h3>
+        <p>İki modülün birbirine ne kadar muhtaç olduğu. İyiden kötüye sıralama:</p>
+
+        <ul class="concept-list">
+            <li class="good-concept">
+                <strong>1. Data (En İyi):</strong> Sadece basit parametreler geçer (int, string).
+            </li>
+            <li class="medium-concept">
+                <strong>2. Stamp:</strong> Veri yapıları (Struct/Object) geçer.
+            </li>
+            <li class="bad-concept">
+                <strong>3. Control (Sınav Sorusu):</strong> Bir modül diğerine <strong>"Flag"</strong> (kontrol bayrağı)
+                gönderir. <br>
+                <em>Örn:</em> "Bunu yap" diye emir verir.
+            </li>
+            <li class="bad-concept">
+                <strong>4. Common:</strong> Global değişken kullanımı.
+            </li>
+            <li class="bad-concept">
+                <strong>5. Content (En Kötü):</strong> Bir modül diğerinin iç kodunu/verisini doğrudan değiştirir.
+            </li>
+        </ul>
+
+        <hr>
+
+        <h2>Bölüm 4: Yazılım Mimarileri</h2>
+        <p>Sistemin genel iskeleti (Blueprints).</p>
+
+        <div class="highlight-box">
+            <ul>
+                <li><strong>Layered (Katmanlı):</strong> Katmanlar (UI, Logic, Data) ayrılır. Kurumsal sistemlerde
+                    standarttır. Bakımı kolaydır.</li>
+                <li><strong>Repository:</strong> Merkezi veritabanı, etrafında modüller. Veri tutarlılığı önemliyse
+                    (Örn: Öğrenci sistemi) kullanılır.</li>
+                <li><strong>Event-Driven:</strong> Olay güdümlü. Sistem mesajlara tepki verir. Asenkron ve
+                    ölçeklenebilir.</li>
+                <li><strong>Pipe & Filter:</strong> Veri akışı. Bir uçtan girer, işlenip çıkar. (Unix, Derleyiciler).
+                </li>
+                <li><strong>Client-Server:</strong> Web sistemleri.</li>
+            </ul>
+        </div>
+
+        <hr>
+
+        <h2>Bölüm 5: Design Patterns (Tasarım Kalıpları)</h2>
+        <p>Hangi pattern'in hangi kategoriye girdiğini mutlaka bilmelisin.</p>
+
+        <h3>1. Creational (Yaratımsal)</h3>
+        <p><em>Nesne yaratma sorunlarını çözer.</em></p>
+        <ul>
+            <li><strong>Singleton:</strong> Bir sınıftan <strong>SADECE 1 TANE</strong> nesne üretilmesini garanti eder.
+                (DB Connection).</li>
+            <li><strong>Factory Method:</strong> Nesne yaratmayı alt sınıfa bırakır.</li>
+            <li><strong>Abstract Factory:</strong> Uyumlu ürün <strong>AİLELERİ</strong> yaratır. (MacButton,
+                MacWindow).</li>
+            <li><strong>Builder:</strong> Karmaşık nesneyi <strong>adım adım</strong> inşa eder.</li>
+            <li><strong>Prototype:</strong> Kopyalayarak (Clone) çoğaltır.</li>
+        </ul>
+
+        <h3>2. Structural (Yapısal)</h3>
+        <p><em>Sınıf ve nesneleri birleştirir.</em></p>
+        <ul>
+            <li><strong>Adapter:</strong> Uyumsuz arayüzleri birbirine bağlar (Priz çevirici).</li>
+            <li><strong>Facade:</strong> Karmaşık sistemi <strong>basitleştirir</strong> (Araba kontağı).</li>
+            <li><strong>Decorator:</strong> Nesneye dinamik özellik ekler/süsler.</li>
+            <li><strong>Proxy:</strong> Vekil nesne. Erişimi kontrol eder.</li>
+        </ul>
+
+        <h3>3. Behavioral (Davranışsal)</h3>
+        <p><em>İletişim ve görev dağılımı.</em></p>
+        <ul>
+            <li><strong>Observer:</strong> Biri değişince diğerlerine <strong>haber verir</strong> (Youtube Bildirim).
+            </li>
+            <li><strong>Strategy:</strong> Algoritmayı <strong>değiştirilebilir</strong> yapar (Navigasyon rotası).</li>
+            <li><strong>Command:</strong> İsteği nesneye çevirir (Undo/Redo).</li>
+            <li><strong>State:</strong> Durum değişince davranış değişir.</li>
+            <li><strong>Iterator:</strong> Liste içinde gezinmeyi sağlar (Foreach).</li>
+        </ul>
+
+        <div class="exam-alert">
+            <strong>Karşılaştırma Sorusu:</strong><br>
+            Adapter vs Facade farkı nedir?<br>
+            <strong>Cevap:</strong> Adapter uyumsuzluğu düzeltir, Facade karmaşıklığı basitleştirir.
+        </div>
+
+        <hr>
+
+        <p style="text-align: center; color: #888; margin-top: 40px;">Sınavında başarılar! 🎓</p>
+
+    </div>
+
+</body>
+
+</html>

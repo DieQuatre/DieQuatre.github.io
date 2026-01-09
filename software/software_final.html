@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Systems - Final Notes (English)</title>
+    <style>
+        /* --- Dark Mode Gövde ve Konteyner --- */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #1e1e1e;
+            color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            padding-top: 0;
+        }
+
+        /* --- Geri Dön Butonu --- */
+        .nav-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: left;
+            padding: 20px 20px 0 20px;
+        }
+
+        .geri-butonu {
+            display: inline-block;
+            margin-bottom: 15px;
+            margin-right: 10px;
+            padding: 8px 15px;
+            background-color: #6a0dad;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .geri-butonu:hover {
+            background-color: #510a8c;
+        }
+
+        /* --- Ana İçerik Kutusu --- */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #2a2a2a;
+            border: 1px solid #444;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: none;
+        }
+
+        /* --- Başlıklar --- */
+        h1,
+        h2,
+        h3,
+        h4 {
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+            border-bottom: 2px solid #444;
+            padding-bottom: 5px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            border-bottom: 3px solid #3498db;
+        }
+
+        h2 {
+            color: #20e1ff;
+            /* Mavi */
+        }
+
+        h3 {
+            color: #00ce0a;
+            /* Yeşil */
+        }
+
+        h4 {
+            color: #fd7e14;
+            /* Turuncu */
+            border-bottom: none;
+        }
+
+        ul,
+        ol {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        /* --- Kod ve Özel Kutular --- */
+        code {
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+            background-color: #3c3c3c;
+            color: #f0f0f0;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        /* Highlight Box - Mavi */
+        .highlight-box {
+            background-color: #1a3a5c;
+            border-left: 5px solid #3498db;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* Exam Alert - Turuncu */
+        .exam-alert {
+            background-color: #4a3a1c;
+            border-left: 5px solid #f59e0b;
+            padding: 15px 20px;
+            margin: 20px 0;
+            font-weight: 500;
+            color: #fbbf24;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .exam-alert::before {
+            content: "⚠️ EXAM ALERT: ";
+            font-weight: bold;
+        }
+
+        /* Concept List */
+        ul.concept-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul.concept-list li {
+            background: #333;
+            border: 1px solid #444;
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .good-concept {
+            border-left: 5px solid #10b981 !important;
+            background: #1a3a2c !important;
+        }
+
+        .bad-concept {
+            border-left: 5px solid #ef4444 !important;
+            background: #3a1a1a !important;
+        }
+
+        .medium-concept {
+            border-left: 5px solid #f59e0b !important;
+            background: #3a2a1a !important;
+        }
+
+        /* Tablo */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th,
+        td {
+            border: 1px solid #555;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #3c3c3c;
+            font-weight: 600;
+        }
+
+        tbody tr:nth-child(odd) {
+            background-color: #2f2f2f;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #444;
+            margin: 40px 0;
+        }
+
+        strong {
+            color: #ffffff;
+        }
+
+        em {
+            color: #a0a0a0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="nav-container">
+        <a href="software.html" class="geri-butonu">⬅️ Back to Course</a>
+        <a href="../index.html" class="geri-butonu">🏠 Ana Sayfaya Geri Dön</a>
+    </div>
+
+    <div class="container">
+        <h1>🎓 Software Analysis & Design - Final Notes</h1>
+        <p style="text-align: center; color: #888;">Comprehensive Final Exam Study Notes (English)</p>
+
+        <hr>
+
+        <h2>Part 1: SDLC (Software Development Life Cycle)</h2>
+        <p>The entire process of a software system from inception to retirement.</p>
+
+        <div class="highlight-box">
+            <strong>Correct Order (Memorize):</strong><br>
+            1. <strong>Planning:</strong> Why build this system? (Problem Definition).<br>
+            2. <strong>Analysis:</strong> WHAT will the system do? (Requirements) - <em>Problem Domain</em><br>
+            3. <strong>Design:</strong> HOW will it work? (Blueprints/Architecture) - <em>Solution Domain</em><br>
+            4. <strong>Implementation:</strong> Coding.<br>
+            5. <strong>Testing:</strong> Finding bugs and errors.<br>
+            6. <strong>Maintenance:</strong> Updates and support after release.
+        </div>
+
+        <div class="exam-alert">
+            Critical distinction for the exam: <br>
+            <strong>Analysis:</strong> Focuses on the <em>Problem Domain</em>. (Requirements, What).<br>
+            <strong>Design:</strong> Focuses on the <em>Solution Domain</em>. (Technical Specs, How).
+        </div>
+
+        <hr>
+
+        <h2>Part 2: Feasibility Analysis (Chapter 6)</h2>
+        <p>Deciding whether to proceed with the project. The decision is <strong>"GO"</strong> or <strong>"NO
+                GO"</strong>.</p>
+
+        <h3>The 6 Feasibility Tests</h3>
+        <ul class="concept-list">
+            <li><strong>1. Operational:</strong> Does it solve the user's problem? Will it be used? (PIECES framework is
+                used here).</li>
+            <li><strong>2. Cultural:</strong> Will the organizational culture accept this system?</li>
+            <li><strong>3. Technical:</strong> Do we have the technology and expertise?</li>
+            <li><strong>4. Schedule:</strong> Is the deadline realistic?</li>
+            <li><strong>5. Legal:</strong> Is it compliant with laws and copyrights?</li>
+            <li><strong>6. Economic:</strong> The most important one. Cost-Benefit Analysis.</li>
+        </ul>
+
+        <h3>Economic Metrics</h3>
+        <table>
+            <tr>
+                <th>Term</th>
+                <th>Definition</th>
+            </tr>
+            <tr>
+                <td><strong>ROI</strong></td>
+                <td>Return on Investment. A high percentage is good.</td>
+            </tr>
+            <tr>
+                <td><strong>NPV</strong></td>
+                <td>Net Present Value. The value of future money today. Must be positive (+).</td>
+            </tr>
+            <tr>
+                <td><strong>Break-even Point</strong></td>
+                <td>The point in time where the project covers its costs and starts making a profit.</td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <h2>Part 3: Software Design (Chapter 5)</h2>
+        <p>The heart of the course. The Golden Rule: <strong>High Cohesion</strong> and <strong>Low Coupling</strong>.
+        </p>
+
+        <h3>A. Cohesion (Module Strength)</h3>
+        <p>How focused a module is on a single task. From Best (Green) to Worst (Red):</p>
+
+        <ul class="concept-list">
+            <li class="good-concept">
+                <strong>1. Functional (Best):</strong> Module performs exactly one task. <br>
+                <em>Ex:</em> <code>CalculateNetPay()</code>.
+            </li>
+            <li class="good-concept">
+                <strong>2. Sequential:</strong> Output of one task is input for the next.
+            </li>
+            <li class="medium-concept">
+                <strong>3. Communicational:</strong> Tasks use the same data/input.
+            </li>
+            <li class="medium-concept">
+                <strong>4. Procedural:</strong> Tasks follow a specific execution order but don't share data.
+            </li>
+            <li class="medium-concept">
+                <strong>5. Temporal:</strong> Tasks must happen at the same "time". <br>
+                <em>Ex:</em> <code>Init()</code> or startup functions.
+            </li>
+            <li class="bad-concept">
+                <strong>6. Logical:</strong> Logically similar tasks grouped together (bad practice). <br>
+                <em>Ex:</em> A huge function handling Mouse, Keyboard, and Disk inputs together.
+            </li>
+            <li class="bad-concept">
+                <strong>7. Coincidental (Worst):</strong> Random, unrelated tasks in one module.
+            </li>
+        </ul>
+
+        <h3>B. Coupling (Dependency)</h3>
+        <p>How dependent two modules are on each other. From Best (Green) to Worst (Red):</p>
+
+        <ul class="concept-list">
+            <li class="good-concept">
+                <strong>1. Data (Best):</strong> Only simple data parameters are passed (int, string).
+            </li>
+            <li class="medium-concept">
+                <strong>2. Stamp:</strong> Data structures (Struct/Object) are passed. <br>
+                <em>Risk:</em> The module has access to more data than it needs.
+            </li>
+            <li class="bad-concept">
+                <strong>3. Control (Exam Topic):</strong> One module sends a <strong>"Flag"</strong> to control the
+                logic of another. <br>
+                <em>Ex:</em> Passing <code>true</code> to tell the function what to do.
+            </li>
+            <li class="bad-concept">
+                <strong>4. Common:</strong> Using Global Variables. (Very bad for maintenance).
+            </li>
+            <li class="bad-concept">
+                <strong>5. Content (Worst):</strong> One module directly modifies the internal code/data of another.
+            </li>
+        </ul>
+
+        <hr>
+
+        <h2>Part 4: Software Architectures</h2>
+        <p>The strategic blueprints for the system.</p>
+
+        <div class="highlight-box">
+            <ul>
+                <li><strong>Layered:</strong> Separates UI, Logic, and Data. Standard for Enterprise apps. Easy to
+                    maintain.</li>
+                <li><strong>Repository:</strong> Centralized Database with independent modules around it. Used when Data
+                    Consistency is key.</li>
+                <li><strong>Event-Driven:</strong> System reacts to messages/events. Good for Asynchronous and Scalable
+                    systems.</li>
+                <li><strong>Pipe & Filter:</strong> Data flows through a pipeline. Input -> Process -> Output. (Unix,
+                    Compilers).</li>
+                <li><strong>Client-Server:</strong> Workload distributed between requester (Client) and provider
+                    (Server).</li>
+            </ul>
+        </div>
+
+        <hr>
+
+        <h2>Part 5: Design Patterns</h2>
+        <p>You must know which pattern belongs to which category.</p>
+
+        <h3>1. Creational</h3>
+        <p><em>Deals with object creation mechanisms.</em></p>
+        <ul>
+            <li><strong>Singleton:</strong> Ensures a class has <strong>ONLY ONE</strong> instance. (e.g., DB
+                Connection).</li>
+            <li><strong>Factory Method:</strong> Lets subclasses decide which object to create.</li>
+            <li><strong>Abstract Factory:</strong> Creates <strong>FAMILIES</strong> of related objects (e.g., MacButton
+                + MacWindow).</li>
+            <li><strong>Builder:</strong> Constructs complex objects <strong>step-by-step</strong>.</li>
+            <li><strong>Prototype:</strong> Creates new objects by <strong>cloning</strong> existing ones.</li>
+        </ul>
+
+        <h3>2. Structural</h3>
+        <p><em>Deals with object composition and structure.</em></p>
+        <ul>
+            <li><strong>Adapter:</strong> Makes incompatible interfaces work together. (Like a power plug adapter).</li>
+            <li><strong>Facade:</strong> Provides a <strong>simplified</strong> interface to a complex system. (Like a
+                car ignition key).</li>
+            <li><strong>Decorator:</strong> Adds new functionality/behavior dynamically.</li>
+            <li><strong>Proxy:</strong> Represents another object to control access (The "Surrogate").</li>
+        </ul>
+
+        <h3>3. Behavioral</h3>
+        <p><em>Deals with communication between objects.</em></p>
+        <ul>
+            <li><strong>Observer:</strong> Notifies subscribers when an object changes. (YouTube Notification).</li>
+            <li><strong>Strategy:</strong> Makes algorithms <strong>interchangeable</strong>. (Navigation routes).</li>
+            <li><strong>Command:</strong> Turns a request into an object. (Supports Undo/Redo).</li>
+            <li><strong>State:</strong> Object alters behavior when its internal state changes.</li>
+            <li><strong>Iterator:</strong> Traverses a collection without exposing its structure.</li>
+        </ul>
+
+        <div class="exam-alert">
+            <strong>Comparison Question:</strong><br>
+            What is the difference between Adapter and Facade?<br>
+            <strong>Answer:</strong> Adapter fixes incompatibility between interfaces. Facade simplifies a complex
+            interface.
+        </div>
+
+        <hr>
+
+        <p style="text-align: center; color: #888; margin-top: 40px;">Good luck on your exam! 🎓</p>
+
+    </div>
+
+</body>
+
+</html>
