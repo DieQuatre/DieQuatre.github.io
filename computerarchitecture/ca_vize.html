@@ -333,6 +333,182 @@
                     </li>
                 </ul>
             </div>
+
+            <!-- Card 7 -->
+            <div class="card full-width">
+                <h2>7. Instruction Cycle with Interrupts (Kesmeler)</h2>
+                <ul>
+                    <li>
+                        <strong>Core Concept:</strong> The CPU is extremely fast, but hardware devices are slow. <strong>Interrupts</strong> were invented so the CPU doesn't waste time waiting — it does other work and gets notified when the device is ready.
+                        <div class="tr-note">🇹🇷 <strong>Temel Mantık:</strong> İşlemci çok hızlıdır, donanımlar yavaştır. İşlemci donanımı boş boş beklemesin diye "Kesme" (Interrupt) icat edilmiştir. Anahtar kelimeler: Improve efficiency, immediate attention.</div>
+                    </li>
+                    <li>
+                        <strong>Interrupt Types (H.I.T.P.):</strong>
+                        <br><strong>H</strong>ardware — Hardware malfunction, power failure
+                        <br><strong>I</strong>/O — Signals from keyboard, mouse, printer
+                        <br><strong>T</strong>imer — Routine tasks from the system clock
+                        <br><strong>P</strong>rogram — Software errors like division by zero, overflow
+                        <div class="tr-note">🇹🇷 <strong>Şifre H.I.T.P.:</strong> Hardware (Donanım arızası), I/O (Klavye/fare sinyalleri), Timer (Saat görevleri), Program (Sıfıra bölme gibi yazılım hataları).</div>
+                    </li>
+                    <li>
+                        <strong>Modified Cycle:</strong> Fetch → Execute → <strong>Interrupt Check</strong>. After each instruction, the CPU checks if any interrupt has arrived.
+                        <div class="tr-note">🇹🇷 <strong>Değişen Döngü:</strong> Her komut çalıştırıldıktan sonra işlemci bir kesme gelip gelmediğini kontrol eder.</div>
+                    </li>
+                    <li>
+                        <strong>Two Interrupts at Once?</strong>
+                        <br><strong>Sequential:</strong> Disabling interrupts — new interrupt is queued and handled after the current one finishes.
+                        <br><strong>Nested:</strong> Priority-based — a higher-priority interrupt (e.g., Hardware) can preempt a lower-priority one (e.g., I/O).
+                        <div class="tr-note">🇹🇷 <strong>İki Kesme Aynı Anda:</strong> Sequential = Yeni geleni sıraya koyar. Nested = Önceliği yüksek olan düşük olanı böler.</div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Card 8 -->
+            <div class="card full-width">
+                <h2>8. Interconnection Structures (PCIe, QPI)</h2>
+                <ul>
+                    <li>
+                        <strong>Core Concept:</strong> Old systems used a <strong>Shared Bus</strong> (single road for everything → traffic jams). Modern systems use <strong>Point-to-Point</strong> connections (PCIe, QPI) where each device has its own dedicated highway.
+                        <div class="tr-note">🇹🇷 <strong>Temel Mantık:</strong> Eski sistemlerde her şey tek yolu paylaşıyordu ve trafik sıkışıyordu. Yeni sistemlerde her donanımın işlemciye özel otobanı vardır. Neden geçtik? No bottlenecks!</div>
+                    </li>
+                    <li>
+                        <strong>Point-to-Point Features (M.P.L.):</strong>
+                        <br><strong>M</strong>ultiple direct connections
+                        <br><strong>P</strong>acketized data (data is sent in packets)
+                        <br><strong>L</strong>ayered protocol (layered architecture)
+                        <div class="tr-note">🇹🇷 <strong>Şifre M.P.L.:</strong> Multiple direct connections (Çoklu doğrudan bağlantı), Packetized data (Paketler halinde iletim), Layered protocol (Katmanlı mimari).</div>
+                    </li>
+                    <li>
+                        <strong>PCIe Layers (P.D.T.):</strong>
+                        <br><strong>P</strong>hysical Layer — Physical cables/wires
+                        <br><strong>D</strong>ata Link Layer — Packet ordering and error control
+                        <br><strong>T</strong>ransaction Layer — Packet creation
+                        <div class="tr-note">🇹🇷 <strong>Şifre P.D.T.:</strong> Physical (Fiziksel kablolar), Data Link (Paket sırası ve hata kontrolü), Transaction (Paket yaratma).</div>
+                    </li>
+                    <li>
+                        <strong>QPI:</strong> Used for high-speed connections between <strong>CPU ↔ CPU</strong> or <strong>CPU ↔ Memory Controller</strong>.
+                        <div class="tr-note">🇹🇷 <strong>QPI:</strong> CPU ile CPU arası veya CPU ile RAM kontrolcüsü arasında yüksek hızlı bağlantı sağlar.</div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Card 9 -->
+            <div class="card">
+                <h2>9. Embedded Systems &amp; ARM Architecture</h2>
+                <ul>
+                    <li>
+                        <strong>Core Concept:</strong> Computers embedded <strong>inside devices</strong> like washing machines, cars, or smartwatches. Most use <strong>ARM-based</strong> processors.
+                        <div class="tr-note">🇹🇷 <strong>Temel Mantık:</strong> Bilgisayarın masaüstünde değil; çamaşır makinesi, araba veya akıllı saat gibi cihazların içine "gömülmesi" olayıdır.</div>
+                    </li>
+                    <li>
+                        <strong>Processor Types:</strong>
+                        <br><strong>Application Processor:</strong> General-purpose (e.g., smartphone CPU — does everything).
+                        <br><strong>Dedicated Processor:</strong> Single-task only (e.g., washing machine controller).
+                        <div class="tr-note">🇹🇷 <strong>İşlemci Farkı:</strong> Application = Akıllı telefondaki, her işi yapan. Dedicated = Çamaşır makinesindeki, tek göreve adanmış.</div>
+                    </li>
+                    <li>
+                        <strong>3 Rules of Embedded Systems (R.S.C.):</strong>
+                        <br><strong>R</strong>eal-time — Must respond instantly, no delay tolerance.
+                        <br><strong>S</strong>trict constraints — Low power, small size, cheap.
+                        <br><strong>C</strong>ustom designed — Designed specifically for the device.
+                        <div class="tr-note">🇹🇷 <strong>Şifre R.S.C.:</strong> Real-time (Gerçek zamanlı, gecikme affedilmez), Strict constraints (Az elektrik, küçük boyut, ucuz), Custom designed (Cihaza özel tasarım).</div>
+                    </li>
+                    <li>
+                        <strong>Why ARM?</strong> Uses <strong>RISC</strong> (Reduced Instruction Set Computer) architecture. Simplified instruction set → <strong>very low power consumption</strong>.
+                        <div class="tr-note">🇹🇷 <strong>ARM Neden Popüler?:</strong> RISC mimarisi sayesinde komut seti basitleştirilmiştir, çok az güç tüketir (Low power).</div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Card 10 -->
+            <div class="card">
+                <h2>10. Early Computer Structures (IAS &amp; Von Neumann)</h2>
+                <ul>
+                    <li>
+                        <strong>Von Neumann Architecture:</strong> Data and Instructions are stored in the <strong>same memory</strong> and share the same bus.
+                        <div class="tr-note">🇹🇷 <strong>Von Neumann Kuralı:</strong> Veriler ve Komutlar aynı bellekte tutulur ve aynı yolu kullanır.</div>
+                    </li>
+                    <li>
+                        <strong>Von Neumann Bottleneck:</strong> The CPU cannot fetch an instruction and data simultaneously because there is only <strong>one bus</strong>.
+                        <div class="tr-note">🇹🇷 <strong>Darboğaz:</strong> İşlemci, komutu ve veriyi aynı anda bellekten çekemez çünkü yol tektir.</div>
+                    </li>
+                    <li>
+                        <strong>IAS Computer Components (M.A.C.I.):</strong>
+                        <br><strong>M</strong>ain Memory — Stores instructions and data
+                        <br><strong>A</strong>LU — Arithmetic Logic Unit, performs calculations
+                        <br><strong>C</strong>ontrol Unit — Manages the system
+                        <br><strong>I</strong>/O — Input/Output equipment
+                        <div class="tr-note">🇹🇷 <strong>Şifre M.A.C.I.:</strong> Main Memory (Komut ve veri saklar), ALU (Hesaplama yapar), Control Unit (Sistemi yönetir), I/O (Giriş/Çıkış).</div>
+                    </li>
+                    <li>
+                        <strong>Critical Registers:</strong>
+                        <br><strong>PC (Program Counter):</strong> Holds the address of the <strong>next</strong> instruction.
+                        <br><strong>IR (Instruction Register):</strong> Holds the <strong>current</strong> instruction being executed.
+                        <br><strong>MAR (Memory Address Register):</strong> Holds the memory address to be accessed.
+                        <br><strong>MBR (Memory Buffer Register):</strong> Holds the data coming from/going to memory.
+                        <div class="tr-note">🇹🇷 <strong>Hayati Register'lar:</strong> PC = Sıradaki komutun adresi, IR = Şu an çalışan komut, MAR = Bellekte gidilecek adres, MBR = Bellekten gelen/giden veri.</div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Card 11 -->
+            <div class="card full-width">
+                <h2>11. 🚨 Simple Interrupt Processing (Sınav Favorisi!)</h2>
+                <p style="color: #ffcc80; font-style: italic; margin-bottom: 15px;">
+                    ⚠️ Hocanın "Boşluk Doldurma" sormayı en sevdiği tablo algoritmasıdır. İngilizce orijinal metinleri kesinlikle ezberle!
+                </p>
+
+                <h3 style="color: #80cbc4; margin-top: 20px;">⚙️ HARDWARE (Donanımın Otomatik Yaptıkları)</h3>
+                <ul>
+                    <li>
+                        <strong>1. Device controller or other system hardware issues an interrupt</strong>
+                        <div class="tr-note">🇹🇷 Donanım kesme sinyali yollar — "Kargocu zile basar"</div>
+                    </li>
+                    <li>
+                        <strong style="background-color: #4a148c; padding: 2px 8px; border-radius: 4px; border: 1px solid #7b1fa2;">2. Processor finishes execution of current instruction</strong>
+                        <div class="tr-note">🇹🇷 İşlemci o an çözdüğü komutu/işlemi bitirir. Anında bırakmaz!</div>
+                    </li>
+                    <li>
+                        <strong>3. Processor signals acknowledgment of interrupt</strong>
+                        <div class="tr-note">🇹🇷 İşlemci "Tamam, duydum geliyorum" diye onay sinyali yollar</div>
+                    </li>
+                    <li>
+                        <strong style="background-color: #4a148c; padding: 2px 8px; border-radius: 4px; border: 1px solid #7b1fa2;">4. Processor pushes PSW and PC onto control stack</strong>
+                        <div class="tr-note">🇹🇷 Geri dönebilmek için kalınan adresi (PC) ve durumu (PSW) yığına kaydeder — "Kitaba ayraç koyar"</div>
+                    </li>
+                    <li>
+                        <strong>5. Processor loads new PC value based on interrupt</strong>
+                        <div class="tr-note">🇹🇷 Kesme programının (ISR) adresini PC'ye yükler ve oraya dallanır</div>
+                    </li>
+                </ul>
+
+                <h3 style="color: #80cbc4; margin-top: 25px;">💻 SOFTWARE (Yazılımın / İşletim Sisteminin Yaptıkları)</h3>
+                <ul>
+                    <li>
+                        <strong>6. Save remainder of process state information</strong>
+                        <div class="tr-note">🇹🇷 Ana programın geriye kalan diğer bilgilerini güvenli bir yere kaydeder</div>
+                    </li>
+                    <li>
+                        <strong>7. Process interrupt</strong>
+                        <div class="tr-note">🇹🇷 Asıl işi yapar! Kargoyu teslim alır, yazıcıya kağıt verir vs.</div>
+                    </li>
+                    <li>
+                        <strong>8. Restore process state information</strong>
+                        <div class="tr-note">🇹🇷 İş bitti! 6. adımda sakladığı o ekstra bilgileri geri yükler</div>
+                    </li>
+                    <li>
+                        <strong style="background-color: #4a148c; padding: 2px 8px; border-radius: 4px; border: 1px solid #7b1fa2;">9. Restore old PSW and PC</strong>
+                        <div class="tr-note">🇹🇷 Eski programa geri dönüş biletidir! Masaya geri oturur, ayraç koyduğu sayfayı geri yükler</div>
+                    </li>
+                </ul>
+
+                <div style="background-color: #3e2723; border-left: 5px solid #d84315; padding: 15px; margin-top: 20px; border-radius: 4px;">
+                    <strong style="color: #ffab91;">🧠 Sınav İçin Taktik: Hoca Nereyi Boş Bırakır?</strong>
+                    <p style="margin-bottom: 0; margin-top: 8px;">
+                        Özellikle mor renkli kutularla işaretlenen <strong>2. , 4. ve 9. adımlara</strong> çok dikkat et. Öğrenciler genelde işlemcinin anında komutu yarıda kestiğini düşünür (2. adımda yanılırlar) veya "PC ve PSW"nin (Program Counter ve Program Status Word) yığına kaydedilip (Push) tekrar oradan çağrılmasını (Restore) unuturlar. Bu İngilizce terimleri elinle birkaç kez yazarak pekiştir.
+                    </p>
+                </div>
+            </div>
         </div>
 
         <footer>
