@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Architecture - Vize Notları</title>
+    <style>
+        :root {
+            --primary-color: #2e7d32;
+            --bg-color: #1e1e1e;
+            --card-bg: #2a2a2a;
+            --text-main: #f0f0f0;
+            --text-muted: #cccccc;
+            --tr-bg: #1b3a1d;
+            --tr-text: #a5d6a7;
+            --border-color: #444;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            padding-top: 0;
+        }
+
+        /* --- Geri Dön Butonu --- */
+        .nav-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: left;
+            padding: 20px 20px 0 20px;
+        }
+
+        .geri-butonu {
+            display: inline-block;
+            margin-bottom: 15px;
+            padding: 8px 15px;
+            background-color: #6a0dad;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .geri-butonu:hover {
+            background-color: #510a8c;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1em;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border-top: 4px solid var(--primary-color);
+            border: 1px solid var(--border-color);
+            border-top: 4px solid var(--primary-color);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+        }
+
+        .card h2 {
+            font-size: 1.3em;
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: #ffffff;
+            border-bottom: 2px solid #444;
+            padding-bottom: 10px;
+        }
+
+        ul {
+            padding-left: 20px;
+            margin: 0;
+        }
+
+        li {
+            margin-bottom: 20px;
+            color: var(--text-muted);
+        }
+
+        strong {
+            color: var(--text-main);
+        }
+
+        .tr-note {
+            background-color: var(--tr-bg);
+            color: var(--tr-text);
+            padding: 10px 12px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            margin-top: 8px;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            color: var(--text-muted);
+            font-size: 0.9em;
+        }
+
+        /* --- Karşılaştırma Tablosu --- */
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 0.95em;
+        }
+
+        .compare-table th,
+        .compare-table td {
+            border: 2px solid #c0392b;
+            padding: 12px 15px;
+            text-align: center;
+        }
+
+        .compare-table thead th {
+            background-color: #1a1a2e;
+            font-size: 1.15em;
+            letter-spacing: 1px;
+        }
+
+        .compare-table thead th:first-child {
+            color: var(--text-main);
+        }
+
+        .compare-table thead th.sram-header {
+            color: #5dade2;
+        }
+
+        .compare-table thead th.dram-header {
+            color: #f0f0f0;
+        }
+
+        .compare-table tbody td:first-child {
+            font-weight: bold;
+            color: var(--text-main);
+            text-align: left;
+            background-color: rgba(255,255,255,0.03);
+        }
+
+        .compare-table tbody tr:nth-child(even) {
+            background-color: rgba(255,255,255,0.02);
+        }
+
+        .compare-table tbody tr:hover {
+            background-color: rgba(46, 125, 50, 0.15);
+        }
+
+        .card.full-width {
+            grid-column: 1 / -1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="nav-container">
+        <a href="computerarchitecture.html" class="geri-butonu">⬅ Geri Dön</a>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>🟢 Computer Architecture</h1>
+            <div class="subtitle">Stage 1: Conceptual Exam Keywords (Bilingual Cheat Sheet)</div>
+        </header>
+
+        <div class="grid">
+            <!-- Card 1 -->
+            <div class="card full-width">
+                <h2>1. DRAM vs. SRAM</h2>
+                <table class="compare-table">
+                    <thead>
+                        <tr>
+                            <th>Features</th>
+                            <th class="sram-header">SRAM</th>
+                            <th class="dram-header">DRAM</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cost</td>
+                            <td>Expensive</td>
+                            <td>Cheaper</td>
+                        </tr>
+                        <tr>
+                            <td>Speed</td>
+                            <td>Faster</td>
+                            <td>Slower</td>
+                        </tr>
+                        <tr>
+                            <td>Refresh</td>
+                            <td>No need refreshing</td>
+                            <td>Need refreshing</td>
+                        </tr>
+                        <tr>
+                            <td>Use Case</td>
+                            <td>Cache Memory (L1, L2, L3)</td>
+                            <td>Main Memory</td>
+                        </tr>
+                        <tr>
+                            <td>Cell Structure</td>
+                            <td>6 transistors for every 1-bit</td>
+                            <td>1 transistor + 1 capacitor for every 1-bit</td>
+                        </tr>
+                        <tr>
+                            <td>Density (Yoğunluk)</td>
+                            <td>Less Dense (Large Cells)</td>
+                            <td>More Dense (Small Cells)</td>
+                        </tr>
+                        <tr>
+                            <td>Heat Generation</td>
+                            <td>High</td>
+                            <td>Low</td>
+                        </tr>
+                        <tr>
+                            <td>Power Consumption</td>
+                            <td>High (During operation)</td>
+                            <td>Constant (Due to refresh)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card">
+                <h2>2. Locality of Reference</h2>
+                <ul>
+                    <li>
+                        <strong>Temporal Locality:</strong> If accessed, highly likely to be accessed <strong>again soon</strong> (e.g., loop variables). Cache keeps recently accessed data.
+                        <div class="tr-note">🇹🇷 <strong>Zamansal Yerellik:</strong> Şu an kullanılan bir veriye yakın zamanda tekrar ihtiyaç duyulmasıdır (örn: Döngülerdeki sayaçlar). Bu yüzden Cache, son kullanılan verileri silmez, içinde tutar.</div>
+                    </li>
+                    <li>
+                        <strong>Spatial Locality:</strong> If accessed, highly likely that <strong>nearby locations</strong> will be accessed soon. Memory brings data in <strong>Blocks/Lines</strong>.
+                        <div class="tr-note">🇹🇷 <strong>Konumsal Yerellik:</strong> Bir veriye erişildiğinde, adres olarak onun hemen yanındaki verilere de sırayla erişilme ihtimalidir (örn: Diziler/Arrays). Bu yüzden bellekten veri tek tek değil, "Blok" halinde toptan getirilir.</div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card">
+                <h2>3. Cache Writing Policies</h2>
+                <ul>
+                    <li>
+                        <strong>Write-Through:</strong> Written to cache and main memory simultaneously. Ensures strict consistency but slower performance.
+                        <div class="tr-note">🇹🇷 <strong>Anında Yazma:</strong> Veri aynı anda hem Cache'e hem Ana Belleğe yazılır. Veriler her an birbiriyle tutarlıdır ama ana belleği beklemek sistemi yavaşlatır.</div>
+                    </li>
+                    <li>
+                        <strong>Write-Back:</strong> Written only to cache initially (marked with a <strong>dirty bit</strong>). Written to main memory only upon eviction. Faster execution.
+                        <div class="tr-note">🇹🇷 <strong>Gecikmeli Yazma:</strong> Veri sadece Cache'e yazılır ve "kirli" işaretlenir. Ancak o veri Cache'ten silineceği (eviction) zaman toptan ana belleğe aktarılır. Çok daha hızlıdır.</div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="card">
+                <h2>4. The Three I/O Methods</h2>
+                <ul>
+                    <li>
+                        <strong>Programmed I/O:</strong> CPU repeatedly checks status (<strong>polling</strong>). Wastes CPU cycles.
+                        <div class="tr-note">🇹🇷 <strong>Programlı I/O:</strong> İşlemci sürekli "işin bitti mi?" diye donanımı kontrol eder (Polling). İşlemcinin vaktini çok boşa harcar.</div>
+                    </li>
+                    <li>
+                        <strong>Interrupt-Driven I/O:</strong> CPU continues executing other tasks. Device sends an <strong>interrupt</strong> when ready.
+                        <div class="tr-note">🇹🇷 <strong>Kesme Tabanlı I/O:</strong> İşlemci komutu verir ve kendi işine döner. Donanım hazır olduğunda işlemciye bir sinyal (Interrupt) göndererek haber verir.</div>
+                    </li>
+                    <li>
+                        <strong>DMA (Direct Memory Access):</strong> DMA controller handles transfer directly between I/O and Memory, <strong>bypassing CPU</strong>.
+                        <div class="tr-note">🇹🇷 <strong>Doğrudan Bellek Erişimi:</strong> Büyük veri transferlerinde (örn: SSD, Ağ kartı) işlemciyi hiç yormadan, transfer işini doğrudan bellek ile donanım arasında yapan özel kontrolcüdür.</div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="card">
+                <h2>5. Interrupt Priority &amp; Nesting</h2>
+                <ul>
+                    <li>
+                        <strong>Priority:</strong> Assigning importance levels. CPU services the one with the highest priority first.
+                        <div class="tr-note">🇹🇷 <strong>Öncelik:</strong> Aynı anda birden fazla kesme (interrupt) gelirse, işlemcinin daha hayati olanı (yüksek öncelikliyi) seçip önce onu işlemesidir.</div>
+                    </li>
+                    <li>
+                        <strong>Nesting:</strong> A higher-priority interrupt is allowed to <strong>preempt</strong> execution of a lower-priority routine.
+                        <div class="tr-note">🇹🇷 <strong>İç İçe Geçme:</strong> İşlemci düşük öncelikli bir işi yaparken araya acil bir iş girerse, mevcut işi duraklatıp acil olanı halletmesi ve sonra geri dönmesidir.</div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="card">
+                <h2>6. Thrashing &amp; Cache Mapping</h2>
+                <ul>
+                    <li>
+                        <strong>Thrashing:</strong> Performance collapse where the CPU spends more time swapping blocks (due to <strong>conflict misses</strong>) than executing instructions.
+                        <div class="tr-note">🇹🇷 <strong>Thrashing (Patinaj/Tıkanma):</strong> Direct-Mapped cache'lerde farklı verilerin aynı yere gitmeye çalışması yüzünden birbirlerini sürekli silmesi ve işlemcinin sadece veri yüklemekle vakit kaybetmesidir.</div>
+                    </li>
+                    <li>
+                        <strong>Set-Associative Cache:</strong> Groups multiple lines into a <strong>"Set"</strong>. Allows multiple blocks mapping to the same index to co-exist, reducing conflict misses.
+                        <div class="tr-note">🇹🇷 <strong>Set-Associative (Küme İlişkili) Çözümü:</strong> Adresleri tek kişilik odalar yerine çok kişilik "Kümeler" haline getirerek, aynı adrese denk gelen farklı verilerin birbirini silmeden yan yana yaşamasını sağlar. Thrashing'i çözer.</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <footer>
+            <p>Created for Computer Architecture Exam Prep | 🇹🇷 TR Explanations Included</p>
+        </footer>
+    </div>
+
+</body>
+</html>
