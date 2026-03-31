@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Structure Vize Konuları</title>
+
+    <style>
+        /* --- Geri Dön Butonu --- */
+        .nav-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: left;
+            padding: 20px 20px 0 20px;
+        }
+
+        .geri-butonu {
+            display: inline-block;
+            margin-bottom: 15px;
+            padding: 8px 15px;
+            background-color: #6a0dad;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .geri-butonu:hover {
+            background-color: #510a8c;
+        }
+
+        /* --- Dark Mode Gövde ve Konteyner --- */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #1e1e1e;
+            color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            padding-top: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #2a2a2a;
+            border: 1px solid #444;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: none;
+        }
+
+        /* --- Dark Mode Başlıklar --- */
+        h1,
+        h2,
+        h3,
+        h4 {
+            color: #343a40;
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+            border-bottom: 2px solid #444;
+            padding-bottom: 5px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            border-bottom: 3px solid #3498db;
+        }
+
+        h2 {
+            color: #20e1ff;
+            /* Mavi  */
+        }
+
+        h3 {
+            color: #00ce0a;
+            /* Yeşil */
+        }
+
+        h4 {
+            color: #fd7e14;
+            /* Turuncu  */
+            border-bottom: none;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        /* --- Dark Mode Kod, Tablo ve Özel Kutular --- */
+        code {
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+            background-color: #3c3c3c;
+            color: #f0f0f0;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        table {
+            /* Stil mevcut ama bu sayfada kullanılmıyor */
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: none;
+        }
+
+        th,
+        td {
+            border: 1px solid #555;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #3c3c3c;
+            font-weight: 600;
+        }
+
+        tbody tr:nth-child(odd) {
+            background-color: #2f2f2f;
+        }
+
+        .formula {
+            /* Stil mevcut ama bu sayfada kullanılmıyor */
+            font-family: "Times New Roman", Times, serif;
+            font-size: 1.1em;
+            color: #f0f0f0;
+            background: #252525;
+            padding: 10px;
+            border: 1px solid #444;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+
+        .example-calc {
+            /* Stil mevcut ama bu sayfada kullanılmıyor */
+            background-color: #4a411c;
+            border-left: 5px solid #ffc107;
+            padding: 10px 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            color: #fff;
+        }
+
+        hr {
+            /* Yatay ayraç çizgisi */
+            border: 0;
+            height: 1px;
+            background: #444;
+            margin: 40px 0;
+        }
+
+        /* .konu sınıfını sildik, artık gerek yok */
+    </style>
+</head>
+
+<body>
+    <div class="nav-container">
+        <a href="ds_vize.html" class="geri-butonu">📝 Vize Menüsüne Geri Dön</a>
+        <a href="../index.html" class="geri-butonu">🏠 Ana Sayfaya Geri Dön</a>
+    </div>
+
+    <div class="container">
+        <h1>Sınav Özeti (HTML Versiyonu)</h1>
+
+        <hr>
+
+        <h2>1. Dizi Temsili (Array Representation)</h2>
+
+        <p>Profesörünüzün belirttiği bu konu, dizilerin hem pratikte bir programlama dilinde (C++) nasıl kodlandığını
+            hem de bellekte teorik olarak nasıl temsil edildiğini kapsar.</p>
+
+        <h3>Pratik Uygulama (C++ Örneği)</h3>
+        <p><code>Stack 4 Nov 2024.pdf</code> dosyasındaki kod örnekleri, bir veri yapısının <strong>dizi (array)
+                kullanılarak nasıl temsil edileceğine</strong> dair somut bir örnektir. (Not: Kodun amacı yığın (stack)
+            olsa da, profesörünüzün notu gereği sadece dizinin <em>kullanım</em> kısmına odaklanıyoruz.)</p>
+        <ul>
+            <li><strong>Sınıf Yapısı:</strong> Dizi temsilini yönetmek için bir C++ sınıfı kullanılır. Bu sınıf genelde
+                şu özel (private) değişkenleri içerir:
+                <ul>
+                    <li><code>MAX_SIZE</code>: Dizinin maksimum kapasitesini tutan bir tamsayı.</li>
+                    <li><code>top</code>: Dizideki son elemanın indeksini belirten bir tamsayı.</li>
+                    <li><code>*arr</code>: Elemanları tutacak olan dinamik dizi için bir işaretçi (pointer).</li>
+                </ul>
+            </li>
+            <li><strong>Bellek Yönetimi:</strong>
+                <ul>
+                    <li><strong>Kurucu Metot (Constructor):</strong> <code>Stack(int size)</code> gibi bir fonksiyon,
+                        <code>arr = new int[MAX_SIZE];</code> komutuyla dizi için bellekte dinamik olarak yer ayırır.
+                        Başlangıçta <code>top = -1;</code> olarak ayarlanır, bu da dizinin boş olduğunu gösterir.
+                    </li>
+                    <li><strong>Yıkıcı Metot (Destructor):</strong> <code>~Stack()</code> fonksiyonu,
+                        <code>delete [] arr;</code> komutuyla program sonlandığında ayrılan belleği sisteme geri verir.
+                        Bu, bellek sızıntılarını (memory leaks) önler.
+                    </li>
+                </ul>
+            </li>
+            <li><strong>Yardımcı Fonksiyonlar:</strong>
+                <ul>
+                    <li><strong><code>bool Stack::isEmpty()</code>:</strong> Dizinin boş olup olmadığını
+                        <code>top == -1;</code> kontrolü ile anlar.
+                    </li>
+                    <li><strong><code>bool Stack::isFull()</code>:</strong> Dizinin dolu olup olmadığını
+                        <code>top == MAX_SIZE - 1;</code> kontrolü ile anlar.
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>Bellekte Adres Hesaplaması (Teori)</h3>
+        <p><code>dersprogramı.pdf</code> dosyası, bir dizinin elemanlarına bellekte nasıl erişildiğini açıklar.</p>
+
+        <h4>Tek Boyutlu Diziler (1D)</h4>
+        <p>Bellekteki bir elemanın adresini bulmak için temel bileşenler şunlardır:</p>
+        <ul>
+            <li><strong>&alpha; (Alfa) veya B (Base Address):</strong> Dizinin ilk elemanının bellek adresi (Başlangıç
+                Adresi).</li>
+            <li><strong>E veya W (Width):</strong> Dizideki her bir elemanın bellekte kapladığı alan (örn: bir
+                <code>int</code> için 4 byte).
+            </li>
+            <li><strong>LB (Lower Bound):</strong> Dizinin başlangıç indeksi (belirtilmemişse genellikle 0 kabul
+                edilir).</li>
+            <li><strong>i:</strong> Adresi bulunmak istenen elemanın indeksi.</li>
+        </ul>
+
+        <p><strong>Formül:</strong></p>
+        <pre><code>Address of A[i] = &alpha; + E * (i - LB)</code></pre>
+
+        <p><strong>Örnek:</strong></p>
+        <p><code>B[1300...1900]</code> dizisinin başlangıç adresi (&alpha;) 1020 ve eleman boyutu (E) 2 byte ise,
+            <code>B[1700]</code> elemanının adresi:
+        </p>
+        <pre><code>Adres = 1020 + 2 * (1700 - 1300)
+Adres = 1020 + 2 * 400 = 1020 + 800 = 1820</code></pre>
+
+        <h4>İki Boyutlu Diziler (2D)</h4>
+        <p>2 boyutlu diziler, bellekte "doğrusallaştırılarak" (linearized) saklanır. Bu iki yöntemle yapılır:</p>
+        <ol>
+            <li><strong>Row Major Order (Satır-Öncelikli):</strong> Belleğe önce 0. satırın tüm elemanları, sonra 1.
+                satırın tüm elemanları yerleştirilir.</li>
+            <li><strong>Column Major Order (Sütun-Öncelikli):</strong> Belleğe önce 0. sütunun tüm elemanları, sonra 1.
+                sütunun tüm elemanları yerleştirilir.</li>
+        </ol>
+        <p><code>A[LB1..UB1, LB2..UB2]</code> şeklinde tanımlı bir dizi için formüller:</p>
+        <ul>
+            <li><strong>Row Major Formülü:</strong>
+                <pre><code>Address of A[i][j] = &alpha; + E * (UB2 - LB2 + 1) * (i - LB1) + E * (j - LB2)</code></pre>
+            </li>
+            <li><strong>Column Major Formülü:</strong>
+                <pre><code>Address of A[i][j] = &alpha; + E * (UB1 - LB1 + 1) * (j - LB2) + E * (i - LB1)</code></pre>
+            </li>
+        </ul>
+
+        <h4>Üç Boyutlu Diziler (3D)</h4>
+        <p>3D diziler, 2D dizilerin bir koleksiyonu olarak düşünülebilir. <code>dersprogramı.pdf</code> dosyası,
+            <code>A[LB1..UB1, LB2..UB2, LB3..UB3]</code> için bir Row Major formülü sunar (Not: Slayttaki formülün sol
+            tarafı <code>A[i][j]</code> olarak yazılmış olsa da, sağ tarafta <code>i</code>, <code>j</code> ve
+            <code>K</code> olmak üzere üç indeks kullanıldığı için <code>A[i][j][K]</code> adresini hesapladığı
+            varsayılmıştır):
+        </p>
+        <ul>
+            <li><strong>Row Major Formülü (3D):</strong>
+                <pre><code>Address = &alpha; + E * (UB2 - LB2 + 1) * (UB1 - LB1 + 1) * (K - LB3) + E * (UB2 - LB2 + 1) * (i - LB1) + E * (j - LB2)</code></pre>
+            </li>
+        </ul>
+
+        <hr>
+
+        <h2>2. Algoritma Karmaşıklığı (Algorithm Complexity)</h2>
+        <p>Bu konu, bir algoritmanın ne kadar "iyi" olduğunu analiz etmekle ilgilidir.
+            <code>Algorithm Complexity Updated.pdf</code> dosyası bu konunun temelini oluşturur ve
+            <code>dersprogramı.pdf</code> dosyası da bu konunun dersin hedeflerinden biri olduğunu teyit eder.
+        </p>
+
+        <h3>Temel Kavramlar</h3>
+        <ul>
+            <li><strong>Neden Önemli?</strong> Kaynaklar (CPU zamanı, bellek) kısıtlıdır. Verimlilik (Efficiency) ve
+                Ölçeklenebilirlik (Scalability), bir algoritmanın girdi boyutu büyüdükçe nasıl performans göstereceğini
+                belirler.</li>
+            <li><strong>Analiz Türleri:</strong>
+                <ul>
+                    <li><strong>Zaman Karmaşıklığı (Time Complexity):</strong> Algoritmanın ne kadar CPU zamanı aldığını
+                        ölçer ("Ne kadar hızlı çalışır?").</li>
+                    <li><strong>Alan Karmaşıklığı (Space Complexity):</strong> Algoritmanın ne kadar bellek (RAM)
+                        kullandığını ölçer ("Ne kadar hafıza tüketir?").</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>Karmaşıklık Tahmini (Genel Kurallar)</h3>
+        <ul>
+            <li><strong>Döngüler (Loops):</strong> Döngünün çalışma zamanı, (döngü içindeki ifadelerin zamanı) &times;
+                (tekrar sayısı) kadardır.</li>
+            <li><strong>İç İçe Döngüler (Nested Loops):</strong> En içteki ifadenin zamanı &times; (tüm döngülerin
+                boyutlarının çarpımı) kadardır.</li>
+            <li><strong>Ardışık İfadeler (Consecutive):</strong> Çalışma zamanları toplanır.</li>
+            <li><strong>If/Else:</strong> (Testin zamanı) + (iki koldan hangisi daha uzunsa onun zamanı) kadardır.</li>
+        </ul>
+
+        <h3>Big O Notasyonu ve Tanımları</h3>
+        <p>Bir algoritmanın çalışma zamanının, girdi boyutu (n) büyüdükçe nasıl bir <strong>büyüme hızına (growth
+                rate)</strong> sahip olduğunu ifade etmek için kullanılan matematiksel bir gösterimdir.</p>
+        <ul>
+            <li><strong>O(g(n)) (Big O - Üst Sınır):</strong><br>
+                <strong>Tanım:</strong> Bir <code>f(n)</code> fonksiyonu (algoritmanın gerçek zamanı), yeterince büyük
+                tüm <code>n</code> değerleri (<code>n &ge; n<sub>0</sub></code>) için, pozitif <code>k</code> sabitiyle
+                çarpılmış <code>g(n)</code> fonksiyonundan daha küçük veya eşitse
+                (<code>f(n) &le; k &middot; g(n)</code>), bu algoritma O(g(n)) düzenindedir. Bu genellikle "en kötü
+                durum" (worst-case) senaryosunu belirtir.
+            </li>
+            <li><strong>&Omega;(g(n)) (Omega - Alt Sınır):</strong><br>
+                <strong>Tanım:</strong> Algoritmanın <code>n &ge; n<sub>0</sub></code> için
+                <code>k &middot; g(n)</code>'den daha yavaş çalışmayacağını belirtir
+                (<code>f(n) &ge; k &middot; g(n)</code>).
+            </li>
+            <li><strong>&Theta;(g(n)) (Theta - Sıkı Sınır):</strong><br>
+                <strong>Tanım:</strong> Algoritmanın büyüme hızı <code>n &ge; n<sub>0</sub></code> için hem alttan
+                <code>k<sub>1</sub> &middot; g(n)</code> hem de üstten <code>k<sub>2</sub> &middot; g(n)</code> ile
+                sınırlandırılmışsa kullanılır
+                (<code>k<sub>1</sub> &middot; g(n) &le; f(n) &le; k<sub>2</sub> &middot; g(n)</code>).
+            </li>
+        </ul>
+
+        <h3>Basitleştirme Kuralları</h3>
+        <p>Analizi kolaylaştırmak için Big O gösteriminde şu kurallar uygulanır:</p>
+        <ol>
+            <li><strong>Düşük Dereceli Terimler Yok Sayılır:</strong> Büyüme hızını en çok etkileyen, en yüksek dereceli
+                terimdir.<br>
+                Örnek: <code>O(n<sup>3</sup> + 4n<sup>2</sup> + 3n)</code> ifadesi <code>O(n<sup>3</sup>)</code> olarak
+                basitleştirilir.</li>
+            <li><strong>Çarpımsal Sabitler Yok Sayılır:</strong> <code>n</code> değeri sonsuza giderken sabit katsayılar
+                önemini yitirir.<br>
+                Örnek: <code>O(5n<sup>3</sup>)</code> ifadesi <code>O(n<sup>3</sup>)</code> olarak basitleştirilir.</li>
+        </ol>
+
+        <h3>Yaygın Büyüme Hızları (Hızlıdan Yavaşa)</h3>
+        <ul>
+            <li><strong>O(1)</strong> (Constant - Sabit): Girdi boyutundan bağımsızdır.</li>
+            <li><strong>O(log n)</strong> (Logarithmic - Logaritmik): Girdi boyutu arttıkça çok yavaş artar.</li>
+            <li><strong>O(n)</strong> (Linear - Doğrusal): Girdi boyutuyla doğru orantılı artar.</li>
+            <li><strong>O(n log n)</strong> (Log-linear): Verimli sıralama algoritmalarının hızı.</li>
+            <li><strong>O(n<sup>2</sup>)</strong> (Quadratic - Karesel): Genellikle iç içe iki döngü (örn: basit
+                sıralamalar).</li>
+            <li><strong>O(n<sup>3</sup>)</strong> (Cubic - Kübik): Genellikle iç içe üç döngü (örn: matris çarpımı).
+            </li>
+            <li><strong>O(2<sup>n</sup>)</strong> (Exponential - Üstel): Girdi boyutu arttıkça çok hızlı büyür ve pratik
+                kullanım için elverişsiz hale gelir.</li>
+        </ul>
+
+        <p>Sınavınız için bu iki ana konuya odaklanmanız gerekiyor. Başarılar dilerim!</p>
+    </div>
+</body>
+
+</html>
