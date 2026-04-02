@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olasılık ve İstatistik - Vize Çözüm Kitapçığı</title>
+
+    <!-- KaTeX CSS & JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false}
+            ]
+        });"></script>
+
+    <style>
+        /* ===== RESET & VARIABLES ===== */
+        :root {
+            --bg-body: #121212;
+            --bg-container: #1e1e1e;
+            --bg-card: #2a2a2a;
+            --bg-formula: #1a1a2e;
+            --gold: #d4af37;
+            --gold-dim: #b8962e;
+            --orange: #ff9900;
+            --red: #ff4444;
+            --green: #88b04b;
+            --blue: #5dade2;
+            --purple: #6a0dad;
+            --purple-dark: #510a8c;
+            --text-main: #e0e0e0;
+            --text-muted: #aaaaaa;
+            --border: #444;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.7;
+            padding: 20px;
+            padding-top: 0;
+        }
+
+        /* ===== NAV ===== */
+        .nav-container {
+            max-width: 960px;
+            margin: 0 auto;
+            text-align: left;
+            padding: 20px 20px 0 20px;
+        }
+        .geri-butonu {
+            display: inline-block;
+            margin-bottom: 15px;
+            padding: 8px 15px;
+            background-color: var(--purple);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .geri-butonu:hover {
+            background-color: var(--purple-dark);
+            transform: translateY(-1px);
+        }
+
+        /* ===== CONTAINER ===== */
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            background-color: var(--bg-container);
+            padding: 35px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.6);
+            border-top: 5px solid var(--gold);
+        }
+
+        /* ===== HEADER ===== */
+        h1 {
+            text-align: center;
+            color: var(--gold);
+            font-size: 2.2em;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #333;
+            margin-bottom: 10px;
+        }
+        .note {
+            text-align: center;
+            font-style: italic;
+            color: var(--text-muted);
+            margin-bottom: 35px;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        /* ===== BÖLÜM BAŞLIKLARI ===== */
+        .bolum-baslik {
+            background: linear-gradient(135deg, #2c1654 0%, #1a1a2e 100%);
+            color: var(--gold);
+            padding: 14px 20px;
+            margin-top: 45px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            font-size: 1.35em;
+            font-weight: bold;
+            border-left: 5px solid var(--gold);
+            letter-spacing: 0.3px;
+        }
+
+        /* ===== SORU BAŞLIKLARI ===== */
+        .soru-baslik {
+            color: var(--orange);
+            font-size: 1.15em;
+            font-weight: bold;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-bottom: 6px;
+            border-bottom: 1px dashed #555;
+        }
+
+        /* ===== SORU KARTLARI ===== */
+        .soru-kart {
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            padding: 20px 22px;
+            margin-bottom: 18px;
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--purple);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .soru-kart:hover {
+            transform: translateX(4px);
+            box-shadow: 0 4px 15px rgba(106, 13, 173, 0.15);
+        }
+
+        /* ===== SORU METNİ ===== */
+        .soru-metni {
+            display: block;
+            background-color: #1f2937;
+            padding: 12px 16px;
+            margin-bottom: 12px;
+            border-radius: 6px;
+            border-left: 3px solid var(--blue);
+            color: #cbd5e1;
+            font-size: 0.97em;
+            line-height: 1.6;
+        }
+        .soru-metni::before {
+            content: '📋 Soru: ';
+            font-weight: bold;
+            color: var(--blue);
+        }
+
+        /* ===== TAKTİK ===== */
+        .taktik {
+            font-weight: bold;
+            color: var(--blue);
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.02em;
+        }
+        .taktik::before {
+            content: '💡 ';
+        }
+
+        /* ===== ÇÖZÜM SATIRLARI ===== */
+        .cozum {
+            display: block;
+            background-color: var(--bg-formula);
+            padding: 10px 15px;
+            margin-top: 8px;
+            border-radius: 6px;
+            border-left: 3px solid var(--gold-dim);
+            font-size: 1.02em;
+            color: #fff;
+            line-height: 2;
+        }
+        .cozum + .cozum {
+            margin-top: 6px;
+        }
+
+        /* ===== SONUÇ VURGULAMA ===== */
+        .sonuc {
+            display: block;
+            background: linear-gradient(135deg, #1b3a1d 0%, #1a2e1a 100%);
+            padding: 10px 15px;
+            margin-top: 8px;
+            border-radius: 6px;
+            border-left: 3px solid var(--green);
+            font-size: 1.02em;
+            color: #a5d6a7;
+            font-weight: bold;
+            line-height: 2;
+        }
+        .sonuc::before {
+            content: '✅ ';
+        }
+
+        /* ===== KaTeX ÖZEL STİL ===== */
+        .katex { font-size: 1.1em !important; }
+        .katex-display { margin: 12px 0 !important; }
+        .katex-display > .katex { text-align: left !important; }
+
+        /* ===== FORMULA BOX ===== */
+        .formula-box {
+            background-color: var(--bg-formula);
+            border: 1px solid #333;
+            border-left: 4px solid var(--gold);
+            padding: 15px 20px;
+            margin: 12px 0;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            text-align: center;
+            margin-top: 45px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #888;
+            font-size: 0.9em;
+        }
+
+        /* ===== YAZDIRMA ===== */
+        @media print {
+            body { background-color: #fff; color: #000; padding: 0; }
+            .container { box-shadow: none; padding: 10px; border: none; background: #fff; }
+            .bolum-baslik { background: #f0f0f0; color: #000; border-left-color: #000; }
+            .soru-kart { border: 1px solid #ccc; border-left: 4px solid #333; page-break-inside: avoid; }
+            .cozum { background: #f8f8f8; border-left-color: #999; color: #000; }
+            .sonuc { background: #e8f5e9; color: #2e7d32; }
+            .soru-metni { background: #f1f5f9; color: #333; }
+            .nav-container { display: none; }
+        }
+
+        /* ===== MOBİL UYUM ===== */
+        @media (max-width: 600px) {
+            .container { padding: 20px 15px; }
+            h1 { font-size: 1.6em; }
+            .bolum-baslik { font-size: 1.1em; padding: 10px 14px; }
+            .soru-kart { padding: 14px 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="nav-container">
+    <a href="probability.html" class="geri-butonu">⬅ Olasılık Ana Sayfaya Dön</a>
+</div>
+
+<div class="container">
+
+    <h1>📖 Vize Çözüm Kitapçığı</h1>
+    <p class="note">Wraeclast Eğitim Bakanlığı Onaylıdır. Sadece vize müfredatında yer alan "Ayrık (Discrete)" konuları içerir. İntegralli (Continuous) sorular elenmiştir.</p>
+
+    <!-- ==================== BÖLÜM 1 ==================== -->
+    <div class="bolum-baslik">📘 Bölüm 1: Temeller, Sayma ve Kümeler</div>
+
+    <!-- Soru 1 -->
+    <div class="soru-baslik">Soru 1: Örnek Uzay (Sample Space) Belirleme</div>
+    <div class="soru-kart">
+        <span class="soru-metni">Aşağıdaki deneylerin örnek uzaylarını listeleyin: a) 1-50 arasında 8'e tam bölünenler. b) $x^2 + 4x - 5 = 0$ kökleri. c) Yazı (T) veya arka arkaya 3 Tura (HHH) gelene kadar para atma deneyi.</span>
+        <span class="taktik">İstenen şartı sağlayan her durumu süslü parantez içine al.</span>
+        <span class="cozum"><strong>a)</strong> $S = \{8,\; 16,\; 24,\; 32,\; 40,\; 48\}$</span>
+        <span class="cozum"><strong>b)</strong> $(x+5)(x-1) = 0$ olduğundan $S = \{-5,\; 1\}$</span>
+        <span class="cozum"><strong>c)</strong> İlkinde veya ikincisinde Yazı gelirse oyun biter: $S = \{T,\; HT,\; HHT,\; HHH\}$</span>
+    </div>
+
+    <!-- Soru 2 & 3 -->
+    <div class="soru-baslik">Soru 2 & 3: İki Zar Atma Olayları ve Kesişimler</div>
+    <div class="soru-kart">
+        <span class="soru-metni">Biri yeşil, biri kırmızı iki zar atılıyor. Toplamın 8'den büyük olma olayı (A), zarlardan birinin 2 gelme olayı (B), yeşil zarın 4'ten büyük gelme olayı (C). $A \cap C$ ve $A \cap B$ kümelerini bulun.</span>
+        <span class="cozum"><strong>$A \cap C$:</strong> Toplamı 8'den büyük VE yeşili 5 veya 6 olanlar: $\{(5,4),\; (5,5),\; (5,6),\; (6,3),\; (6,4),\; (6,5),\; (6,6)\}$</span>
+        <span class="sonuc"><strong>$A \cap B$:</strong> Toplamı 8'den büyük olup içinde 2 olan HİÇBİR zar yoktur → $\emptyset$ (Boş Küme)</span>
+    </div>
+
+    <!-- Soru 4 -->
+    <div class="soru-baslik">Soru 4: Çarpma Kuralı</div>
+    <div class="soru-kart">
+        <span class="soru-metni">8 farklı kan grubu ve 3 farklı tansiyon seviyesi vardır. Bir hasta kaç farklı şekilde sınıflandırılabilir?</span>
+        <span class="sonuc">$8 \times 3 = 24$ farklı sınıflandırma.</span>
+    </div>
+
+    <!-- Soru 5 -->
+    <div class="soru-baslik">Soru 5: Şifre / Sayı Oluşturma</div>
+    <div class="soru-kart">
+        <span class="soru-metni">$\{0, 1, 2, 3, 4, 5, 6\}$ rakamları sadece birer kez kullanılarak: a) 3 haneli kaç sayı yazılır? b) Kaç tanesi tek sayıdır? c) Kaç tanesi 330'dan büyüktür?</span>
+        <span class="cozum"><strong>a)</strong> Yüzlere 0 gelemez (6 seçenek). $6 \times 6 \times 5 = 180$</span>
+        <span class="cozum"><strong>b)</strong> Birler basamağına 1, 3, 5 (3 seçenek). Yüzlere 0 gelemez (5 seçenek). $5 \times 5 \times 3 = 75$</span>
+        <span class="cozum"><strong>c)</strong> Yüzleri 4, 5, 6 olanlar: $3 \times 6 \times 5 = 90$. Yüzleri 3, onları 4, 5, 6 olanlar: $1 \times 3 \times 5 = 15$</span>
+        <span class="sonuc">$90 + 15 = 105$</span>
+    </div>
+
+    <!-- Soru 6 & 7 -->
+    <div class="soru-baslik">Soru 6 & 7: Tekrarlı Permütasyon</div>
+    <div class="soru-kart">
+        <span class="soru-metni">"INFINITY" kelimesindeki harflerle kaç farklı kelime yazılır? / 3 Meşe, 4 Çam, 2 Akçaağaç ağacı yan yana kaç farklı şekilde dizilir?</span>
+        <span class="taktik">(Toplam Eşya Faktöriyeli) / (Aynı olanların faktöriyelleri çarpımı)</span>
+        <div class="formula-box">
+            $$P = \frac{n!}{n_1! \cdot n_2! \cdot \ldots \cdot n_k!}$$
+        </div>
+        <span class="cozum"><strong>"INFINITY":</strong> 8 harf (3 adet I, 2 adet N) → $\dfrac{8!}{3! \cdot 2!} = \dfrac{40320}{12} = 3360$</span>
+        <span class="cozum"><strong>Ağaçlar:</strong> 9 ağaç (3 Meşe, 4 Çam, 2 Akçaağaç) → $\dfrac{9!}{3! \cdot 4! \cdot 2!} = 1260$</span>
+    </div>
+
+    <!-- Soru 8 -->
+    <div class="soru-baslik">Soru 8: En Az Biri Hilesi (At Least One)</div>
+    <div class="soru-kart">
+        <span class="soru-metni">Bir para 3 kere atılıyor. En az 1 Tura (Head) gelme olasılığı nedir?</span>
+        <div class="formula-box">
+            $$P(\text{En az 1 Tura}) = 1 - P(\text{Hiç Tura Gelmemesi})$$
+        </div>
+        <span class="cozum">$1 - P(TTT) = 1 - \dfrac{1}{8}$</span>
+        <span class="sonuc">$= \dfrac{7}{8}$</span>
+    </div>
+
+    <!-- Soru 9 -->
+    <div class="soru-baslik">Soru 9: Toplama Kuralı (Additive Rules)</div>
+    <div class="soru-kart">
+        <span class="soru-metni">Şirketin Şangay'a açılma olasılığı 0.6, Pekin'e açılma olasılığı 0.4. İkisinden birine veya ikisine birden açılma olasılığı 0.9. İki şehre birden açılma olasılığı? Hiçbirine açılmama olasılığı?</span>
+        <div class="formula-box">
+            $$P(A \cup B) = P(A) + P(B) - P(A \cap B)$$
+        </div>
+        <span class="cozum">$0.9 = 0.6 + 0.4 - P(A \cap B)$</span>
+        <span class="sonuc">$P(A \cap B) = 0.1$ (İkisine birden)</span>
+        <span class="sonuc">$P(\text{Hiçbiri}) = 1 - 0.9 = 0.1$</span>
+    </div>
+
+    <!-- Soru 10 -->
+    <div class="soru-baslik">Soru 10: Bloklama Taktiği (Sıraya Dizme)</div>
+    <div class="soru-kart">
+        <span class="soru-metni">6 kişi sıraya girecektir. a) Kaç farklı şekilde dizilirler? b) 3 kişi hep yan yana olmak isterse? c) 2 kişi yan yana durmayı reddederse?</span>
+        <span class="cozum"><strong>a)</strong> Şartsız: $6! = 720$</span>
+        <span class="cozum"><strong>b)</strong> 3 kişi yan yana: O 3'ünü 1 blok say (toplam 4 blok). $4! \times 3! = 24 \times 6 = 144$</span>
+        <span class="cozum"><strong>c)</strong> 2 kişi yan yana OLMAYACAK: Tüm durumlar − Yan yana olma</span>
+        <span class="sonuc">$720 - (5! \times 2!) = 720 - 240 = 480$</span>
+    </div>
+
+
+    <!-- ==================== BÖLÜM 2 ==================== -->
+    <div class="bolum-baslik">📙 Bölüm 2: Koşullu Olasılık İleri Kuralları</div>
+
+    <!-- Soru 1 -->
+    <div class="soru-baslik">Soru 1: Rakam Seçimi (Veya Kuralı)</div>
+    <div class="soru-kart">
+        <span class="soru-metni">0'dan 9'a kadar olan rakamlardan $k$ defa seçim yapılıyor. Seçilenler arasında "En az bir tane 0 veya 1 rakamının bulunmama" olasılığı nedir?</span>
+        <span class="cozum">$P(\text{0 yok}) + P(\text{1 yok}) - P(\text{İkisi de yok})$</span>
+        <span class="sonuc">$\left(\dfrac{9}{10}\right)^k + \left(\dfrac{9}{10}\right)^k - \left(\dfrac{8}{10}\right)^k$</span>
+    </div>
+
+    <!-- Soru 4 -->
+    <div class="soru-baslik">Soru 4: Without Replacement (Geri Koymadan Çekim)</div>
+    <div class="soru-kart">
+        <span class="soru-metni">Torbada 3 Kırmızı, 4 Siyah top var. Geri koymadan sırayla 3 top çekiliyor. 3. topun Kırmızı olma ihtimali nedir?</span>
+        <span class="cozum">Ağaç diyagramında tüm senaryolar (K-K-K, K-S-K, S-K-K, S-S-K) hesaplanıp toplandığında, olasılık her zaman baştaki kırmızı çıkma olasılığına denk gelir.</span>
+        <span class="sonuc">$P = \dfrac{45}{105} = \dfrac{3}{7}$</span>
+    </div>
+
+    <!-- Soru 6 -->
+    <div class="soru-baslik">Soru 6: Bayes Teoremi (Hileli Para)</div>
+    <div class="soru-kart">
+        <span class="soru-metni">Torbada 3 para var: 2 normal, 1 hileli (iki tarafı da tura). Rastgele seçilen bir para 4 kez atılıyor ve 4'ü de Tura geliyor. Bu paranın hileli olma olasılığı?</span>
+        <div class="formula-box">
+            $$P(\text{Hileli} \mid \text{4T}) = \frac{P(\text{4T} \mid \text{Hileli}) \cdot P(\text{Hileli})}{P(\text{4T})}$$
+        </div>
+        <span class="cozum"><strong>Pay (Hileli yol):</strong> $\dfrac{1}{3} \times 1^4 = \dfrac{1}{3}$</span>
+        <span class="cozum"><strong>Payda (Tüm yollar):</strong> $\left[\dfrac{2}{3} \times \left(\dfrac{1}{2}\right)^4\right] + \left[\dfrac{1}{3} \times 1\right] = \dfrac{2}{48} + \dfrac{16}{48} = \dfrac{18}{48}$</span>
+        <span class="sonuc">$\dfrac{1/3}{18/48} = \dfrac{16}{18} = \dfrac{8}{9}$</span>
+    </div>
+
+
+    <!-- ==================== BÖLÜM 3 ==================== -->
+    <div class="bolum-baslik">📕 Bölüm 3: Bayes ve Kombinasyon Arenası</div>
+
+    <!-- Soru 1 -->
+    <div class="soru-baslik">Soru 1: Renkli Toplar ve Kombinasyon</div>
+    <div class="soru-kart">
+        <span class="soru-metni">Torbada 4 Kırmızı, 3 Mavi, 2 Yeşil top var. Geri koymadan 3 top çekiliyor. Tam olarak 2'sinin aynı renk, 1'inin farklı renk olma olasılığı?</span>
+        <span class="cozum"><strong>Payda:</strong> $\binom{9}{3} = 84$</span>
+        <span class="cozum"><strong>Pay:</strong> $(2K, 1B) = \binom{4}{2}\binom{5}{1} = 30$ &#8192; $(2M, 1B) = \binom{3}{2}\binom{6}{1} = 18$ &#8192; $(2Y, 1B) = \binom{2}{2}\binom{7}{1} = 7$</span>
+        <span class="sonuc">$P = \dfrac{30 + 18 + 7}{84} = \dfrac{55}{84}$</span>
+    </div>
+
+    <!-- Soru 2 -->
+    <div class="soru-baslik">Soru 2: Atıcılar ve Tümleyen Kuralı</div>
+    <div class="soru-kart">
+        <span class="soru-metni">Üç atıcının hedefi vurma olasılıkları sırasıyla 0.6, 0.5 ve 0.4'tür. En az birinin hedefi vurma olasılığı nedir?</span>
+        <div class="formula-box">
+            $$P(\text{En az 1 vuruş}) = 1 - P(\text{Üçü de ıskalıyor})$$
+        </div>
+        <span class="sonuc">$1 - (0.4 \times 0.5 \times 0.6) = 1 - 0.12 = 0.88$</span>
+    </div>
+
+    <!-- Soru 3 -->
+    <div class="soru-baslik">Soru 3: Given That (Evren Daraltma)</div>
+    <div class="soru-kart">
+        <span class="soru-metni">5 Kırmızı, 4 Mavi, 3 Sarı toptan geri koyulmadan 2 top çekiliyor. İlk topun Kırmızı olduğu bilindiğine göre, 2. topun Mavi olma olasılığı?</span>
+        <span class="cozum">İlk top çıktı, evren daraldı. Kalan toplam top: 11. Kalan Mavi: 4</span>
+        <span class="sonuc">$P = \dfrac{4}{11}$</span>
+    </div>
+
+    <!-- Soru 4 -->
+    <div class="soru-baslik">Soru 4: Bayes (Hastalık Testi)</div>
+    <div class="soru-kart">
+        <span class="soru-metni">Nüfusun %2'si hastadır. Test: hasta olanlara %95 doğru pozitif, sağlam olanlara %10 yanlış pozitif verir. Testi pozitif çıkan birinin gerçekten hasta olma olasılığı?</span>
+        <div class="formula-box">
+            $$P(H \mid +) = \frac{P(+ \mid H) \cdot P(H)}{P(+ \mid H) \cdot P(H) + P(+ \mid S) \cdot P(S)}$$
+        </div>
+        <span class="cozum"><strong>Pay:</strong> $0.02 \times 0.95 = 0.019$</span>
+        <span class="cozum"><strong>Payda:</strong> $(0.02 \times 0.95) + (0.98 \times 0.10) = 0.019 + 0.098 = 0.117$</span>
+        <span class="sonuc">$P = \dfrac{0.019}{0.117} \approx 0.162$</span>
+    </div>
+
+    <!-- Soru 5 -->
+    <div class="soru-baslik">Soru 5: 52'lik Deste (Kombinasyonlu Given That)</div>
+    <div class="soru-kart">
+        <span class="soru-metni">52 kartlık desteden 3 kart çekiliyor. İlk kartın Kupa olduğu bilindiğine göre, çekilen 3 karttan tam olarak 2'sinin Kupa olma olasılığı?</span>
+        <span class="cozum">Evren 51 karta düştü (12 Kupa kaldı). Geriye kalan 2 çekişin 1'i Kupa, 1'i başka kart olmalı.</span>
+        <span class="sonuc">$P = \dfrac{\binom{12}{1} \cdot \binom{39}{1}}{\binom{51}{2}} = \dfrac{468}{1275}$</span>
+    </div>
+
+    <!-- Soru 6 -->
+    <div class="soru-baslik">Soru 6: Bayes (Makineler)</div>
+    <div class="soru-kart">
+        <span class="soru-metni">A makinesi üretimin %40'ını (%2 hata ile), B makinesi %35'ini (%3 hata ile), C makinesi %25'ini (%5 hata ile) yapmaktadır. Bozuk bir ürünün C'den çıkmış olma olasılığı?</span>
+        <span class="cozum">$P(C \mid D) = \dfrac{P(D|C) \cdot P(C)}{P(D|A) \cdot P(A) + P(D|B) \cdot P(B) + P(D|C) \cdot P(C)}$</span>
+        <span class="cozum">$= \dfrac{0.25 \times 0.05}{(0.40 \times 0.02) + (0.35 \times 0.03) + (0.25 \times 0.05)} = \dfrac{0.0125}{0.031}$</span>
+        <span class="sonuc">$\approx 0.403$</span>
+    </div>
+
+    <!-- Soru 7 -->
+    <div class="soru-baslik">Soru 7: Komite Seçimi</div>
+    <div class="soru-kart">
+        <span class="soru-metni">4 Matematikçi, 3 Fizikçi, 3 Bilgisayarcı arasından 5 kişilik komite seçilecektir. Komitede en az 1 Matematikçi ve en az 1 Fizikçi bulunma olasılığı nedir?</span>
+        <span class="taktik">(Tüm Durumlar) − (Hiç Mat Olmayan + Hiç Fiz Olmayan Durumlar)</span>
+        <span class="cozum"><strong>Tüm Komiteler:</strong> $\binom{10}{5} = 252$</span>
+        <span class="cozum"><strong>Hiç Matematikçi yok:</strong> $\binom{6}{5} = 6$ &#8192;&#8192; <strong>Hiç Fizikçi yok:</strong> $\binom{7}{5} = 21$</span>
+        <span class="cozum"><strong>İstenmeyenler:</strong> $6 + 21 = 27$</span>
+        <span class="sonuc">$P = \dfrac{252 - 27}{252} = \dfrac{225}{252}$</span>
+    </div>
+
+    <!-- Soru 8 -->
+    <div class="soru-baslik">Soru 8: Bayes (Hastane Tuzağı)</div>
+    <div class="soru-kart">
+        <span class="soru-metni">Şehirde 3 hastane var, nüfus dağılımı farklı. Hastalık oranı %4. Bir kişi H2'de test yaptırmış, pozitif çıkmış (H2'nin doğruluğu %85, yanlış pozitifi %5). Bu kişinin gerçekten hasta olma olasılığı?</span>
+        <span class="taktik">Nüfus dağılımını yok say — kişi zaten H2'de! Sadece H2'nin oranlarıyla işlem yap.</span>
+        <span class="cozum">$P(H \mid +) = \dfrac{0.85 \times 0.04}{(0.85 \times 0.04) + (0.05 \times 0.96)} = \dfrac{0.034}{0.034 + 0.048}$</span>
+        <span class="sonuc">$\approx 0.415$</span>
+    </div>
+
+
+    <!-- ==================== BÖLÜM 4 ==================== -->
+    <div class="bolum-baslik">📗 Bölüm 4: Ayrık Olasılık Dağılımları (Discrete RV)</div>
+
+    <!-- Soru 1 -->
+    <div class="soru-baslik">Soru 1: Oyunlar ve Değişkenler</div>
+    <div class="soru-kart">
+        <span class="soru-metni">3 Tura (HHH) arka arkaya gelene kadar para atılıyor. Oyunun tam olarak 6. atışta bitmesini sağlayan örnek uzay nedir? Ayrık mıdır?</span>
+        <span class="cozum">Son 3 atış kesinlikle HHH olmalı. 3. atış oyunun erken bitmemesi için mecbur T olmalı. İlk ikisi serbest.</span>
+        <span class="cozum">$S = \{HHTHHH,\; THTHHH,\; HTTHHH,\; TTTHHH\}$</span>
+        <span class="sonuc">Olay sayılabildiği için Ayrık'tır (Discrete).</span>
+    </div>
+
+    <!-- Soru 2 -->
+    <div class="soru-baslik">Soru 2: Random Variable Oluşturma</div>
+    <div class="soru-kart">
+        <span class="soru-metni">Bir para 3 kez atılıyor. $W = (\text{Tura Sayısı}) - (\text{Yazı Sayısı})$ olarak tanımlanmıştır. $W$'nin alabileceği değerleri eşleştirin.</span>
+        <span class="cozum">$HHH \to W\!=\!3$ &#8192; $HHT \to W\!=\!1$ &#8192; $HTH \to W\!=\!1$ &#8192; $HTT \to W\!=\!-1$</span>
+        <span class="cozum">$THH \to W\!=\!1$ &#8192; $THT \to W\!=\!-1$ &#8192; $TTH \to W\!=\!-1$ &#8192; $TTT \to W\!=\!-3$</span>
+    </div>
+
+    <!-- Soru 3 -->
+    <div class="soru-baslik">Soru 3: Dağılımın Altın Kuralı ($c$ Sabitini Bulma)</div>
+    <div class="soru-kart">
+        <span class="soru-metni">Verilen fonksiyonların geçerli bir olasılık dağılımı olabilmesi için $c$ sabiti kaç olmalıdır?</span>
+        <span class="taktik">Tüm $x$ değerlerini fonksiyona koy, topla, 1'e eşitle.</span>
+        <div class="formula-box">
+            $$\sum_{\text{tüm } x} f(x) = 1$$
+        </div>
+        <span class="cozum"><strong>a)</strong> $f(x) = c(x^2 + 4)$ için $x = 0, 1, 2, 3$:</span>
+        <span class="cozum">$f(0)\!=\!4c,\; f(1)\!=\!5c,\; f(2)\!=\!8c,\; f(3)\!=\!13c$ → $4c + 5c + 8c + 13c = 30c = 1$</span>
+        <span class="sonuc">$c = \dfrac{1}{30}$</span>
+        <span class="cozum" style="margin-top: 14px;"><strong>b)</strong> $f(x) = c \cdot \binom{3}{x}$ için $x = 0, 1, 2$:</span>
+        <span class="cozum">$f(0)\!=\!1c,\; f(1)\!=\!3c,\; f(2)\!=\!3c$ → $1c + 3c + 3c = 7c = 1$</span>
+        <span class="sonuc">$c = \dfrac{1}{7}$</span>
+    </div>
+
+    <!-- Soru 5 -->
+    <div class="soru-baslik">Soru 5: Dağılım Tablosu</div>
+    <div class="soru-kart">
+        <span class="soru-metni">7 TV'den 2'si bozuktur. Rastgele 3 tane satın alınıyor. Alınan bozuk TV sayısının ($X$) olasılık dağılımını bulun.</span>
+        <span class="cozum"><strong>Payda:</strong> $\binom{7}{3} = 35$</span>
+        <span class="cozum">$P(X\!=\!0) = \dfrac{\binom{5}{3}}{35} = \dfrac{10}{35}$</span>
+        <span class="cozum">$P(X\!=\!1) = \dfrac{\binom{2}{1} \cdot \binom{5}{2}}{35} = \dfrac{20}{35}$</span>
+        <span class="cozum">$P(X\!=\!2) = \dfrac{\binom{2}{2} \cdot \binom{5}{1}}{35} = \dfrac{5}{35}$</span>
+    </div>
+
+    <!-- Soru 7 -->
+    <div class="soru-baslik">Soru 7: Kümülatif Dağılım $F(x)$</div>
+    <div class="soru-kart">
+        <span class="soru-metni">Tablodaki $f(x)$ olasılıklarına göre Kümülatif $F(x)$ dağılımını yazın.</span>
+        <span class="taktik">Değerleri kar topu gibi üst üste toplayarak 1'e kadar ulaş.</span>
+        <span class="cozum">$F(0.1) = 0.41$</span>
+        <span class="cozum">$F(0.3) = 0.41 + 0.37 = 0.78$</span>
+        <span class="cozum">$F(0.5) = 0.78 + 0.16 = 0.94$</span>
+        <span class="cozum">$F(0.7) = 0.94 + 0.05 = 0.99$</span>
+        <span class="sonuc">$F(0.9) = 0.99 + 0.01 = 1.0$ ✓</span>
+    </div>
+
+    <!-- Soru 11 -->
+    <div class="soru-baslik">Soru 11: With Replacement (Geri Koyarak Çekim)</div>
+    <div class="soru-kart">
+        <span class="soru-metni">Torbada 4 Siyah, 2 Yeşil top var. Geri koyarak 3 top çekiliyor. Yeşil ($G$) sayısı dağılımını bulun.</span>
+        <span class="taktik">Geri konduğu için evren daralmaz ve Kombinasyon KULLANILMAZ. Sıralama sayısını (Binom katsayısı) unutma!</span>
+        <div class="formula-box">
+            $$P(X = k) = \binom{n}{k} \cdot p^k \cdot (1-p)^{n-k} \quad \text{ile} \quad P(G) = \frac{1}{3},\; P(B) = \frac{2}{3}$$
+        </div>
+        <span class="cozum">$P(X\!=\!0) = \left(\dfrac{2}{3}\right)^3 = \dfrac{8}{27}$</span>
+        <span class="cozum">$P(X\!=\!1) = 3 \cdot \left(\dfrac{1}{3}\right)^1 \cdot \left(\dfrac{2}{3}\right)^2 = \dfrac{12}{27}$</span>
+        <span class="cozum">$P(X\!=\!2) = 3 \cdot \left(\dfrac{1}{3}\right)^2 \cdot \left(\dfrac{2}{3}\right)^1 = \dfrac{6}{27}$</span>
+        <span class="cozum">$P(X\!=\!3) = \left(\dfrac{1}{3}\right)^3 = \dfrac{1}{27}$</span>
+    </div>
+
+
+    <p class="footer">&copy; Wraeclast Eğitim Bakanlığı — Sınavda Başarılar! 🎲</p>
+
+</div>
+
+</body>
+</html>
