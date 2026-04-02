@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Olasılık ve İstatistik: Vize Taktik Ekranı</title>
+    <title>Olasılık Vize Taktik Ekranı v2.0</title>
     <style>
         body {
             background-color: #121212;
@@ -17,7 +17,7 @@
 
         /* --- Geri Dön Butonu --- */
         .nav-container {
-            max-width: 900px;
+            max-width: 950px;
             margin: 0 auto;
             text-align: left;
             padding: 20px 20px 0 20px;
@@ -41,12 +41,12 @@
         }
 
         .container {
-            max-width: 900px;
+            max-width: 950px;
             margin: auto;
             background-color: #1e1e1e;
             padding: 30px;
             border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.6);
             border-top: 5px solid #d4af37;
         }
         h1 {
@@ -58,9 +58,16 @@
         }
         h2 {
             color: #ff9900;
-            margin-top: 30px;
-            border-bottom: 1px solid #444;
+            margin-top: 35px;
+            border-bottom: 1px dashed #555;
             padding-bottom: 5px;
+            font-size: 1.4em;
+        }
+        .subtitle {
+            font-size: 0.8em;
+            color: #aaa;
+            display: block;
+            margin-bottom: 10px;
         }
         .highlight {
             color: #ff4444;
@@ -86,6 +93,13 @@
             font-style: italic;
             color: #88b04b;
         }
+        .table-container {
+            background-color: #222;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #444;
+            margin: 10px 0;
+        }
     </style>
 </head>
 <body>
@@ -95,55 +109,76 @@
 </div>
 
 <div class="container">
-    <h1>Olasılık ve İstatistik: Vize Taktik Ekranı</h1>
-    <p style="text-align: center; color: #aaa;">Sadece "Ayrık (Discrete)" konuları ve kritik tuzakları içerir. İntegrallere girmek yasaktır!</p>
+    <h1>Olasılık Vize Taktik Ekranı v2.0</h1>
+    <p style="text-align: center; color: #aaa;">Resmi Müfredat Başlıklarına Göre Düzenlenmiş "Discrete" Taktik Rehberi</p>
 
-    <h2>1. Temeller ve Sayma (Loot Dizilimi)</h2>
+    <h2>1. Probability, Sample Space, Events, Counting Sample Points & Probability of an Event</h2>
+    <span class="subtitle">Odak Noktası: Olası tüm durumları (Sample Space) ve istenen olayları (Events) saymak.</span>
     <ul>
-        <li><strong>Çarpma Kuralı:</strong> Olaylar birbirini takip ediyorsa düz çarp! <br>
+        <li><strong>Multiplication Rule (Çarpma Kuralı):</strong> Olaylar birbirini takip ediyorsa düz çarp. <br>
             <span class="tip">Örnek: 8 kan grubu ve 3 tansiyon seviyesi &rarr; 8 * 3 = 24.</span></li>
-        <li><strong>Tekrarlı Permütasyon:</strong> Nesneler sıralanacak ama bazıları birbirinin tıpatıp aynısı. <br>
-            <span class="tip">Örnek: "INFINITY" kelimesi (3 tane I, 2 tane N var).</span>
-            <div class="formula-box">Formül: Toplam Harf! / (Tekrar Edenlerin Faktöriyelleri Çarpımı) <br> Hesap: 8! / (3! * 2!)</div>
+        <li><strong>Permutation with Repetition (Tekrarlı Permütasyon):</strong> "INFINITY" kelimesi gibi aynı harflerden/eşyalardan oluşan nesneleri sıralama.
+            <div class="formula-box">Formül: Toplam Nesne! / (Tekrar Edenlerin Faktöriyelleri Çarpımı)</div>
         </li>
-        <li><strong>Kombinasyon (Sırasız Seçim):</strong> Gruptan eleman seçiyorsun (sıra önemsiz).
+        <li><strong>Combination (Kombinasyon):</strong> Gruptan eleman seçiyorsun (sıra önemsiz).
             <div class="formula-box">Formül: C(n, r) = n! / (r! * (n-r)!)</div>
+        </li>
+        <li><strong>Probability (Olasılık):</strong> İstenen Durumların Sayısı / Tüm Olası Durumların Sayısı.</li>
+    </ul>
+
+    <h2>2. Additive Rules</h2>
+    <span class="subtitle">Odak Noktası: "Veya" bağlacı ile bağlanan olaylar.</span>
+    <ul>
+        <li><strong>"OR" (Veya) Kelimesi:</strong> İkisinin ayrı ayrı olasılıklarını topla, kesişimlerini (ikisinin aynı anda olma durumunu) çıkar.
+            <div class="formula-box">P(A &cup; B) = P(A) + P(B) - P(A &cap; B)</div>
+        </li>
+        <li><strong>"AT LEAST ONE" (En Az Biri) Hilesi:</strong> 3 atıcıdan en az birinin hedefi vurması gibi uzun ihtimalleri hesaplamak yerine <span class="highlight">tersten git!</span>
+            <div class="formula-box">P(En az biri) = 1 - P(Hiçbiri)</div>
         </li>
     </ul>
 
-    <h2>2. Olasılık Kuralları ve Taktiksel Hileler</h2>
+    <h2>3. Conditional Probability, Independence, and the Product Rule</h2>
+    <span class="subtitle">Odak Noktası: Evrenin daralması ve olayların birbirini etkileme durumu.</span>
     <ul>
-        <li><strong>"OR" (Veya) Kelimesi = Toplama Kuralı:</strong> İkisinin ayrı ayrı olasılıklarını topla, kesişimlerini çıkar.
-            <div class="formula-box">P(A &cup; B) = P(A) + P(B) - P(A &cap; B)</div>
-        </li>
-        <li><strong>"AT LEAST ONE" (En Az Biri) Taktikleri:</strong> Uzun uzun hesaplama, <span class="highlight">tersten git!</span>
-            <div class="formula-box">P(En az biri) = 1 - P(Hiçbiri)</div>
-        </li>
-        <li><strong>"INDEPENDENT" (Bağımsız Olaylar):</strong> Zarlar veya atıcılar birbirini etkilemez. İhtimalleri dümdüz çarp.
+        <li><strong>"Without Replacement" (Geri Koymadan Seçim):</strong> Torbadan art arda top çekiyorsan, bir sonraki adımda <span class="highlight">hem payı hem paydayı 1 eksiltmeyi</span> ASLA unutma!</li>
+        <li><strong>Conditional ("GIVEN THAT" / Şu Bilindiğine Göre):</strong> Bu kelimeyi gördüğün an bil ki paydan artık "tüm durumlar" değil, sadece o <em>bilinen</em> durumdur. Evren daralır.</li>
+        <li><strong>Independence (Bağımsız Olaylar):</strong> Zarlar veya atıcılar birbirini etkilemez. İhtimalleri dümdüz çarp (Product Rule).
             <div class="formula-box">P(A &cap; B &cap; C) = P(A) * P(B) * P(C)</div>
         </li>
     </ul>
 
-    <h2>3. Vizenin Ağır Topları: Koşullu Olasılık ve Bayes</h2>
+    <h2>4. Bayes' Rule</h2>
+    <span class="subtitle">Odak Noktası: Bölüm Sonu Canavarı. Sonucu bilip, kaynağa/sebebe geri dönmek.</span>
     <ul>
-        <li><strong>Torbadan Çekilen Toplar ("Without Replacement"):</strong> Topu çektikten sonra geri koymadığın için, bir sonraki adımda <span class="highlight">hem payı hem paydayı 1 eksiltmeyi</span> ASLA unutma!</li>
-        <li><strong>"GIVEN THAT" (Şu Bilindiğine Göre):</strong> Bu kelimeyi gördüğün an bil ki paydan artık "tüm durumlar" değil, sadece o <em>bilinen</em> durumdur. Evren daralır.</li>
-        <li><strong>BAYES TEOREMİ (Bölüm Sonu Canavarı):</strong> "Seçilen ürünün Hatalı (D) olduğu görüldüğüne göre, bunun C Makinesinden çıkmış olma ihtimali nedir?"
+        <li><strong>Klasik Soru Tipi:</strong> "Seçilen ürünün Hatalı (Defective) olduğu bilindiğine göre, bunun C Makinesinden çıkmış olma ihtimali nedir?"
             <div class="formula-box">
-                Adım 1 (Payda): Tüm hata ihtimallerini topla.<br>
-                Adım 2 (Pay): Sadece C makinesinin hata ihtimalini üste yaz.<br><br>
+                <strong>Adım 1 (Payda - Toplam Olasılık):</strong> Tüm makinelerin hata ihtimallerini topla.<br>
+                <strong>Adım 2 (Pay - İstenen Durum):</strong> Sadece C makinesinin hata ihtimalini üste yaz.<br><br>
                 P(C | D) = [ P(D | C) * P(C) ] / P(D)
             </div>
         </li>
     </ul>
 
-    <h2>4. Ayrık Dağılımlar (Discrete Distributions)</h2>
+    <h2>5. Concept of a Random Variable & Discrete Probability Distributions</h2>
+    <span class="subtitle">Odak Noktası: Olayları sayılara (X) dökmek. Vize sadece Discrete (Ayrık/Sayılabilen) durumlardan sorumlu!</span>
     <ul>
-        <li><strong>Altın Kural: Toplam %100'dür:</strong> Sana bir fonksiyon verip "c sabiti kaçtır?" derse, x değerlerini yerine koy, hepsini topla ve <span class="highlight">1'e eşitle.</span></li>
-        <li><strong>Tablo Oluşturma:</strong> Seçilenler arasındaki istenen nesne sayısının (X) tablosunu yaparken; paya istenenleri (kombinasyonla), paydaya tüm ihtimalleri yazarak tek tek x = 0, 1, 2... için hesapla.</li>
+        <li><strong>Altın Kural (Toplam = 1):</strong> Sana bir f(x) fonksiyonu verip "c sabiti kaçtır?" derse, verilen x değerlerini (0, 1, 2...) sırayla yerine koy, hepsini topla ve <span class="highlight">1'e eşitle.</span></li>
+        <li><strong>Tablo Oluşturma:</strong> Seçilenler arasındaki bozuk eşya sayısının (X) dağılımını sorarsa; paya istenenleri (kombinasyonla), paydaya tüm ihtimalleri yazarak tek tek P(X=0), P(X=1) için hesapla.</li>
     </ul>
 
-    <p style="text-align: center; margin-top: 40px; color: #888;">&copy; Wraeclast Eğitim Bakanlığı - Bol Şans!</p>
+    <h2>6. Joint Probability Distributions & Marginal Distributions</h2>
+    <span class="subtitle">Odak Noktası: İki farklı değişkeni (X ve Y) aynı tabloda okumak.</span>
+    <ul>
+        <li><strong>Joint Distribution f(x,y):</strong> Tablonun <em>içindeki</em> hücrelerdir. X ve Y'nin aynı anda olma olasılığı. 
+            <span class="tip">(Örn: X=0 ve Y=1'in tam kesiştiği kutucuğu oku). İçerideki tüm hücrelerin toplamı 1'dir.</span></li>
+        <li><strong>Marginal Distribution g(x) veya h(y):</strong> Tablonun <em>kenarlarındaki</em> satır ve sütun toplamlarıdır.
+            <div class="table-container">
+                <span class="tip">Eğer sadece X=1'in marjinal olasılığı P(X=1) soruluyorsa, Y'yi tamamen görmezden gel ve <strong>X=1 satırındaki tüm hücreleri topla.</strong></span>
+            </div>
+        </li>
+    </ul>
+
+    <p style="text-align: center; margin-top: 40px; color: #888;">&copy; Wraeclast Eğitim Bakanlığı - Sınavda Başarılar!</p>
 </div>
 
 </body>
