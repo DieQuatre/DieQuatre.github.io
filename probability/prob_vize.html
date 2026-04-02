@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olasılık ve İstatistik: Vize Taktik Ekranı</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            padding-top: 0;
+        }
+
+        /* --- Geri Dön Butonu --- */
+        .nav-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: left;
+            padding: 20px 20px 0 20px;
+        }
+
+        .geri-butonu {
+            display: inline-block;
+            margin-bottom: 15px;
+            padding: 8px 15px;
+            background-color: #6a0dad;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .geri-butonu:hover {
+            background-color: #510a8c;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background-color: #1e1e1e;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            border-top: 5px solid #d4af37;
+        }
+        h1 {
+            text-align: center;
+            color: #d4af37;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+            font-size: 2.2em;
+        }
+        h2 {
+            color: #ff9900;
+            margin-top: 30px;
+            border-bottom: 1px solid #444;
+            padding-bottom: 5px;
+        }
+        .highlight {
+            color: #ff4444;
+            font-weight: bold;
+        }
+        .formula-box {
+            background-color: #2a2a2a;
+            border-left: 4px solid #d4af37;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.1em;
+            color: #fff;
+        }
+        ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .tip {
+            font-style: italic;
+            color: #88b04b;
+        }
+    </style>
+</head>
+<body>
+
+<div class="nav-container">
+    <a href="probability.html" class="geri-butonu">⬅ Olasılık Ana Sayfaya Dön</a>
+</div>
+
+<div class="container">
+    <h1>Olasılık ve İstatistik: Vize Taktik Ekranı</h1>
+    <p style="text-align: center; color: #aaa;">Sadece "Ayrık (Discrete)" konuları ve kritik tuzakları içerir. İntegrallere girmek yasaktır!</p>
+
+    <h2>1. Temeller ve Sayma (Loot Dizilimi)</h2>
+    <ul>
+        <li><strong>Çarpma Kuralı:</strong> Olaylar birbirini takip ediyorsa düz çarp! <br>
+            <span class="tip">Örnek: 8 kan grubu ve 3 tansiyon seviyesi &rarr; 8 * 3 = 24.</span></li>
+        <li><strong>Tekrarlı Permütasyon:</strong> Nesneler sıralanacak ama bazıları birbirinin tıpatıp aynısı. <br>
+            <span class="tip">Örnek: "INFINITY" kelimesi (3 tane I, 2 tane N var).</span>
+            <div class="formula-box">Formül: Toplam Harf! / (Tekrar Edenlerin Faktöriyelleri Çarpımı) <br> Hesap: 8! / (3! * 2!)</div>
+        </li>
+        <li><strong>Kombinasyon (Sırasız Seçim):</strong> Gruptan eleman seçiyorsun (sıra önemsiz).
+            <div class="formula-box">Formül: C(n, r) = n! / (r! * (n-r)!)</div>
+        </li>
+    </ul>
+
+    <h2>2. Olasılık Kuralları ve Taktiksel Hileler</h2>
+    <ul>
+        <li><strong>"OR" (Veya) Kelimesi = Toplama Kuralı:</strong> İkisinin ayrı ayrı olasılıklarını topla, kesişimlerini çıkar.
+            <div class="formula-box">P(A &cup; B) = P(A) + P(B) - P(A &cap; B)</div>
+        </li>
+        <li><strong>"AT LEAST ONE" (En Az Biri) Taktikleri:</strong> Uzun uzun hesaplama, <span class="highlight">tersten git!</span>
+            <div class="formula-box">P(En az biri) = 1 - P(Hiçbiri)</div>
+        </li>
+        <li><strong>"INDEPENDENT" (Bağımsız Olaylar):</strong> Zarlar veya atıcılar birbirini etkilemez. İhtimalleri dümdüz çarp.
+            <div class="formula-box">P(A &cap; B &cap; C) = P(A) * P(B) * P(C)</div>
+        </li>
+    </ul>
+
+    <h2>3. Vizenin Ağır Topları: Koşullu Olasılık ve Bayes</h2>
+    <ul>
+        <li><strong>Torbadan Çekilen Toplar ("Without Replacement"):</strong> Topu çektikten sonra geri koymadığın için, bir sonraki adımda <span class="highlight">hem payı hem paydayı 1 eksiltmeyi</span> ASLA unutma!</li>
+        <li><strong>"GIVEN THAT" (Şu Bilindiğine Göre):</strong> Bu kelimeyi gördüğün an bil ki paydan artık "tüm durumlar" değil, sadece o <em>bilinen</em> durumdur. Evren daralır.</li>
+        <li><strong>BAYES TEOREMİ (Bölüm Sonu Canavarı):</strong> "Seçilen ürünün Hatalı (D) olduğu görüldüğüne göre, bunun C Makinesinden çıkmış olma ihtimali nedir?"
+            <div class="formula-box">
+                Adım 1 (Payda): Tüm hata ihtimallerini topla.<br>
+                Adım 2 (Pay): Sadece C makinesinin hata ihtimalini üste yaz.<br><br>
+                P(C | D) = [ P(D | C) * P(C) ] / P(D)
+            </div>
+        </li>
+    </ul>
+
+    <h2>4. Ayrık Dağılımlar (Discrete Distributions)</h2>
+    <ul>
+        <li><strong>Altın Kural: Toplam %100'dür:</strong> Sana bir fonksiyon verip "c sabiti kaçtır?" derse, x değerlerini yerine koy, hepsini topla ve <span class="highlight">1'e eşitle.</span></li>
+        <li><strong>Tablo Oluşturma:</strong> Seçilenler arasındaki istenen nesne sayısının (X) tablosunu yaparken; paya istenenleri (kombinasyonla), paydaya tüm ihtimalleri yazarak tek tek x = 0, 1, 2... için hesapla.</li>
+    </ul>
+
+    <p style="text-align: center; margin-top: 40px; color: #888;">&copy; Wraeclast Eğitim Bakanlığı - Bol Şans!</p>
+</div>
+
+</body>
+</html>
