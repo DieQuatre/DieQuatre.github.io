@@ -86,7 +86,7 @@ MOV R6, 31
 ADD R4, R6         ; R6 = 32
 MUL R6, R7         ; R7 = 256 * 32 = 8192
 MOV R0, 1
-STORE R7, [R0]     ; R0 değeri 1 olduğu için [R0] ifadesi [1] adresine işaret eder
+STORE R7, [R0]     ; [R0] doğrudan R0'ın değerini adres olarak kullanır; R0=1 iken yazım adresi 1'dir
 
 ; threshold = 40
 MOV R1, 20
@@ -114,7 +114,7 @@ BEQ MAIN
 ; BPM = 60 / elapsed
 MOV R7, 30
 ADD R7, R7         ; R7 = 60
-DIV R0, R7         ; Bu örnekte DIV src,dst => dst=dst/src varsayımıyla: R7=60, R0=elapsed, sonuç BPM=R7/R0
+DIV R0, R7         ; Bu örnekte DIV src,dst => dst=dst/src varsayımıyla: R7=60, R0=elapsed, sonuç R7=60/elapsed
 
 ; BPM'i circular buffer'a yaz
 STORE R7, [R3]
