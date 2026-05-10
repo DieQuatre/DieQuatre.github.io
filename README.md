@@ -40,6 +40,49 @@ Sitenin yapısı, hangi dosyanın ne işe yaradığını gösterecek şekilde ba
 
 Bu proje MIT Lisansı altındadır.
 
+## PDF Dosyası Ekleme ve Sitede Gösterme (GitHub Pages)
+
+PDF dosyalarını proje içinde `assets/pdfs/` klasöründe tutabilirsiniz. Bu repo içinde klasörü hazır tutmak için `.gitkeep` dosyası kullanılır.
+
+### 1) GitHub Web Arayüzü ile PDF ekleme
+
+1. Repoya girin ve `assets/pdfs/` klasörünü açın.
+2. **Add file → Upload files** seçin.
+3. PDF dosyanızı (ör. `notlar.pdf`) yükleyin.
+4. Commit mesajı girip değişikliği kaydedin.
+
+### 2) Git ile PDF ekleme
+
+```bash
+git add assets/pdfs/notlar.pdf
+git commit -m "PDF notu eklendi"
+git push
+```
+
+### 3) PDF'e link verme (önerilen)
+
+Herhangi bir HTML sayfasına aşağıdaki bağlantıyı ekleyebilirsiniz:
+
+```html
+<a href="/assets/pdfs/notlar.pdf" target="_blank" rel="noopener">
+  PDF notunu aç
+</a>
+```
+
+### 4) PDF'i sayfaya gömme (isteğe bağlı)
+
+```html
+<iframe
+  src="/assets/pdfs/notlar.pdf"
+  width="100%"
+  height="700"
+  style="border: 1px solid #444;"
+>
+</iframe>
+```
+
+> Not: Bazı mobil tarayıcılarda `iframe` ile PDF görüntüleme sınırlı olabilir. Böyle durumlarda link verme yöntemi daha uyumludur.
+
 ✨ Sonsöz
 
 Her zaman yanımda olan Gemini ve KBI'a teşekkür ederim 💕
