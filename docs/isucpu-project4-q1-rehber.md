@@ -86,7 +86,7 @@ MOV R6, 31
 ADD R4, R6         ; R6 = 32
 MUL R6, R7         ; R7 = 256 * 32 = 8192
 MOV R0, 1
-STORE R7, [R0]     ; [R0] doğrudan R0'ın değerini adres olarak kullanır; R0=1 iken yazma adresi 1'dir
+STORE R7, [R0]     ; R0 bu noktaya kadar değişmediği için hâlâ 1'dir, yazma adresi 1 olur
 
 ; threshold = 40
 MOV R1, 20
@@ -114,7 +114,7 @@ BEQ MAIN
 ; BPM = 60 / elapsed
 MOV R7, 30
 ADD R7, R7         ; R7 = 60
-DIV R0, R7         ; Bu satır BPM hesabı için kullanılır ve sonuç R7'de tutulur
+DIV R0, R7         ; ISUCPU ders notundaki kullanım varsayımıyla BPM sonucu R7'de tutulur
 
 ; BPM'i circular buffer'a yaz
 STORE R7, [R3]
