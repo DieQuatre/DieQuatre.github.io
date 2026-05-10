@@ -86,7 +86,7 @@ MOV R6, 31
 ADD R4, R6         ; R6 = 32
 MUL R6, R7         ; R7 = 256 * 32 = 8192
 MOV R0, 1
-STORE R7, [R0]     ; R0 bu noktaya kadar değişmediği için hâlâ 1'dir, yazma adresi 1 olur
+STORE R7, [R0]     ; R0 bir üst satırda 1 yapıldığı için yazma adresi 1 olur
 
 ; threshold = 40
 MOV R1, 20
@@ -154,7 +154,7 @@ JMP MAIN
 |---|---|
 | Sensörden zaman oku | `IN R0, 1` |
 | `Elapsed_Time = Current - Last` | `LOAD R7,[0]` + `STORE R0,[0]` + `SUB R7, R0` |
-| `BPM = 60 / Elapsed` | `MOV/ADD` ile `R7=60` üretimi + `DIV R0, R7` (sonuç `R7`'de) |
+| `BPM = 60 / Elapsed` | `MOV/ADD` ile R7'ye 60 yüklenir, `DIV R0, R7` sonrası R7 BPM değerini taşır |
 | BPM'leri belleğe yaz | `STORE R7, [R3]` |
 | Circular buffer wrap | `ADD R4,R3` + `CMP R3,Buffer_End` + `LOAD R3,Buffer_Start` |
 | Eşik kontrolü (`< 40`) | `CMP R7, R1` + `BLT LOW_HR` |
