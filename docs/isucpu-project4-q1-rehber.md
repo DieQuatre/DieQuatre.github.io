@@ -54,7 +54,7 @@ Sık hata: geçersiz adrese bir kez yazdıktan sonra wrap yapmak.
 ## 4) Düzeltilmiş örnek assembly (çalışan akış)
 
 > Not: Aşağıdaki kod, verilen örnekteki komut tarzıyla uyumlu tutulmuştur (`ADD src,dst`, `STORE reg,[addrReg]`, vb.).
-> Bu listede `DIV src,dst` için bölüm sonucunun `dst` register'ına yazıldığı varsayılmıştır.
+> Bu listede `DIV R0, R7` satırı BPM sonucunu `R7` register'ında üretmek üzere kullanılmıştır.
 > Ayrıca örnek, zaman girişinin saniye cinsinden geldiği varsayımıyla hazırlanmıştır.
 
 ```asm
@@ -86,7 +86,7 @@ MOV R6, 31
 ADD R4, R6         ; R6 = 32
 MUL R6, R7         ; R7 = 256 * 32 = 8192
 MOV R0, 1
-STORE R7, [R0]     ; [R0] doğrudan R0'ın değerini adres olarak kullanır; R0=1 iken yazım adresi 1'dir
+STORE R7, [R0]     ; [R0] doğrudan R0'ın değerini adres olarak kullanır; R0=1 iken yazma adresi 1'dir
 
 ; threshold = 40
 MOV R1, 20
@@ -114,7 +114,7 @@ BEQ MAIN
 ; BPM = 60 / elapsed
 MOV R7, 30
 ADD R7, R7         ; R7 = 60
-DIV R0, R7         ; Bu örnekte DIV src,dst => dst=dst/src varsayımıyla: R7=60, R0=elapsed, sonuç R7=60/elapsed
+DIV R0, R7         ; Bu satır BPM hesabı için kullanılır ve sonuç R7'de tutulur
 
 ; BPM'i circular buffer'a yaz
 STORE R7, [R3]
@@ -154,7 +154,7 @@ JMP MAIN
 |---|---|
 | Sensörden zaman oku | `IN R0, 1` |
 | `Elapsed_Time = Current - Last` | `LOAD R7,[0]` + `STORE R0,[0]` + `SUB R7, R0` |
-| `BPM = 60 / Elapsed` | `MOV/ADD` ile `R7=60` üretimi + `DIV R0, R7` (`DIV src,dst => dst=dst/src`, sonuç `R7`'de) |
+| `BPM = 60 / Elapsed` | `MOV/ADD` ile `R7=60` üretimi + `DIV R0, R7` (sonuç `R7`'de) |
 | BPM'leri belleğe yaz | `STORE R7, [R3]` |
 | Circular buffer wrap | `ADD R4,R3` + `CMP R3,Buffer_End` + `LOAD R3,Buffer_Start` |
 | Eşik kontrolü (`< 40`) | `CMP R7, R1` + `BLT LOW_HR` |
