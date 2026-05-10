@@ -86,7 +86,7 @@ MOV R6, 31
 ADD R4, R6         ; R6 = 32
 MUL R6, R7         ; R7 = 256 * 32 = 8192
 MOV R0, 1
-STORE R7, [R0]     ; R0 adres register'ında 1'i tuttuğu için yazım hedefi [1]'dir
+STORE R7, [R0]     ; R0 değeri 1 olduğu için [R0] ifadesi [1] adresine işaret eder
 
 ; threshold = 40
 MOV R1, 20
@@ -114,7 +114,7 @@ BEQ MAIN
 ; BPM = 60 / elapsed
 MOV R7, 30
 ADD R7, R7         ; R7 = 60
-DIV R0, R7         ; Bu akışta sonuç ikinci operand olan R7'de tutulur (BPM)
+DIV R0, R7         ; Bu örnekte DIV src,dst => dst=dst/src varsayımıyla: R7=60, R0=elapsed, sonuç BPM=R7/R0
 
 ; BPM'i circular buffer'a yaz
 STORE R7, [R3]
@@ -154,7 +154,7 @@ JMP MAIN
 |---|---|
 | Sensörden zaman oku | `IN R0, 1` |
 | `Elapsed_Time = Current - Last` | `LOAD R7,[0]` + `STORE R0,[0]` + `SUB R7, R0` |
-| `BPM = 60 / Elapsed` | `MOV/ADD` ile 60 üretimi + `DIV R0, R7` (sonuç `R7`'de) |
+| `BPM = 60 / Elapsed` | `MOV/ADD` ile `R7=60` üretimi + `DIV R0, R7` (`DIV src,dst => dst=dst/src`, sonuç `R7`'de) |
 | BPM'leri belleğe yaz | `STORE R7, [R3]` |
 | Circular buffer wrap | `ADD R4,R3` + `CMP R3,Buffer_End` + `LOAD R3,Buffer_Start` |
 | Eşik kontrolü (`< 40`) | `CMP R7, R1` + `BLT LOW_HR` |
