@@ -9,7 +9,7 @@ Bu soruda ISUCPU üzerinde bir kalp atışı izleme akışı kurman bekleniyor:
 
 - Sensörden `Current_Time` oku.
 - `Elapsed_Time = Current_Time - Last_Time` hesapla.
-- Zaman birimi saniye ise `BPM = 60 / Elapsed_Time` hesapla. (Eğer giriş ms ise formül birime göre ölçeklenmelidir.)
+- Bu örnek çözümde sensör zamanının **saniye** cinsinden geldiği varsayımıyla `BPM = 60 / Elapsed_Time` hesapla. (Eğer giriş ms ise sabit 60 yerine 60000 kullanılmalıdır.)
 - BPM değeri `< 40` ise “düşük nabız” sayacını artır.
 - Bu durum **10 ölçüm üst üste** olursa buzzer çıkışını tetikle.
 - Hesaplanan BPM değerlerini bellekte dairesel (circular) şekilde sakla.
@@ -54,6 +54,8 @@ Sık hata: geçersiz adrese bir kez yazdıktan sonra wrap yapmak.
 ## 4) Düzeltilmiş örnek assembly (çalışan akış)
 
 > Not: Aşağıdaki kod, verilen örnekteki komut tarzıyla uyumlu tutulmuştur (`ADD src,dst`, `STORE reg,[addrReg]`, vb.).
+> Bu listede `DIV src,dst` için bölüm sonucunun `dst` register'ına yazıldığı varsayılmıştır.
+> Ayrıca örnek, zaman girişinin saniye cinsinden geldiği varsayımıyla hazırlanmıştır.
 
 ```asm
 ; ISUCPU Project 4 - Q1 (Heartbeat + Circular Buffer)
@@ -84,7 +86,7 @@ MOV R6, 31
 ADD R4, R6         ; R6 = 32
 MUL R6, R7         ; R7 = 256 * 32 = 8192
 MOV R0, 1
-STORE R7, [R0]     ; [1] = 8192  (çünkü 256*32 çarpım sonucu R7'de)
+STORE R7, [R0]     ; R0=1 olduğundan [1]'e, R7'deki 8192 değeri yazılır
 
 ; threshold = 40
 MOV R1, 20
