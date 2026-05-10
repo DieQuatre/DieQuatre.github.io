@@ -9,7 +9,7 @@ Bu soruda ISUCPU üzerinde bir kalp atışı izleme akışı kurman bekleniyor:
 
 - Sensörden `Current_Time` oku.
 - `Elapsed_Time = Current_Time - Last_Time` hesapla.
-- `BPM = 60 / Elapsed_Time` hesapla.
+- Zaman birimi saniye ise `BPM = 60 / Elapsed_Time` hesapla. (Eğer giriş ms ise formül birime göre ölçeklenmelidir.)
 - BPM değeri `< 40` ise “düşük nabız” sayacını artır.
 - Bu durum **10 ölçüm üst üste** olursa buzzer çıkışını tetikle.
 - Hesaplanan BPM değerlerini bellekte dairesel (circular) şekilde sakla.
@@ -84,7 +84,7 @@ MOV R6, 31
 ADD R4, R6         ; R6 = 32
 MUL R6, R7         ; R7 = 256 * 32 = 8192
 MOV R0, 1
-STORE R7, [R0]     ; [1] = 8192  (DÜZELTME: R6 değil R7)
+STORE R7, [R0]     ; [1] = 8192  (çünkü 256*32 çarpım sonucu R7'de)
 
 ; threshold = 40
 MOV R1, 20
@@ -112,7 +112,7 @@ BEQ MAIN
 ; BPM = 60 / elapsed
 MOV R7, 30
 ADD R7, R7         ; R7 = 60
-DIV R0, R7         ; R7 = 60 / elapsed  (BPM)
+DIV R0, R7         ; Bu akışta sonuç ikinci operand olan R7'de tutulur (BPM)
 
 ; BPM'i circular buffer'a yaz
 STORE R7, [R3]
@@ -166,4 +166,3 @@ JMP MAIN
 - Wrap koşulu, geçersiz adrese yazmadan çalışıyor mu?
 - BPM `< 40` değilse sayaç sıfırlanıyor mu?
 - `Elapsed_Time == 0` durumunda bölme korunuyor mu?
-
